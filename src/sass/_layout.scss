@@ -27,6 +27,72 @@
   background-position: center;
 }
 
+//=========card===========
+.film__item {
+  max-width: 280px;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    max-width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 395px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  & img {
+    width: 280px;
+    height: 402px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 8px;
+      width: 336px;
+      height: 455px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 12px;
+      width: 395px;
+      height: 574px;
+    }
+  }
+
+  & h2 {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: uppercase;
+    color: #000000;
+
+    @media screen and (min-width: 768px) {
+      line-height: 1.33;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+
+  & p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: #ff6b08;
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+}
+
 //=========footer=========
 .footer {
   position: absolute;
