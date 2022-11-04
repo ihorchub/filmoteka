@@ -1,0 +1,137 @@
+.my-library-header {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/hero-my-library/cinema-hall-background-mobile.jpg');
+  @include retina {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/hero-my-library/cinema-hall-background-mobile-2x.jpg');
+  }
+  @include tablet {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/hero-my-library/cinema-hall-background-tablet.jpg');
+    @include retina {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/hero-my-library/cinema-hall-background-tablet-2x.jpg');
+    }
+  }
+  @include desktop {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/hero-my-library/cinema-hall-background-desktop.jpg');
+    @include retina {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/hero-my-library/cinema-hall-background-desktop-2x.jpg');
+    }
+  }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.my-library-header__container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  width: auto;
+}
+
+.my-library-header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-library-header__logo {
+  display: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  margin-left: 10px;
+  @include tablet {
+    display: flex;
+  }
+}
+
+.my-library-header__links__list {
+  display: flex;
+  margin-left: auto;
+}
+
+.my-library-header__links__item {
+  margin-right: 40px;
+  &:last-child {
+    margin-right: 0;
+  }
+  &.--current {
+    border-bottom: 3px solid #ff001b;
+  }
+}
+
+.my-library-header__links__link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.my-library-header__buttons-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  @include tablet {
+    gap: 32px;
+  }
+  @include desktop {
+    gap: 16px;
+  }
+}
+
+.my-library-header__button {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  width: 130px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  min-width: 130px;
+
+  &.--current {
+    border: 1px solid #ff6b02;
+    background-color: #ff6b02;
+  }
+
+  @include tablet {
+    min-width: 152px;
+  }
+
+  @include desktop {
+    min-width: 147px;
+  }
+}
