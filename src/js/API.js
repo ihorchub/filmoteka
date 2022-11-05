@@ -14,8 +14,7 @@ export default class ApiServise{
 
              const request = `https://api.themoviedb.org/3/trending/all/week?${searchParams}`;
 
-        const data = await axios.get(request);
-            
+            const data = await axios.get(request);
             return data;
             
         } catch (error) {
