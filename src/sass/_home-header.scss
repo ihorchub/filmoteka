@@ -1,38 +1,33 @@
 .home-header{
- background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../images/hero-home/abstract-background-with-red-lines-mob.jpg');
+    background-color: rgba(0, 0, 0, 0.56);
+ background-image: url('../images/hero-home/abstract-background-with-red-lines-mob.png');
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/hero-home/abstract-background-with-red-lines-mob-x2.jpg');
+    background-image: url('../images/hero-home/abstract-background-with-red-lines-\ mob-x2.png');
   }
-  @media screen and (min-width: 768px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/hero-home/abstract-background-with-red-lines-tab.jpg');
+  @media screen and (min-width: 480px) {
+    background-image: url('../images/hero-home/abstract-background-with-red-lines-tab.png');
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url('../images/hero-home/abstract-background-with-red-lines-tab-x2.jpg');
+      background-image: url('../images/hero-home/abstract-background-with-red-lines-tab-x2.png');
     }
   }
   @media screen and (min-width: 1280px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/hero-home/abstract-background-with-red-lines-desktop.jpg');
+    background-image: url('../images/hero-home/abstract-background-with-red-lines-desktop.png');
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: linear-gradient (rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url('../images/hero-home/abstract-background-with-red-lines-desktop-x2.jpg');
+      background-image: url('../images/hero-home/abstract-background-with-red-lines-desktop-x2.png');
     }
   }
-background-position: center;
-  background-repeat: no-repeat;
 background-size: cover;
+  background-repeat: no-repeat;
+background-position: 50%;
 }
 
 .home-header__container{
