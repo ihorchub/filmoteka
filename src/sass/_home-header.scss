@@ -1,53 +1,57 @@
 .home-header{
-    padding-top: 40px;
- background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+ background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url('../images/hero-home/abstract-background-with-red-lines-mob.jpg');
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/hero-home/abstract-background-with-red-lines-mob-x2.jpg');
   }
   @media screen and (min-width: 768px) {
-   
-    background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/hero-home/abstract-background-with-red-lines-tab.jpg');
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url('../images/hero-home/abstract-background-with-red-lines-tab-x2.jpg');
     }
   }
   @media screen and (min-width: 1280px) {
-    background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/hero-home/abstract-background-with-red-lines-desktop.jpg');
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      background-image: linear-gradient (rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url('../images/hero-home/abstract-background-with-red-lines-desktop-x2.jpg');
     }
   }
+background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+background-size: cover;
 }
 
 .home-header__container{
   display: flex;
   align-items: center;
   margin-bottom: 60px;
-  width: auto;
+  padding-top: 40px;
+ max-width: 1280px;
+ margin-left: auto;
+ margin-right: auto;
+ padding-left: 20px;
+ padding-right: 20px;
 }
 
 .home-header__icon{
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: #FFFFFF;
 }
 
 .home-header__logo{
@@ -98,10 +102,9 @@ color: #FFFFFF;
   margin-left: auto;
   margin-right: auto;
   width: 280px;
-  padding-bottom: 92px;
+  padding-bottom: 60px;
   @media screen and(min-width:768px) {
     width: 336px;
-    padding-bottom: 80px;
   }
   @media screen and(min-width:1280px) {
     width: 394px;
@@ -109,7 +112,6 @@ color: #FFFFFF;
 }
 
 .home-header__input{
-
   width: 100%;
   height: 20px;
   background-color: transparent;
@@ -132,13 +134,9 @@ margin-bottom: 4px;
 }
 
 .home-header__input__button{
-  display: none;
 background-color: transparent;
 border: none;
 position: absolute;
 right: 0;
 padding: 0;
-@media screen and (min-width:768px) {
-    display: inline-block;
-  }
 }
