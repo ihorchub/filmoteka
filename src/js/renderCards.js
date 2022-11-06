@@ -1,21 +1,21 @@
 import { refs } from '../index';
 export function renderCards(data) {
-     const markup = data.data.results
-          .map(({ id, poster_path, name, title, release_date, genre_ids }) => { 
-        return `<li class="film__item" id="${id}"><a class="film__item__link">
+  const markup = data.data.results
+    .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
+      return `<li class="film__item" id="${id}"><a class="film__item__link">
   <img src="${getPosterPath(poster_path)}" alt="${
-          name || title
-        }" loading="lazy" />
+        name || title
+      }" loading="lazy" />
   <h2>${getShortName(title || name)}</h2>
   <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
-  <button class="film__trailer-btn" type="button">Trailer &#9205;</button>
+  <button class="film__trailer-btn" type="button">Trailer 	
+  &#128898;</button>
   </a>
 </li>`;
     })
     .join('');
   refs.cardHolder.insertAdjacentHTML('beforeend', markup);
 }
-
 
 const genreIdName = [
   { id: 28, name: 'Action' },
@@ -58,21 +58,20 @@ function getGenresByID(genreIds) {
 }
 
 function getShortName(string) {
-     if (string) {
-          if (string.length >= 32) {
-               return string.substr(0, 32) + '...';
-          }
-          return string
-     }
+  if (string) {
+    if (string.length >= 32) {
+      return string.substr(0, 32) + '...';
+    }
+    return string;
+  }
 }
 
-     function getYear(date) {
-          return date ? date.split('-')[0] : '2022';
-     }
+function getYear(date) {
+  return date ? date.split('-')[0] : '2022';
+}
 
-     function getPosterPath(path) {
-          return path
-               ? `https://www.themoviedb.org/t/p/w500${path}`
-               : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
-     }
-
+function getPosterPath(path) {
+  return path
+    ? `https://www.themoviedb.org/t/p/w500${path}`
+    : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
+}
