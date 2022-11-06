@@ -4,7 +4,27 @@ export default class ApiServise{
     constructor() {
         this.searchQuery = "";
         this.page = 1;
+        this.idMovie = null;
     }; 
+
+    async fetchId() {
+        try {
+            let movie_id = this.idMovie;
+            const searchParams = new URLSearchParams({
+                api_key: '411d08d89a4569fb1b50aec07ee6fb72',
+                language: 'en-US',
+            });
+
+            const request = `https://api.themoviedb.org/3/movie/${movie_id}?${searchParams}`;
+
+            const data = await axios.get(request);
+            return data;
+            
+        } catch (error) {
+            console.log(error.message)
+        };
+
+    };
 
      async fetchDefault() {
         try {
@@ -21,7 +41,7 @@ export default class ApiServise{
             console.log(error.message)
         };
 
-    }
+    };
 
     async fetch() {
         try {
@@ -52,6 +72,14 @@ export default class ApiServise{
 
     set query(newQuery) {
         this.searchQuery = newQuery;
+    };
+
+    get movieId() {
+        return this.idMovie;
+    };
+
+    set movieId(movieId) {
+        this.idMovie = movieId;
     };
 
     incrementPage() {
