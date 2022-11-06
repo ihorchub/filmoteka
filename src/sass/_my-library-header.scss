@@ -1,26 +1,41 @@
 .my-library-header {
+  //display: none;
   padding-top: 40px;
   padding-bottom: 60px;
-  background-color: rgba(0, 0, 0, 0.56);
-  background-image: url('../images/hero-my-library/cinema-hall-background-mobile.jpg');
+  height: 230px;
+  //background-color: rgba(0, 0, 0, 0.56);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/hero-my-library/cinema-hall-background-mobile.jpg');
   @include retina {
-    background-image: url('../images/hero-my-library/cinema-hall-background-mobile-2x.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/hero-my-library/cinema-hall-background-mobile-2x.jpg');
   }
   @include tablet {
-    background-image: url('../images/hero-my-library/cinema-hall-background-tablet.jpg');
+    height: 216px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/hero-my-library/cinema-hall-background-tablet.jpg');
     @include retina {
-      background-image: url('../images/hero-my-library/cinema-hall-background-tablet-2x.jpg');
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/hero-my-library/cinema-hall-background-tablet-2x.jpg');
     }
   }
   @include desktop {
-    background-image: url('../images/hero-my-library/cinema-hall-background-desktop.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/hero-my-library/cinema-hall-background-desktop.jpg');
     @include retina {
-      background-image: url('../images/hero-my-library/cinema-hall-background-desktop-2x.jpg');
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/hero-my-library/cinema-hall-background-desktop-2x.jpg');
     }
   }
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  background-size: cover;
+  background-position: 50%;
 }
 
 .my-library-header__container {
@@ -34,6 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: currentColor;
 }
 
 .my-library-header__logo {
@@ -59,6 +75,7 @@
   align-items: center;
   text-align: center;
   margin-left: 10px;
+  color: currentColor;
   @include tablet {
     display: flex;
   }
@@ -89,6 +106,11 @@
   text-align: center;
   text-transform: uppercase;
   color: #ffffff;
+  &:hover,
+  &:focus {
+    filter: drop-shadow(0px 4px 4px #ff6b02);
+    color: #ff6b02;
+  }
 }
 
 .my-library-header__buttons-list {
@@ -177,4 +199,17 @@
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.my-library-header__links__item__sticky {
+  margin-right: 15px;
+  @media screen and(min-width:480px) {
+    margin-right: 40px;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  &.--current {
+    border-bottom: 3px solid #ff001b;
+  }
 }

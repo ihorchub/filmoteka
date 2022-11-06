@@ -1,21 +1,18 @@
 import { refs } from '../index';
 export function renderCards(data) {
-     const markup = data.data.results
-          .map(({ id, poster_path, name, title, release_date, genre_ids }) => { 
-        return `<li class="film__item" id="${id}"><a class="film__item__link">
-  <img src="${getPosterPath(poster_path)}" alt="${
-          name || title
-        }" loading="lazy" />
-  <h2>${getShortName(title || name)}</h2>
-  <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
-  <button class="film__trailer-btn" type="button">Trailer &#9205;</button>
-  </a>
-</li>`;
+  const markup = data.data.results
+    .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
+      return `<li class="film__item" id="${id}"><a class="film__item__link">
+                  ${getMarkupImgPoster(poster_path, name, title)}
+                  <h2>${getShortName(title || name)}</h2>
+                  <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
+                  <button class="film__trailer-btn" type="button">Trailer &#9205;</button>
+                </a>
+              </li>`;
     })
     .join('');
   refs.cardHolder.insertAdjacentHTML('beforeend', markup);
 }
-
 
 const genreIdName = [
   { id: 28, name: 'Action' },
@@ -58,21 +55,57 @@ function getGenresByID(genreIds) {
 }
 
 function getShortName(string) {
-     if (string) {
-          if (string.length >= 32) {
-               return string.substr(0, 32) + '...';
-          }
-          return string
-     }
+  if (string) {
+    if (string.length >= 32) {
+      return string.substr(0, 32) + '...';
+    }
+    return string;
+  }
 }
 
-     function getYear(date) {
-          return date ? date.split('-')[0] : '2022';
-     }
+function getYear(date) {
+  return date ? date.split('-')[0] : '2022';
+}
 
-     function getPosterPath(path) {
-          return path
-               ? `https://www.themoviedb.org/t/p/w500${path}`
-               : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
-     }
+function getPosterPath(path) {
+  return `https://www.themoviedb.org/t/p/w500${path}`;
+  // return path
+  //   ? `https://www.themoviedb.org/t/p/w500${path}`
+  //   : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
+}
 
+function getMarkupImgPoster(poster_path, name, title) {
+  return poster_path
+    ? `<img src=" ${getPosterPath(poster_path)}" alt="${
+        name || title
+      }" loading="lazy" />`
+    : ``;
+  // : `<picture  loading="lazy">
+  //       <source
+  //         media="(min-width: 1280px)"
+  //         srcset="
+  //           ../images/card/default-poster-desktop.jpg    1x,
+  //           ../images/card/default-poster-desktop-2x.jpg 2x
+  //         "
+  //       />
+  //       <source
+  //         media="(min-width: 768px)"
+  //         srcset="
+  //           ../images/card/default-poster-tablet.jpg    1x,
+  //           ../images/card/default-poster-tablet-2x.jpg 2x
+  //         "
+  //       />
+  //       <source
+  //         media="(min-width: 320px)"
+  //         srcset="
+  //           ../images/card/default-poster-mobile.jpg    1x,
+  //           ../images/card/default-poster-mobile-2x.jpg 2x
+  //         "
+  //       />
+  //       <img
+  //         src="../images/card/default-poster-desktop.jpg"
+  //         alt="${name || title}"
+  //         loading="lazy"
+  //       />
+  //     </picture>`;
+}
