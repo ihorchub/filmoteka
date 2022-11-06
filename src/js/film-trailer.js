@@ -5,9 +5,15 @@ const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
 const trailerBody = document.querySelector('body');
 
 async function showTrailer(id) {
-  let trailer = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TRAILER_API_KEY}`
-  );
+  let trailer = null;
+
+  try {
+    trailer = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TRAILER_API_KEY}`
+    );
+  } catch {
+    return renderPlayer();
+  }
 
   trailer = trailer.data.results.filter(
     item => item.name === 'Official Trailer'
