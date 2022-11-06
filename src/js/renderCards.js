@@ -46,8 +46,8 @@ function getGenresByID(genreIds){
 
 function getShortName(string) {
      if(string){
-          if(string.length >= 30) {
-          return string.substr(0, 40) + '...';
+          if(string.length >= 32) {
+          return string.substr(0, 32) + '...';
           }
           return string
 }
@@ -57,7 +57,7 @@ function getShortName(string) {
 
 
 function getYear(date) {
-  return date ? date.split('-')[0] : '';
+  return date ? date.split('-')[0] : '2022';
 }
 
 function getPosterPath(path) {
@@ -68,8 +68,10 @@ function getPosterPath(path) {
 export function renderCards(data) {
      const markup = data.data.results
           .map(({ id, poster_path, name, title, release_date, genre_ids }) => { 
-        return `<li class="film__item" id="${id}"><a>
-  <img src="${getPosterPath(poster_path)}" alt="${name || title}" loading="lazy" />
+        return `<li class="film__item" id="${id}"><a class="film__item__link">
+  <img src="${getPosterPath(poster_path)}" alt="${
+          name || title
+        }" loading="lazy" />
   <h2>${getShortName(title || name)}</h2>
   <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
   </a>
