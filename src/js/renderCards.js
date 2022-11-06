@@ -26,7 +26,7 @@ const genreIdName = [
 function getGenresByID(genreIds){
      const newArr = [];
      genreIdName.map(genre => {
-          for (id of genreIds) {
+          for (const id of genreIds) {
                if (genre.id === id) {
                     newArr.push(genre.name)
                }
