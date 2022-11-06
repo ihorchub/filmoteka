@@ -1,4 +1,4 @@
-import { refs } from "../index";
+import { refs } from '../index';
 
 const genreIdName = [
   { id: 28, name: 'Action' },
@@ -22,27 +22,23 @@ const genreIdName = [
   { id: 37, name: 'Western' },
 ];
 
-
-function getGenresByID(genreIds){
-     const newArr = [];
-     genreIdName.map(genre => {
-          for (const id of genreIds) {
-               if (genre.id === id) {
-                    newArr.push(genre.name)
-               }
-          }
-     });
-     if (newArr.length >= 2) {
-          const slisedArr = newArr.slice(0, 2); 
-          slisedArr[2] = 'Other';
-          return slisedArr;
-     }
-     else {
-          return "Other"
-     }
-     
+function getGenresByID(genreIds) {
+  const newArr = [];
+  genreIdName.map(genre => {
+    for (const id of genreIds) {
+      if (genre.id === id) {
+        newArr.push(genre.name);
+      }
+    }
+  });
+  if (newArr.length >= 2) {
+    const slisedArr = newArr.slice(0, 2);
+    slisedArr[2] = 'Other';
+    return slisedArr;
+  } else {
+    return 'Other';
+  }
 }
-
 
 function getShortName(string) {
      if(string){
@@ -51,19 +47,16 @@ function getShortName(string) {
           }
           return string
 }
-}
-
-
-
 
 function getYear(date) {
   return date ? date.split('-')[0] : '2022';
 }
 
 function getPosterPath(path) {
-    return path ? `https://www.themoviedb.org/t/p/w500${path}`: 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
+  return path
+    ? `https://www.themoviedb.org/t/p/w500${path}`
+    : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
 }
-
 
 export function renderCards(data) {
      const markup = data.data.results
@@ -74,10 +67,10 @@ export function renderCards(data) {
         }" loading="lazy" />
   <h2>${getShortName(title || name)}</h2>
   <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
+  <button class="film__trailer-btn" type="button">Trailer &#9205;</button>
   </a>
 </li>`;
-      })
-      .join('');
-     refs.cardHolder.insertAdjacentHTML('beforeend', markup);
+    })
+    .join('');
+  refs.cardHolder.insertAdjacentHTML('beforeend', markup);
 }
-
