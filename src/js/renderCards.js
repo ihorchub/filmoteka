@@ -58,19 +58,22 @@ function getPosterPath(path) {
     : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
 }
 
-export function renderCards(data) {
+function renderCards(data) {
      const markup = data.data.results
-          .map(({ id, poster_path, name, title, release_date, genre_ids }) => { 
-        return `<li class="film__item" id="${id}"><a class="film__item__link">
-  <img src="${getPosterPath(poster_path)}" alt="${
-          name || title
-        }" loading="lazy" />
-  <h2>${getShortName(title || name)}</h2>
-  <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
-  <button class="film__trailer-btn" type="button">Trailer &#9205;</button>
-  </a>
-</li>`;
+        .map(({ id, poster_path, name, title, release_date, genre_ids }) => { 
+        return `<li class="film__item" id="${id}">
+                  <a class="film__item__link">
+                    <img src="${getPosterPath(poster_path)}" alt="${
+                      name || title
+                    }" loading="lazy" />
+                    <h2>${getShortName(title || name)}</h2>
+                    <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
+                    <button class="film__trailer-btn" type="button">Trailer &#9205;</button>
+                  </a>
+                </li>`;
     })
     .join('');
   refs.cardHolder.insertAdjacentHTML('beforeend', markup);
 }
+
+// export renderCards

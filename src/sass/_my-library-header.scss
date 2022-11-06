@@ -1,36 +1,25 @@
 .my-library-header {
   padding-top: 40px;
   padding-bottom: 60px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../images/hero-my-library/cinema-hall-background-mobile.jpg');
+  background-color: rgba(0, 0, 0, 0.56);
+  background-image: url('../images/hero-my-library/cinema-hall-background-mobile.jpg');
   @include retina {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/hero-my-library/cinema-hall-background-mobile-2x.jpg');
+    background-image: url('../images/hero-my-library/cinema-hall-background-mobile-2x.jpg');
   }
   @include tablet {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/hero-my-library/cinema-hall-background-tablet.jpg');
+    background-image: url('../images/hero-my-library/cinema-hall-background-tablet.jpg');
     @include retina {
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url('../images/hero-my-library/cinema-hall-background-tablet-2x.jpg');
+      background-image: url('../images/hero-my-library/cinema-hall-background-tablet-2x.jpg');
     }
   }
   @include desktop {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../images/hero-my-library/cinema-hall-background-desktop.jpg');
+    background-image: url('../images/hero-my-library/cinema-hall-background-desktop.jpg');
     @include retina {
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url('../images/hero-my-library/cinema-hall-background-desktop-2x.jpg');
+      background-image: url('../images/hero-my-library/cinema-hall-background-desktop-2x.jpg');
     }
   }
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 
@@ -48,6 +37,20 @@
 }
 
 .my-library-header__logo {
+  display: flex;
+  align-items: center;
+  transition-property: filter, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+  &:hover,
+  &:focus {
+    filter: drop-shadow(0px 4px 4px #ff6b02);
+    color: #ff6b02;
+  }
+}
+
+.my-library-header__name {
   display: none;
   font-style: normal;
   font-weight: 500;
@@ -55,7 +58,6 @@
   line-height: 35px;
   align-items: center;
   text-align: center;
-  color: #ffffff;
   margin-left: 10px;
   @include tablet {
     display: flex;
@@ -134,4 +136,45 @@
   @include desktop {
     min-width: 147px;
   }
+}
+
+.js-my-library-header__sticky {
+  display: none;
+}
+
+.my-library-header__sticky {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  display: block;
+  position: fixed;
+  z-index: 100;
+  background-image: linear-gradient(rgba(255, 0, 27, 0.7), rgba(0, 0, 0, 0.7));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  animation-name: show_header;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes show_header {
+  0% {
+    opacity: 0;
+    top: -70px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.my-library-header__container__sticky {
+  display: flex;
+  align-items: center;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
