@@ -11,6 +11,7 @@ body {
 
 //=========card===========
 .film__item {
+  position: relative;
   max-width: 280px;
   cursor: pointer;
 
@@ -67,6 +68,27 @@ body {
     @media screen and (min-width: 1280px) {
       font-size: 20px;
       line-height: 1.2;
+    }
+  }
+
+  & button {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    transition: background-color 300ms linear;
+
+    width: 40%;
+    height: 30px;
+    border: none;
+    color: #ffffff;
+    background-color: rgb(107, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: rgb(160, 0, 0);
     }
   }
 }
