@@ -1,0 +1,291 @@
+.team-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: 250ms;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+}
+
+.team-backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.team-modal {
+  position: relative;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%) scale(0.7);
+
+  height: 100vh;
+  overflow-y: scroll;
+
+  border-radius: 15px;
+  padding: 50px 30px 30px 30px;
+  box-shadow: 0px 0px 15px 5px #ff001b;
+  @media screen and(max-width: 480px) {
+    width: 320px;
+  }
+  @media screen and(min-width: 768px) {
+    height: auto;
+    top: 25%;
+    transform: translate(-50%, -25%) scale(0.7);
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+  }
+}
+
+.team-modal__btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #ff001b;
+  border-radius: 50%;
+}
+
+.team-modal__icon {
+  width: 50px;
+  height: 50px;
+  stroke: #ff001b;
+}
+
+.team-modal__title {
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  text-transform: uppercase;
+  @media screen and(min-width: 768px) {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media screen and(min-width: 1280px) {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+}
+
+// people list
+.people {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  &::-webkit-scrollbar {
+    width: 200px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    @media screen and (min-width: 768px) {
+      background-color: #ff001b;
+    }
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    @media screen and (min-width: 768px) {
+      background-color: #000000;
+    }
+  }
+}
+
+.people__card {
+  height: 250px;
+  width: 250px;
+  background: grey;
+  border-radius: 50px;
+  // overflow-y: hidden;
+  box-shadow: 3px 30px 60px -20px #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  transition: 500ms;
+  @media screen and (min-width: 768px) {
+    margin: 10px;
+  }
+}
+
+.name {
+  height: 250px;
+  width: 290px;
+  background: transparent;
+  border-radius: 10px;
+  position: relative;
+  padding: 15px;
+  display: block;
+}
+
+.name__team {
+  opacity: 0;
+}
+.name__role {
+  opacity: 0;
+}
+.github {
+  opacity: 0;
+}
+
+.people__card:hover .name__team {
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  background-color: #ff6b08;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 150px;
+  opacity: 1;
+  transition: 500ms;
+}
+
+.people__card:hover .name__role {
+  opacity: 1;
+  font-size: 20px;
+  color: #ff6b08;
+  background-color: rgba(0, 0, 0, 1);
+  font-weight: 900;
+}
+
+.people__card:hover .github {
+  position: absolute;
+  height: 140px;
+  top: 140px;
+  width: 35px;
+  display: block;
+  opacity: 1;
+  fill: #000000;
+}
+
+.people__card {
+  min-width: 250px;
+}
+.people__card1 {
+  background: url('https://github.com//ihorchub.png') center center no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com//ihorchub.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card2 {
+  background: url('https://github.com/Natalia970970.png') center center
+    no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/Natalia970970.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card3 {
+  background: url('https://github.com/pos1t1v41k.png') center center no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/pos1t1v41k.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card4 {
+  background: url('https://github.com/roma-cwby.png') center center no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/roma-cwby.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card5 {
+  background: url('https://github.com/Serge-Moskalenko.png') center center
+    no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/Serge-Moskalenko.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card6 {
+  background: url('https://github.com/notoriousronin.png') center center
+    no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/notoriousronin.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card7 {
+  background: url('https://github.com/AlexLupeka.png') center center no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/AlexLupeka.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card8 {
+  background: url('https://github.com//ihorsaievych.png') center center
+    no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com//ihorsaievych.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card9 {
+  background: url('https://github.com/oleksandr-vasylenko.png') center center
+    no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/oleksandr-vasylenko.png') center
+      no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card10 {
+  background: url('https://github.com/Ser9999.png') center center no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/Ser9999.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card11 {
+  background: url('https://github.com/AnnaYeremenko.png') center center
+    no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/AnnaYeremenko.png') center no-repeat;
+    background-size: 300px;
+  }
+}
+.people__card12 {
+  background: url('https://github.com/Urichcool.png') center center no-repeat;
+  background-size: 250px;
+  &:hover {
+    background: url('https://github.com/Urichcool.png') center no-repeat;
+    background-size: 300px;
+  }
+}
