@@ -6,7 +6,7 @@
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url('../images/hero-home/abstract-background-with-red-lines-\ mob-x2.png');
+    background-image: url('../images/hero-home/abstract-background-with-red-lines-mob-x2.png');
   }
   @media screen and (min-width: 480px) {
     height: 216px;
@@ -162,6 +162,7 @@ background-color: transparent;
 border: none;
 position: absolute;
 right: 0;
+top:0;
 padding: 0;
 }
 
@@ -241,6 +242,7 @@ background-color: transparent;
 border: none;
 position: absolute;
 right: 0;
+top: 0;
 padding: 0;
 }
 
