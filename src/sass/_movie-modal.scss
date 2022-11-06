@@ -63,6 +63,11 @@
 .js-movie-modal__img {
   max-height: 100%;
   margin: 0px auto;
+  border-radius: 5px;
+}
+
+.movie-modal__info-about {
+  max-width: 391px;
 }
 
 .js-movie-modal__close-btn {
@@ -80,7 +85,6 @@
   &:hover,
   &:focus {
     background-color: #ff6b08;
-    stroke: #ffffff;
   }
 }
 
@@ -108,6 +112,7 @@
   font-size: 20px;
   line-height: 23px;
   margin-bottom: 20px;
+  text-transform: uppercase;
 
   @include tablet {
     margin-top: 30px;
