@@ -85,7 +85,6 @@
   &:hover,
   &:focus {
     background-color: #ff6b08;
-    stroke: #ffffff;
   }
 }
 
@@ -113,6 +112,7 @@
   font-size: 20px;
   line-height: 23px;
   margin-bottom: 20px;
+  text-transform: uppercase;
 
   @include tablet {
     margin-top: 30px;
