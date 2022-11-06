@@ -23,5 +23,6 @@ apiServise.fetchDefault().then(data => {
 function onCardClick(e) {
   if (e.target === e.currentTarget) return;
 
-  trailer.showTrailer(e.target.closest('li').id);
+  if (e.target.classList.contains('film__trailer-btn'))
+    return trailer.showTrailer(e.target.closest('li').id);
 }
