@@ -18,8 +18,8 @@ const apiServise = new ApiServise();
 refs.searchForm.addEventListener("submit", onSubmit);
 refs.stickyHeaderForm.addEventListener("submit", onSubmit);
 
-  conteiner: document.querySelector('.card-container.container'),
-};
+// conteiner: document.querySelector('.card-container.container'),
+
 
 refs.cardHolder.addEventListener('click', onCardClick);
 // refs.conteiner.addEventListener('click', clickOnMovie);
