@@ -11,15 +11,19 @@ async function showTrailer(id) {
     trailer = await axios.get(
       `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TRAILER_API_KEY}`
     );
-  } catch {
+  } catch (error) {
     return renderPlayer();
   }
 
-  trailer = trailer.data.results.filter(
-    item => item.name === 'Official Trailer'
+  const officialTrailer = trailer.data.results.filter(
+    item => item.name.includes('Trailer') || item.name.includes('trailer')
   );
 
-  if (trailer.length && trailer[0].key) return renderPlayer(trailer[0].key);
+  if (officialTrailer.length && officialTrailer[0].key)
+    return renderPlayer(officialTrailer[0].key);
+
+  if (trailer.data.results.length && trailer.data.results[0].key)
+    return renderPlayer(trailer.data.results[0].key);
 
   renderPlayer();
 }
