@@ -3,6 +3,7 @@ import { onSubmit } from './js/onSubmit';
 import { renderCards } from './js/renderCards';
 // import { clickOnMovie } from './js/clickOnMovie';
 import trailer from './js/film-trailer.js';
+import { showModal } from './js/film-modal';
 
 export const refs = {
   searchForm: document.querySelector('.home-header__form'),
@@ -23,5 +24,8 @@ apiServise.fetchDefault().then(data => {
 function onCardClick(e) {
   if (e.target === e.currentTarget) return;
 
-  trailer.showTrailer(e.target.closest('li').id);
+  // trailer.showTrailer(e.target.closest('li').id);
+  apiServise.fetchById(e.target.closest('li').id).then(data => {
+    showModal(data.data);
+  });
 }
