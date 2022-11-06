@@ -1,15 +1,31 @@
 const filmModal = document.querySelector('.js-movie-modal');
+const filmModalMask = document.querySelector('.js-movie-modal-mask');
+
+filmModalMask.addEventListener('click', closeModal);
 
 export function showModal (data) {
     renderModal(data);
     const closeBtn = document.querySelector('.js-movie-modal__close-btn');
     closeBtn.addEventListener('click', closeModal);
     filmModal.classList.remove('is-hidden');
+    filmModalMask.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscKeyPress);
 }
 
 function closeModal (e) {
     e.preventDefault();
     filmModal.classList.add('is-hidden');
+    filmModalMask.classList.add('is-hidden');
+    window.removeEventListener('keydown', onEscKeyPress);
+}
+
+function onEscKeyPress(e) {
+    const ESC_KEY_CODE = 'Escape';
+    const isEscKey = e.code === ESC_KEY_CODE;
+
+    if (isEscKey) {
+        closeModal(e);
+    }
 }
 
 function getPosterPath(path) {
