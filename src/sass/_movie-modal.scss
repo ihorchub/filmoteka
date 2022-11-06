@@ -11,7 +11,7 @@
 }
 
 .js-movie-modal {
-    overflow-y: scroll;
+    // overflow: hidden;
     height: 100%;
     position: fixed;
     top: 50%;
@@ -60,6 +60,11 @@
   }
 }
 
+.js-movie-modal__img {
+  max-height: 100%;
+  margin: 0px auto;
+}
+
 .js-movie-modal__close-btn {
   position: absolute;
   width: 30px;
@@ -84,19 +89,17 @@
   height: 357px;
   object-fit: cover;
   border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 20px;
   display: block;
 
   @include tablet {
     width: 264px;
     height: 374px;
-    margin-right: 68px;
   }
 
   @include desktop {
     height: 478px;
+    width: 375px;
   }
 }
 
