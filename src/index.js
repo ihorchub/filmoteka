@@ -1,4 +1,4 @@
-import ApiServise from "./js/API";
+import  ApiServise  from "./js/API";
 import { onSubmit } from "./js/onSubmit";
 import { renderCards } from "./js/renderCards";
 
@@ -15,6 +15,7 @@ apiServise.fetchDefault().then(
     data => {
         renderCards(data);
     }
-  // marcap
 );
+
+// 11
 
