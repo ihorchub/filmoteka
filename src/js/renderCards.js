@@ -9,7 +9,7 @@ export function renderCards(data) {
   <h2>${getShortName(title || name)}</h2>
   <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
   <button class="film__trailer-btn" type="button">Trailer 	
-  &#128898;</button>
+  <span>&#9654;</span></button>
   </a>
 </li>`;
     })
