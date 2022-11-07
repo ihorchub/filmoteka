@@ -1,73 +1,13 @@
 <header class="my-library-header">
   <div class="container">
     <div class="my-library-header__container">
-      <a class="my-library-header__icon" href="./index.html">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M19.82 2H4.18C2.97602 2 2 2.97602 2 4.18V19.82C2 21.024 2.97602 22 4.18 22H19.82C21.024 22 22 21.024 22 19.82V4.18C22 2.97602 21.024 2 19.82 2Z"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M7 2V22"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M17 2V22"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M2 12H22"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M2 7H7"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M2 17H7"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M17 17H22"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M17 7H22"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
+      <a class="my-library-header__logo" href="./index.html">
+        <svg class="my-library-header__icon" width="24" height="24">
+          <use href="./images/icons.svg#icon-logo"></use>
         </svg>
+        <p class="my-library-header__name">Filmoteka</p>
       </a>
-      <a class="my-library-header__logo" href="./index.html">Filmoteka</a>
+
       <ul class="my-library-header__links__list">
         <li class="my-library-header__links__item">
           <a class="my-library-header__links__link" href="./index.html">Home</a>
@@ -91,5 +31,26 @@
         </li>
       </ul>
     </div>
+  </div>
+</header>
+
+<header class="js-my-library-header__sticky">
+  <div class="my-library-header__container__sticky">
+    <a class="my-library-header__logo" href="./index.html">
+      <svg class="my-library-header__icon" width="24" height="24">
+        <use href="./images/icons.svg#icon-logo"></use>
+      </svg>
+      <p class="my-library-header__name" href="./index.html">Filmoteka</p>
+    </a>
+    <ul class="my-library-header__links__list">
+      <li class="my-library-header__links__item__sticky">
+        <a class="my-library-header__links__link" href="./index.html">Home</a>
+      </li>
+      <li class="my-library-header__links__item__sticky --current">
+        <a class="my-library-header__links__link" href="./my-library.html"
+          >My library</a
+        >
+      </li>
+    </ul>
   </div>
 </header>
