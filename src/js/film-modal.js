@@ -19,16 +19,18 @@ export function showModal(data) {
 
   addQueueRef.addEventListener('click', onQueueClick);
   function onQueueClick() {
-    console.log(data);
-    moviesQueue.push(data);
-    localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
+    if (!moviesQueue.includes(data)) {
+      moviesQueue.push(data);
+      localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
+    }
   }
 
   addWatched.addEventListener('click', onWatchedClick);
   function onWatchedClick() {
-    console.log(data);
-    moviesWatched.push(data);
-    localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
+    if (!moviesWatched.includes(data)) {
+      moviesWatched.push(data);
+      localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
+    }
   }
 }
 
@@ -79,7 +81,9 @@ function renderModal(data) {
         </div>
         <div class="movie-modal__info-value">
             <p class="js-info-value">
-                <span class="js-info-value__vote">${data.vote_average.toFixed(1)}</span>&ensp;/&ensp; 
+                <span class="js-info-value__vote">${data.vote_average.toFixed(
+                  1
+                )}</span>&ensp;/&ensp; 
 
                 <span class="js-info-value__votes">${data.vote_count}</span>
             </p>
