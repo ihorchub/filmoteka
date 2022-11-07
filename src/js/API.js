@@ -26,9 +26,8 @@ export default class ApiServise{
 
     };    
     
-    async fetchId() {
 
-    async fetchById(movie_id) {
+    async fetchById() {
 
         try {
             let movie_id = this.idMovie;
