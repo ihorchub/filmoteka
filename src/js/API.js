@@ -4,7 +4,7 @@ export default class ApiServise{
     constructor() {
         this.searchQuery = "";
         this.page = 1;
-        // this.idMovie = null;
+        this.idMovie = null;
     }; 
 
     // async fetchOnMovie() {
@@ -26,12 +26,11 @@ export default class ApiServise{
 
     // };    
     
-    async fetchId() {
 
-    async fetchById(movie_id) {
+    async fetchById() {
 
         try {
-            // let movie_id = this.idMovie;
+            let movie_id = this.idMovie;
             const searchParams = new URLSearchParams({
                 api_key: '411d08d89a4569fb1b50aec07ee6fb72',
                 language: 'en-US',
@@ -99,13 +98,13 @@ export default class ApiServise{
         this.searchQuery = newQuery;
     };
 
-    // get movieId() {
-    //     return this.idMovie;
-    // };
+    get movieId() {
+        return this.idMovie;
+    };
 
-    // set movieId(movieId) {
-    //     this.idMovie = movieId;
-    // };
+    set movieId(movieId) {
+        this.idMovie = movieId;
+    };
 
     incrementPage() {
         this.page +=1

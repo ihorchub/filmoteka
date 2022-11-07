@@ -11,7 +11,7 @@ import { showModal } from './js/film-modal';
 export const refs = {
   searchForm: document.querySelector('.home-header__form'),
   cardHolder: document.querySelector('.card-holder'),
-
+  // conteiner: document.querySelector('.card-container.container'),
   stickyHeader: document.querySelector('.js-home-header__sticky'),
   stickyHeaderForm: document.querySelector('.home-header__form__sticky'),
 };
@@ -19,17 +19,12 @@ export const refs = {
 const apiServise = new ApiServise();
 
 refs.searchForm.addEventListener("submit", onSubmit);
-
-refs.conteiner.addEventListener('click', clickOnMovie);
 window.addEventListener('scroll', throttle(onScroll, 1000));
-
 refs.stickyHeaderForm.addEventListener("submit", onSubmit);
-
-// conteiner: document.querySelector('.card-container.container'),
-
-
 refs.cardHolder.addEventListener('click', onCardClick);
+
 // refs.conteiner.addEventListener('click', clickOnMovie);
+
 
 apiServise.fetchDefault().then(data => {renderCards(data);});
 
@@ -38,8 +33,7 @@ function onCardClick(e) {
 
   if (e.target.classList.contains('film__trailer-btn'))
     return trailer.showTrailer(e.target.closest('li').id);
-
-  apiServise.fetchById(e.target.closest('li').id).then(data => {
-    showModal(data.data);
-  });
+  
+  apiServise.movieId = e.path[2].id
+  apiServise.fetchById().then(data => {showModal(data.data);});
 }
