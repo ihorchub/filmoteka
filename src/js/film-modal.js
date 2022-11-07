@@ -19,7 +19,7 @@ export function showModal(data) {
 
   addQueueRef.addEventListener('click', onQueueClick);
   function onQueueClick() {
-    if (!moviesQueue.includes(data)) {
+    if (!moviesQueue.find(item => item.id === data.id)) {
       moviesQueue.push(data);
       localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
     }
@@ -27,7 +27,7 @@ export function showModal(data) {
 
   addWatched.addEventListener('click', onWatchedClick);
   function onWatchedClick() {
-    if (!moviesWatched.includes(data)) {
+    if (!moviesWatched.find(item => item.id === data.id)) {
       moviesWatched.push(data);
       localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
     }
