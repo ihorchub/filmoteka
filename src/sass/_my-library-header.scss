@@ -10,8 +10,12 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/hero-my-library/cinema-hall-background-mobile-2x.jpg');
   }
-  @include tablet {
+
+  @include mobile {
     height: 216px;
+  }
+
+  @include tablet {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/hero-my-library/cinema-hall-background-tablet.jpg');
     @include retina {
@@ -76,7 +80,7 @@
   text-align: center;
   margin-left: 10px;
   color: currentColor;
-  @include tablet {
+  @include mobile {
     display: flex;
   }
 }
