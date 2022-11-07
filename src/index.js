@@ -1,8 +1,10 @@
 import ApiServise from "./js/API";
+import throttle from "lodash.throttle";
+import { clickOnMovie } from "./js/clickOnMovie";
+import { onScroll } from "./js/onScroll";
 import { onSubmit } from "./js/onSubmit";
 import { renderCards } from "./js/renderCards";
 import { stickyHeader } from "./js/sticky-header";
-// import { clickOnMovie } from './js/clickOnMovie';
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
 
@@ -17,6 +19,10 @@ export const refs = {
 const apiServise = new ApiServise();
 
 refs.searchForm.addEventListener("submit", onSubmit);
+
+refs.conteiner.addEventListener('click', clickOnMovie);
+window.addEventListener('scroll', throttle(onScroll, 1000));
+
 refs.stickyHeaderForm.addEventListener("submit", onSubmit);
 
 // conteiner: document.querySelector('.card-container.container'),
@@ -25,9 +31,7 @@ refs.stickyHeaderForm.addEventListener("submit", onSubmit);
 refs.cardHolder.addEventListener('click', onCardClick);
 // refs.conteiner.addEventListener('click', clickOnMovie);
 
-apiServise.fetchDefault().then(data => {
-  renderCards(data);
-});
+apiServise.fetchDefault().then(data => {renderCards(data);});
 
 function onCardClick(e) {
   if (e.target === e.currentTarget) return;

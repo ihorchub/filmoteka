@@ -7,7 +7,29 @@ export default class ApiServise{
         // this.idMovie = null;
     }; 
 
+    // async fetchOnMovie() {
+    //     try {
+    //         let movie_id = this.idMovie;
+    //         const searchParams = new URLSearchParams({
+    //             api_key: '411d08d89a4569fb1b50aec07ee6fb72',
+    //             language: 'en-US',
+    //         });
+
+    //         const request = `https://api.themoviedb.org/3/movie/${movie_id}/videos?${searchParams}`;
+
+    //         const data = await axios.get(request);
+    //         return data;
+            
+    //     } catch (error) {
+    //         console.log(error.message)
+    //     };
+
+    // };    
+    
+    async fetchId() {
+
     async fetchById(movie_id) {
+
         try {
             // let movie_id = this.idMovie;
             const searchParams = new URLSearchParams({
@@ -52,12 +74,15 @@ export default class ApiServise{
                 page: this.page,
                 include_adult: false,
             });
-             const request = `https://api.themoviedb.org/3/search/movie?${searchParams}`;
+            const request = `https://api.themoviedb.org/3/search/movie?${searchParams}`;
+            console.log(request)
 
-        const data = await axios.get(request);
-       
-        // this.incrementPage();
-            
+            const data = await axios.get(request);
+           console.log(this.page)
+            this.incrementPage();
+    
+            console.log(this.page)
+
             return data;
             
         } catch (error) {
