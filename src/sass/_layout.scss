@@ -11,6 +11,7 @@ body {
 
 //=========card===========
 .film__item {
+  position: relative;
   max-width: 280px;
   cursor: pointer;
 
@@ -20,6 +21,42 @@ body {
 
   @media screen and (min-width: 1280px) {
     max-width: 395px;
+  }
+
+  &__link {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 280px;
+    height: 438px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    background-image: url('../images/card/default-poster-mobile.jpg');
+    @include retina {
+      background-image: url('../images/card/default-poster-mobile-2x.jpg');
+    }
+    @include tablet {
+      margin-bottom: 8px;
+      width: 336px;
+      height: 495px;
+      background-image: url('../images/card/default-poster-tablet.jpg');
+      @include retina {
+        background-image: url('../images/card/default-poster-tablet-2x.jpg');
+      }
+    }
+    @include desktop {
+      margin-bottom: 12px;
+      width: 395px;
+      height: 634px;
+      background-image: url('../images/card/default-poster-desktop.jpg');
+      @include retina {
+        background-image: url('../images/card/default-poster-desktop-2x.jpg');
+      }
+    }
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   & img {
@@ -67,6 +104,32 @@ body {
     @media screen and (min-width: 1280px) {
       font-size: 20px;
       line-height: 1.2;
+    }
+  }
+
+  & button {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    transition: background-color 300ms linear;
+
+    width: 40%;
+    height: 30px;
+    border: none;
+    color: #ffffff;
+    background-color: rgb(107, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: rgb(160, 0, 0);
+    }
+
+    & span {
+      margin-left: 2px;
+      font-size: 1.2em;
     }
   }
 }

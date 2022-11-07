@@ -2,21 +2,28 @@
   display: none;
 }
 
+.js-movie-modal-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.3;
+}
 
 .js-movie-modal {
-    overflow-y: scroll;
     height: 100%;
     position: fixed;
     top: 50%;
     left: 50%;
     background-color: #ffffff;
     color: #000;
-    transform: translate(-50%, -50%);
     width: 280px;
     font-weight: 500;
     margin-top: 20px;
     margin-bottom: 38px;
-  
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    
     @include tablet {
       width: 704px;
       height: 552px;
@@ -26,6 +33,7 @@
     @include desktop {
       width: 806px;
       height: 558px;
+      overflow: hidden;
     }
 }
 
@@ -53,14 +61,29 @@
   }
 }
 
+.js-movie-modal__img {
+  max-height: 100%;
+  margin: 0px auto;
+  border-radius: 5px;
+}
+
+.movie-modal__info-about {
+  max-width: 391px;
+}
+
 .js-movie-modal__close-btn {
   position: absolute;
   width: 30px;
   height: 30px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 8px;
   right: 8px;
   border: none;
   background: #ffffff;
+  color: #000000;
 
   transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -68,7 +91,6 @@
   &:hover,
   &:focus {
     background-color: #ff6b08;
-    stroke: #ffffff;
   }
 }
 
@@ -77,19 +99,17 @@
   height: 357px;
   object-fit: cover;
   border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 20px;
   display: block;
 
   @include tablet {
     width: 264px;
     height: 374px;
-    margin-right: 68px;
   }
 
   @include desktop {
     height: 478px;
+    width: 375px;
   }
 }
 
@@ -98,9 +118,9 @@
   font-size: 20px;
   line-height: 23px;
   margin-bottom: 20px;
+  text-transform: uppercase;
 
   @include tablet {
-    margin-top: 30px;
     margin-bottom: 20px;
   }
 
