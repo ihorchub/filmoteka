@@ -3,15 +3,12 @@ export function renderCards(data) {
   const markup = data.data.results
     .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">
-  <img src="${getPosterPath(poster_path)}" alt="${
-        name || title
-      }" loading="lazy" />
-  <h2>${getShortName(title || name)}</h2>
-  <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
-  <button class="film__trailer-btn" type="button">Trailer 	
-  <span>&#9654;</span></button>
-  </a>
-</li>`;
+                  ${getMarkupImgPoster(poster_path, name, title)}
+                  <h2>${getShortName(title || name)}</h2>
+                  <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
+                  <button class="film__trailer-btn" type="button">Trailer &#9205;</button>
+                </a>
+              </li>`;
     })
     .join('');
   refs.cardHolder.insertAdjacentHTML('beforeend', markup);
@@ -71,7 +68,44 @@ function getYear(date) {
 }
 
 function getPosterPath(path) {
-  return path
-    ? `https://www.themoviedb.org/t/p/w500${path}`
-    : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
+  return `https://www.themoviedb.org/t/p/w500${path}`;
+  // return path
+  //   ? `https://www.themoviedb.org/t/p/w500${path}`
+  //   : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
+}
+
+function getMarkupImgPoster(poster_path, name, title) {
+  return poster_path
+    ? `<img src=" ${getPosterPath(poster_path)}" alt="${
+        name || title
+      }" loading="lazy" />`
+    : ``;
+  // : `<picture  loading="lazy">
+  //       <source
+  //         media="(min-width: 1280px)"
+  //         srcset="
+  //           ../images/card/default-poster-desktop.jpg    1x,
+  //           ../images/card/default-poster-desktop-2x.jpg 2x
+  //         "
+  //       />
+  //       <source
+  //         media="(min-width: 768px)"
+  //         srcset="
+  //           ../images/card/default-poster-tablet.jpg    1x,
+  //           ../images/card/default-poster-tablet-2x.jpg 2x
+  //         "
+  //       />
+  //       <source
+  //         media="(min-width: 320px)"
+  //         srcset="
+  //           ../images/card/default-poster-mobile.jpg    1x,
+  //           ../images/card/default-poster-mobile-2x.jpg 2x
+  //         "
+  //       />
+  //       <img
+  //         src="../images/card/default-poster-desktop.jpg"
+  //         alt="${name || title}"
+  //         loading="lazy"
+  //       />
+  //     </picture>`;
 }
