@@ -73,7 +73,7 @@ line-height: 35px;
 align-items: center;
 text-align: center;
 margin-left: 10px;
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 480px) {
   display: flex;
 };
 }
@@ -207,6 +207,20 @@ animation-name: show_header;
  padding-left: 20px;
  padding-right: 20px;
 
+}
+
+.home-header__name__sticky{
+  display: none;
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 35px;
+align-items: center;
+text-align: center;
+margin-left: 10px;
+@media screen and (min-width: 768px) {
+  display: flex;
+};
 }
 
 

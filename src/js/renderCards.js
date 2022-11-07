@@ -57,7 +57,7 @@ function getGenresByID(genreIds) {
 function getShortName(string) {
   if (string) {
     if (string.length >= 32) {
-      return string.substr(0, 32) + '...';
+      return string.substr(0, 25) + '...';
     }
     return string;
   }
