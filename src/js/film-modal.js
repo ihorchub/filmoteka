@@ -57,7 +57,12 @@ function getPosterPath(path) {
 function renderModal(data) {
   filmModal.innerHTML = `
     <div class="js-movie-modal__content">
-        <button class = "js-movie-modal__close-btn">&#10006;</button>
+        <button class = "js-movie-modal__close-btn">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 8L22 22" stroke="black" stroke-width="2"/>
+            <path d="M8 22L22 8" stroke="black" stroke-width="2"/>
+        </svg>              
+        </button>
         <div class="js-movie-modal__poster">
             <img class = "js-movie-modal__img" src="${getPosterPath(
               data.poster_path
@@ -74,9 +79,8 @@ function renderModal(data) {
         </div>
         <div class="movie-modal__info-value">
             <p class="js-info-value">
-                <span class="js-info-value__vote">${data.vote_average.toFixed(
-                  1
-                )}</span> / 
+                <span class="js-info-value__vote">${data.vote_average.toFixed(1)}</span>&ensp;/&ensp; 
+
                 <span class="js-info-value__votes">${data.vote_count}</span>
             </p>
             <p class="js-info-value">${data.popularity}</p>
