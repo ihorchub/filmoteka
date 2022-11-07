@@ -8,6 +8,7 @@ export function onSubmit(e) {
   e.preventDefault();
   refs.cardHolder.innerHTML = '';
   apiServise.query = e.target.elements[0].value.trim();
+  apiServise.resetPage();
   apiServise.fetch().then((data) => {
     renderCards(data)
   });
