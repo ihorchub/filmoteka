@@ -6,7 +6,7 @@
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url('../images/hero-home/abstract-background-with-red-lines-\ mob-x2.png');
+    background-image: url('../images/hero-home/abstract-background-with-red-lines-mob-x2.png');
   }
   @media screen and (min-width: 480px) {
     height: 216px;
@@ -54,13 +54,12 @@ background-position: 50%;
 .home-header__logo{
   display: flex;
   align-items: center;
-    transition-property: filter, color;
+    transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   color: #FFFFFF;
   &:hover,
   &:focus {
-    filter: drop-shadow(0px 4px 4px #ff6b02);
     color: #ff6b02;
   };
 }
@@ -104,12 +103,11 @@ align-items: center;
 text-align: center;
 text-transform: uppercase;
 color: #FFFFFF;
-    transition-property: filter,color;
+    transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    filter: drop-shadow(0px 4px 4px #ff6b02);
      color: #ff6b02
   };
 }
@@ -120,13 +118,6 @@ color: #FFFFFF;
   margin-right: auto;
   width: 280px;
   padding-bottom: 60px;
-    transition-property: filter;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    filter: drop-shadow(0px 4px 4px #ff6b02);
-  };
   @media screen and(min-width:768px) {
     width: 336px;
   }
@@ -142,13 +133,20 @@ color: #FFFFFF;
   height: 20px;
   background-color: transparent;
   border: none;
- border-bottom: 0.5px solid #FFFFFF;
+ border-bottom: 1px solid #FFFFFF;
  outline: none;
   font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 16px;
 color: #FFFFFF;
+    transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    border-color: #ff6b02;
+  };
  &::placeholder{
   font-style: normal;
 font-weight: 400;
@@ -164,6 +162,7 @@ background-color: transparent;
 border: none;
 position: absolute;
 right: 0;
+top:0;
 padding: 0;
 }
 
@@ -214,16 +213,16 @@ animation-name: show_header;
 
 
 .home-header__form__sticky{
-   position: relative;
+  position: relative;
   width: 120px;
 margin-left: auto;
 margin-right: auto;
-   transition-property: filter;
+   transition-property: border-color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    filter: drop-shadow(0px 4px 4px #ff6b02);
+    border-color: #ff6b02
   };
 
 @media screen and(min-width:480px) {
@@ -236,6 +235,15 @@ margin-right: auto;
   @media screen and(min-width:1280px) {
     width: 394px;
   }
+}
+
+.home-header__input__button__sticky{
+background-color: transparent;
+border: none;
+position: absolute;
+right: 0;
+top: 0;
+padding: 0;
 }
 
 

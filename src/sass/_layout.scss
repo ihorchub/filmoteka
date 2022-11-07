@@ -126,6 +126,11 @@ body {
     &:focus {
       background-color: rgb(160, 0, 0);
     }
+
+    & span {
+      margin-left: 2px;
+      font-size: 1.2em;
+    }
   }
 }
 

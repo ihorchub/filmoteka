@@ -4,6 +4,7 @@ import { renderCards } from "./js/renderCards";
 import { stickyHeader } from "./js/sticky-header";
 // import { clickOnMovie } from './js/clickOnMovie';
 import trailer from './js/film-trailer.js';
+import { showModal } from './js/film-modal';
 
 export const refs = {
   searchForm: document.querySelector('.home-header__form'),
@@ -33,4 +34,8 @@ function onCardClick(e) {
 
   if (e.target.classList.contains('film__trailer-btn'))
     return trailer.showTrailer(e.target.closest('li').id);
+
+  apiServise.fetchById(e.target.closest('li').id).then(data => {
+    showModal(data.data);
+  });
 }
