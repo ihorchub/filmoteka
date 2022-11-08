@@ -2,8 +2,10 @@
 
 import Notiflix from 'notiflix';
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);
-export function success(title) {
-  Notiflix.Notify.success(`${title} movies found`);
+export function success(totalMovies, query) {
+  Notiflix.Notify.success(
+    `Hooray we found ${totalMovies} movies for "${query}"`
+  );
 }
 
 export function failure() {
@@ -17,8 +19,12 @@ export function missingTrailer() {
   );
 }
 
+export function secondRequest(query) {
+  Notiflix.Notify.warning(`You are trying to search "${query}" again, please enter a different search query`);
+}
+
 export function warning() {
-  Notiflix.Notify.warning('Please, enter your desire here');
+  Notiflix.Notify.warning('Enter your search query in the search bar');
 }
 
 // Варіант 2
