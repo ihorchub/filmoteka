@@ -1,10 +1,12 @@
 const filmModal = document.querySelector('.js-movie-modal');
 const filmModalMask = document.querySelector('.js-movie-modal-mask');
+const modalBody = document.querySelector('body');
 
 filmModalMask.addEventListener('click', closeModal);
 
-const moviesQueue = [];
+// variables declaration for further local storage content
 const moviesWatched = [];
+const moviesQueue = [];
 
 export function showModal(data) {
   renderModal(data);
@@ -13,23 +15,29 @@ export function showModal(data) {
   filmModal.classList.remove('is-hidden');
   filmModalMask.classList.remove('is-hidden');
   window.addEventListener('keydown', onEscKeyPress);
+  modalBody.style = 'overflow-y: hidden';
 
-  const addQueueRef = document.querySelector('.add-queue');
+  // reaching "Add to Watched" and "Add to Queue" buttons
   const addWatched = document.querySelector('.add-watched');
+  const addQueueRef = document.querySelector('.add-queue');
 
-  addQueueRef.addEventListener('click', onQueueClick);
-  function onQueueClick() {
-    if (!moviesQueue.find(item => item.id === data.id)) {
-      moviesQueue.push(data);
-      localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
-    }
-  }
-
+  // adding listeners to "Add to Watched" and "Add to Queue" buttons by clicking to "Add to Watched"
   addWatched.addEventListener('click', onWatchedClick);
+  addQueueRef.addEventListener('click', onQueueClick);
+
+  // functioin of adding to "Watched" to the local storage
   function onWatchedClick() {
     if (!moviesWatched.find(item => item.id === data.id)) {
       moviesWatched.push(data);
       localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
+    }
+  }
+
+  // functioin of adding to "Queue" to the local storage by clicking "Add to Queue"
+  function onQueueClick() {
+    if (!moviesQueue.find(item => item.id === data.id)) {
+      moviesQueue.push(data);
+      localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
     }
   }
 }
@@ -39,6 +47,7 @@ function closeModal(e) {
   filmModal.classList.add('is-hidden');
   filmModalMask.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
+  modalBody.style = 'overflow-y: scroll';
 }
 
 function onEscKeyPress(e) {
@@ -50,10 +59,10 @@ function onEscKeyPress(e) {
   }
 }
 
-function getPosterPath(path) {
-  return path
-    ? `https://www.themoviedb.org/t/p/w500${path}`
-    : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
+function getPosterImg(path, title) {
+  if (!path) return '';
+  const posterPath = `https://www.themoviedb.org/t/p/w500${path}`;
+  return `<img class = "js-movie-modal__img" src="${posterPath}" alt="${title}">`;
 }
 
 function renderModal(data) {
@@ -66,9 +75,7 @@ function renderModal(data) {
         </svg>              
         </button>
         <div class="js-movie-modal__poster">
-            <img class = "js-movie-modal__img" src="${getPosterPath(
-              data.poster_path
-            )}" alt="movie-poster">
+            ${getPosterImg(data.poster_path, data.title)}
         </div>
         <div class="movie-modal__info-about">
             <h1 class="js-movie-modal__title">${data.title}</h1>

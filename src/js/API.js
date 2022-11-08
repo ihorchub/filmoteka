@@ -7,24 +7,24 @@ export default class ApiServise{
         this.idMovie = null;
     }; 
 
-    // async fetchOnMovie() {
-    //     try {
-    //         let movie_id = this.idMovie;
-    //         const searchParams = new URLSearchParams({
-    //             api_key: '411d08d89a4569fb1b50aec07ee6fb72',
-    //             language: 'en-US',
-    //         });
+    async fetchOnMovie() {
+        try {
+            let movie_id = this.idMovie;
+            const searchParams = new URLSearchParams({
+                api_key: '411d08d89a4569fb1b50aec07ee6fb72',
+                language: 'en-US',
+            });
 
-    //         const request = `https://api.themoviedb.org/3/movie/${movie_id}/videos?${searchParams}`;
+            const request = `https://api.themoviedb.org/3/movie/${movie_id}/videos?${searchParams}`;
 
-    //         const data = await axios.get(request);
-    //         return data;
+            const data = await axios.get(request);
+            return data;
             
-    //     } catch (error) {
-    //         console.log(error.message)
-    //     };
+        } catch (error) {
+            console.log(error.message)
+        };
 
-    // };    
+    };    
     
 
     async fetchById() {
@@ -138,5 +138,4 @@ export default class ApiServise{
     resetPage() {
         this.page = 1;
     }
-
 };
