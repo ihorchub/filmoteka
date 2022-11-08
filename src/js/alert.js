@@ -1,27 +1,18 @@
-import { Notify } from "notiflix";
-import { Loading } from 'notiflix';
+import Notiflix from 'notiflix';
 
-function onSearch(e) {
-    e.preventDefault();
     
-Notify.success(
-    `За вашим запитом ми знайшли ${total_results} зображень`);
-
-    Notify.info(
-        'Фільм додано до черги перегляду');
-    Notify.info(
-        'Фыльм додано до переглянутих'
+export function success(total_results) {
+    Notiflix.Notify.success(`За вашим запитом ми знайшли ${total_results} зображень`);
+}
+export function info() {
+    Notiflix.Notify.info(
+        'Фільм додано до черги перегляду',
+        'Фільм додано до переглянутих'
     );
-
 }
-
-function onError(err) {
-    Notify.failure(
-        'За вашим запитом фільмів не знайдено');
+export function failure() {
+    Notiflix.Notify.failure('За вашим запитом фільмів не знайдено');
 }
-
-// function () {
-//     Loading.dots(
-//         'Зачекайте, будь ласка'
-//     );
-// }
+export function Loading() {
+    Notiflix.Loading.dots('Зачекайте...');
+}  
