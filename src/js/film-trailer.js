@@ -41,7 +41,7 @@ function renderPlayer(link = '') {
       >
     </div>`;
   else
-    trailerBackdrop.innerHTML = `<div class="container">
+    trailerBackdrop.innerHTML = `<div class="container trailer__container">
       <div class="trailer__info">Trailer not found</div>
     </div>`;
 

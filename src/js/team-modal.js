@@ -26,8 +26,8 @@ function onBackdropClick(e) {
   }
 }
 
-function onOpenTeamModal(e) {
-  e.preventDefault();
+export function onOpenTeamModal(e) {
+  // e.preventDefault();
   window.addEventListener('keydown', onEscKeyPress);
   refs.body.classList.add('show-modal-team');
   refs.teamModal.classList.remove('is-hidden');
