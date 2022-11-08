@@ -5,29 +5,34 @@ import { refs } from "../index";
 
 const apiServise = new ApiServise();
 
+let value = null;
+
+
 export function onSubmit(e) {
   e.preventDefault();
-  refs.cardHolder.innerHTML = '';
+    if (value === e.target.elements[0].value.trim()) {
+      return;
+    }
+
+    if (e.target.elements[0].value.trim() === '') {
+      return;
+  }
   apiServise.query = e.target.elements[0].value.trim();
   apiServise.resetPage();
-
-  if (e.target.elements[0].value === '') {
-    return
-  }
-  
-  onSubmitScroll();
-    apiServise.query = e.target.elements[0].value.trim();
-
   apiServise.fetch().then((data) => {
-     refs.cardHolder.innerHTML = '';
-      renderCards(data)
+    refs.cardHolder.innerHTML = '';
+    renderCards(data)
+    onSubmitScroll();
   })
+  value = e.target.elements[0].value.trim();
 }
 
+
+
 function onSubmitScroll() {
- window.scroll({
+  window.scroll({
     top: 0,
     left: 0,
-  behavior: 'smooth',
+    behavior: 'smooth',
   });
 }
