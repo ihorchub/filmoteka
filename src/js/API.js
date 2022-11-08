@@ -50,12 +50,18 @@ export default class ApiServise{
      async fetchDefault() {
         try {
             const searchParams = new URLSearchParams({
-                api_key: '411d08d89a4569fb1b50aec07ee6fb72', 
+                api_key: '411d08d89a4569fb1b50aec07ee6fb72',
+                page: this.page,
+                
             });
 
              const request = `https://api.themoviedb.org/3/trending/all/week?${searchParams}`;
 
             const data = await axios.get(request);
+             console.log(this.page)
+            this.incrementPage();
+    
+            console.log(this.page)
             return data;
             
         } catch (error) {

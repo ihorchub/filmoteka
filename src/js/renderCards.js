@@ -1,5 +1,9 @@
 import { refs } from '../index';
+import { getPagination } from './pagination';
+
 export function renderCards(data) {
+
+  getPagination(data.data.page,data.data.tottotal_pages)
   const markup = data.data.results
     .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">
