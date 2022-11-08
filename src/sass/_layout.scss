@@ -26,7 +26,6 @@ body {
   &__link {
     display: flex;
     flex-flow: column;
-    align-items: center;
     justify-content: flex-end;
     width: 280px;
     height: 442px;
@@ -56,6 +55,7 @@ body {
       }
     }
     background-repeat: no-repeat;
+    background-size: contain;
    
   }
 
@@ -64,6 +64,7 @@ body {
     height: 402px;
     border-radius: 5px;
     margin-bottom: 10px;
+   
 
     @media screen and (min-width: 768px) {
       margin-bottom: 8px;
@@ -206,3 +207,5 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
+
+
