@@ -50,7 +50,7 @@ function renderPlayer(link = '') {
       'beforeend',
       `<div class="trailer__wrap">
     <div class="container">
-      Trailer not found
+      <div class="trailer__info">Trailer not found</div>
     </div>
   </div>`
     );
