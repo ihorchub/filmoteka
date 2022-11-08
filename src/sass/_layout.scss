@@ -29,7 +29,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     width: 280px;
-    height: 438px;
+    height: 442px;
     border-radius: 5px;
     margin-bottom: 10px;
 
@@ -128,9 +128,60 @@ body {
     }
 
     & span {
+      width: 10px;
+      position: absolute;
+      top: 3px;
+      right: 19px;
+      transform: translateX(-1px);
+
+      @include tablet {
+        right: 25px;
+      }
+
+      @include desktop {
+        right: 34px;
+      }
+
+      animation: play-btn 10s infinite alternate;
+
       margin-left: 2px;
       font-size: 1.2em;
+      background-color: rgb(107, 0, 0);
     }
+  }
+
+  &:nth-child(3n + 3) button span {
+    animation-delay: random(5) + s;
+  }
+  &:nth-child(2n + 2) button span {
+    animation-delay: random(5) + s;
+  }
+}
+
+@keyframes play-btn {
+  0% {
+    width: 10px;
+    // transform: translateX(0);
+  }
+  20% {
+    width: 10px;
+    // transform: translateX(0);
+  }
+  40% {
+    width: 56%;
+    // transform: translateX(-35px);
+  }
+  60% {
+    width: 56%;
+    // transform: translateX(-35px);
+  }
+  80% {
+    width: 10px;
+    // transform: translateX(-76px);
+  }
+  100% {
+    width: 10px;
+    // transform: translateX(-76px);
   }
 }
 
