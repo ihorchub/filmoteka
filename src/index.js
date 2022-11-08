@@ -34,9 +34,12 @@ function onCardClick(e) {
 
   if (e.target.classList.contains('film__trailer-btn'))
     return trailer.showTrailer(e.target.closest('li').id);
-  
-  apiServise.movieId = e.path[2].id
-  apiServise.fetchById().then(data => { showModal(data.data); });
-  
-  apiServise.fetchById(e.path[2].id).then(console.log);
+
+  // apiServise.movieId = e.path[2].id без постера не відкривається модалка
+  apiServise.movieId = e.target.closest('li').id;
+  apiServise.fetchById().then(data => {showModal(data.data);});
+
+  // apiServise.movieId = e.path[2].id
+    
+  // apiServise.fetchById(e.path[2].id).then(console.log);
 }
