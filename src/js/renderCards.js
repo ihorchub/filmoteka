@@ -1,12 +1,18 @@
 import { refs } from '../index';
+import { getPagination } from './pagination';
+
 export function renderCards(data) {
+  console.log(data)
+  console.log(data.data.total_pages)
+
+  getPagination(data.data.page,data.data.total_pages)
   const markup = data.data.results
     .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">
                   ${getMarkupImgPoster(poster_path, name, title)}
                   <h2>${getShortName(title || name)}</h2>
                   <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
-                  <button class="film__trailer-btn" type="button">Trailer <span>&#9654;</span></button>
+                  <button class="film__trailer-btn" type="button">Trailer <span class="film__trailer-btn">&#9654;</span></button>
                 </a>
               </li>`;
     })

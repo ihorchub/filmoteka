@@ -1,8 +1,8 @@
 const axios = require('axios').default;
-let modal = null;
 const BASE_TRAILER_URL = 'https://www.youtube.com/embed/';
 const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
 const trailerBody = document.querySelector('body');
+const trailerBackdrop = document.querySelector('.js-movie-modal-mask');
 
 async function showTrailer(id) {
   let trailer = null;
@@ -30,10 +30,7 @@ async function showTrailer(id) {
 
 function renderPlayer(link = '') {
   if (link)
-    trailerBody.insertAdjacentHTML(
-      'beforeend',
-      `<div class="trailer__wrap">
-    <div class="container">
+    trailerBackdrop.innerHTML = `<div class="container trailer__container">
       <iframe
         class="trailer__player"
         src="${BASE_TRAILER_URL}${link}"
@@ -42,22 +39,15 @@ function renderPlayer(link = '') {
       >
         ></iframe
       >
-    </div>
-  </div>`
-    );
+    </div>`;
   else
-    trailerBody.insertAdjacentHTML(
-      'beforeend',
-      `<div class="trailer__wrap">
-    <div class="container">
-      Trailer not found
-    </div>
-  </div>`
-    );
+    trailerBackdrop.innerHTML = `<div class="container trailer__container">
+      <div class="trailer__info">Trailer not found</div>
+    </div>`;
 
+  trailerBackdrop.classList.remove('is-hidden');
   trailerBody.style = `height: 100%; overflow-y: hidden`;
-  modal = document.querySelector('.trailer__wrap');
-  modal.addEventListener('click', closeTrailer);
+  trailerBackdrop.addEventListener('click', closeTrailer);
 }
 
 function closeTrailer(e) {
@@ -65,9 +55,10 @@ function closeTrailer(e) {
     e.target.classList.contains('trailer__wrap') ||
     e.target.classList.contains('container')
   ) {
-    modal.remove();
+    trailerBackdrop.classList.add('is-hidden');
+    trailerBackdrop.innerHTML = '';
     trailerBody.style = ``;
-    modal.removeEventListener('click', closeTrailer);
+    trailerBackdrop.removeEventListener('click', closeTrailer);
   }
 }
 
