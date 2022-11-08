@@ -50,18 +50,12 @@ export default class ApiServise{
      async fetchDefault() {
         try {
             const searchParams = new URLSearchParams({
-                api_key: '411d08d89a4569fb1b50aec07ee6fb72',
-                page: this.page,
-                
+                api_key: '411d08d89a4569fb1b50aec07ee6fb72', 
             });
 
              const request = `https://api.themoviedb.org/3/trending/all/week?${searchParams}`;
 
             const data = await axios.get(request);
-             console.log(this.page)
-            this.incrementPage();
-    
-            console.log(this.page)
             return data;
             
         } catch (error) {
@@ -80,13 +74,8 @@ export default class ApiServise{
                 include_adult: false,
             });
             const request = `https://api.themoviedb.org/3/search/movie?${searchParams}`;
-            console.log(request)
 
             const data = await axios.get(request);
-           console.log(this.page)
-            this.incrementPage();
-    
-            console.log(this.page)
 
             return data;
             
@@ -95,6 +84,36 @@ export default class ApiServise{
         };
 
     }
+
+    async fetchPagination(page) {
+        try {
+            
+            if (this.searchQuery) {
+                const searchParamsPagi = new URLSearchParams({
+                api_key: '411d08d89a4569fb1b50aec07ee6fb72',
+                language: 'en-US',
+                query: this.searchQuery,
+                include_adult: false,
+                });
+                const request = `https://api.themoviedb.org/3/search/movie?${searchParams}&page${page}`;
+                const data = await axios.get(request);
+                 return data;   
+            } else {
+                const searchParams = new URLSearchParams({
+                api_key: '411d08d89a4569fb1b50aec07ee6fb72', 
+            });
+                const request = `https://api.themoviedb.org/3/trending/all/week?${searchParams}&page=${page}`;
+                const data = await axios.get(request);
+                 return data;   
+            }
+            
+
+            
+        } catch (error) {
+            console.log(error.message)
+        };
+
+    };
 
     get query() {
         return this.searchQuery;
@@ -119,4 +138,5 @@ export default class ApiServise{
     resetPage() {
         this.page = 1;
     }
+
 };

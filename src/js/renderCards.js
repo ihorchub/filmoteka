@@ -1,11 +1,12 @@
 import { refs } from '../index';
 import { getPagination } from './pagination';
 
-export function renderCards(data) {
-  console.log(data)
-  console.log(data.data.total_pages)
 
-  getPagination(data.data.page,data.data.total_pages)
+export function renderCards(data) {
+
+
+  getPagination(data.data.page, data.data.total_pages);
+
   const markup = data.data.results
     .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">

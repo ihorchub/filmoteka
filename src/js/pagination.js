@@ -1,4 +1,9 @@
+import ApiServise from "./API";
+import { renderCards } from "./renderCards";
+
+const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
+
 
 export function getPagination(currentPage, lastPage) {
   if (!currentPage || lastPage === 1 || lastPage - currentPage < 0) return;
@@ -15,6 +20,9 @@ export function getPagination(currentPage, lastPage) {
   const list = document.querySelector('.pagination__list');
 
   list.insertAdjacentHTML('beforeend', renderLi(pages));
+  
+  list.addEventListener('click', clickPaginetion)
+  
 
   const itemList = list.children;
 
@@ -97,3 +105,8 @@ function getPagesArray(currentPage, lastPage) {
   }
   return result;
 }
+
+function clickPaginetion(e) {
+ 
+  apiServise.fetchPagination(e.path[0].id).then(data => {renderCards(data);})
+};
