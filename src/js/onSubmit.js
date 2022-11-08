@@ -26,7 +26,8 @@ export function onSubmit(e) {
     if (data.data.results.length === 0) {
 failure()
       return;
-    } else {
+    }
+    else {
       success(data.data.total_results, e.target.elements[0].value.trim());
       refs.cardHolder.innerHTML = '';
       renderCards(data);
