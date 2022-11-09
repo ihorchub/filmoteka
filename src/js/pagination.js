@@ -2,6 +2,8 @@ import ApiServise from "./API";
 import { renderCards } from "./renderCards";
 import { spiner, spinerRemove } from './notifications';
 
+// import { refs } from "..";
+
 const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
 
@@ -115,4 +117,7 @@ function clickPaginetion(e) {
     renderCards(data);
     spinerRemove();
   })
+
+  apiServise.query = refs.searchForm.elements[0].value.trim();
+  apiServise.fetchPagination(e.path[0].id).then(data => {renderCards(data);})
 };

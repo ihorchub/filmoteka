@@ -1,20 +1,29 @@
-// 0. create variable for id of the movie from the modal window
-let item = '';
+// variables declaration for further local storage content
+const moviesWatched = [];
+const moviesQueue = [];
 
-// 1. reach the btn
-// const addQueueRef = document.querySelector('.js-movie-modal__btn');
+export function locStorage(data) {
+  // reaching "Add to Watched" and "Add to Queue" buttons
+  const addWatched = document.querySelector('.add-watched');
+  const addQueueRef = document.querySelector('.add-queue');
 
-// 2. create variable for localstorage's value
-const moviesQueue = JSON.parse(localStorage.getItem('movies-queue')) || [];
+  // adding listeners to "Add to Watched" and "Add to Queue" buttons by clicking to "Add to Watched"
+  addWatched.addEventListener('click', onWatchedClick);
+  addQueueRef.addEventListener('click', onQueueClick);
 
-// 3. add btn listener
-addQueueRef.addEventListener('click', onQueueClick);
+  // functioin of adding to "Watched" to the local storage
+  function onWatchedClick() {
+    if (!moviesWatched.find(item => item.id === data.id)) {
+      moviesWatched.push(data);
+      localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
+    }
+  }
 
-// 4. functioin of add to queue
-function onQueueClick() {
-  // 4.1 add ID to array
-  moviesQueue.push(item);
-
-  // 4.2 put array to local storage
-  localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
+  // functioin of adding to "Queue" to the local storage by clicking "Add to Queue"
+  function onQueueClick() {
+    if (!moviesQueue.find(item => item.id === data.id)) {
+      moviesQueue.push(data);
+      localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
+    }
+  }
 }
