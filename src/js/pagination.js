@@ -1,5 +1,6 @@
 import { apiServise } from '../index.js';
 import { renderCards } from './renderCards';
+import { spiner,spinerRemove } from './notifications.js';
 
 // const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
@@ -118,18 +119,11 @@ function clickPaginetion(e) {
   apiServise.fetchPagination(e.path[0].id).then(data => {
     spiner();
     renderCards(data);
-    ScrollToStart();
     spinerRemove();
   })
 };
 
-function ScrollToStart() {
-  window.scroll({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  });
-}
+
 
   // if (e.target === e.currentTarget) return;
 

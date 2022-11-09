@@ -77,7 +77,7 @@ export default class ApiServise {
 
   async fetchPagination(page) {
     try {
-      if (this.searchQuery) {
+      if (this.searchQuery !== '') {
         const searchParams = new URLSearchParams({
           api_key: '411d08d89a4569fb1b50aec07ee6fb72',
           language: 'en-US',
