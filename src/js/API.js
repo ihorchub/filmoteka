@@ -89,26 +89,26 @@ export default class ApiServise{
         try {
             
             if (this.searchQuery) {
-                const searchParamsPagi = new URLSearchParams({
+                const searchParams = new URLSearchParams({
                 api_key: '411d08d89a4569fb1b50aec07ee6fb72',
                 language: 'en-US',
                 query: this.searchQuery,
                 include_adult: false,
                 });
-                const request = `https://api.themoviedb.org/3/search/movie?${searchParams}&page${page}`;
+                const request = `https://api.themoviedb.org/3/search/movie?${searchParams}&page=${page}`;
                 const data = await axios.get(request);
+                console.log(data)
                  return data;   
             } else {
                 const searchParams = new URLSearchParams({
-                api_key: '411d08d89a4569fb1b50aec07ee6fb72', 
+                    api_key: '411d08d89a4569fb1b50aec07ee6fb72',    
             });
                 const request = `https://api.themoviedb.org/3/trending/all/week?${searchParams}&page=${page}`;
                 const data = await axios.get(request);
+                console.log(request)
                  return data;   
             }
-            
-
-            
+                
         } catch (error) {
             console.log(error.message)
         };
