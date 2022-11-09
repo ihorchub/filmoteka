@@ -131,7 +131,8 @@ function clickPaginetion(e) {
       id = firstPage + 1;
     else return;
   } else {
-    id = e.target.closest('li').id;
+    if (!isNaN(e.target.closest('li').id)) id = e.target.closest('li').id;
+    else return;
   }
   apiServise.fetchPagination(id).then(data => {
     //додав спінер і плавний скролл
