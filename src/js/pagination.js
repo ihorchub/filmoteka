@@ -113,25 +113,44 @@ function getPagesArray(currentPage, lastPage) {
 }
 
 function clickPaginetion(e) {
-  if (e.target === e.currentTarget) return;
 
-  let id = null;
-  if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
-    if (
-      e.target.closest('button').classList.contains('pagination__left-btn') &&
-      firstPage > 1
-    )
-      id = firstPage - 1;
-    else if (
-      e.target.closest('button').classList.contains('pagination__right-btn') &&
-      firstPage < endPage
-    )
-      id = firstPage + 1;
-    else return;
-  } else {
-    id = e.target.closest('li').id;
-  }
-  apiServise.fetchPagination(id).then(data => {
+  //додав спінер і плавний скролл
+  apiServise.fetchPagination(e.path[0].id).then(data => {
+    spiner();
     renderCards(data);
+    ScrollToStart();
+    spinerRemove();
+  })
+};
+
+function ScrollToStart() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
   });
 }
+
+  // if (e.target === e.currentTarget) return;
+
+  // let id = null;
+  // if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
+    // if (
+      // e.target.closest('button').classList.contains('pagination__left-btn') &&
+      // firstPage > 1
+    // )
+      // id = firstPage - 1;
+    // else if (
+      // e.target.closest('button').classList.contains('pagination__right-btn') &&
+      // firstPage < endPage
+    // )
+      // id = firstPage + 1;
+    // else return;
+  // } else {
+    // id = e.target.closest('li').id;
+  // }
+  // apiServise.fetchPagination(id).then(data => {
+    // renderCards(data);
+  // });
+// }
+

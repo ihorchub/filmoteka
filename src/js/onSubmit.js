@@ -35,14 +35,17 @@ export function onSubmit(e) {
       spiner();
       success(data.data.total_results, e.target.elements[0].value.trim());
       renderCards(data);
-      onSubmitScroll();
+      ScrollToStart();
       spinerRemove();
     }
   });
   value = e.target.elements[0].value.trim();
 }
 
-export function onSubmitScroll() {
+function ScrollToStart() {
+
+// export function onSubmitScroll() {
+
   window.scroll({
     top: 0,
     left: 0,

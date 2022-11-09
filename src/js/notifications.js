@@ -35,7 +35,25 @@ export function spinerRemove() {
   Notiflix.Loading.remove();
 }
 
+export function noInfo() {
+  Notiflix.Loading.custom({
+    customSvgCode:
+      '<div style="margin-bottom:150px;"></div><h2 style="text-transform:uppercase; color:red">Info about this movie not found</h2>',
+    svgSize: '500px',
+    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+  });
+  Notiflix.Loading.remove(1000)
+}
 
+export function noTrailer() {
+  Notiflix.Loading.custom({
+    customSvgCode:
+      '<div style="margin-bottom:150px;"></div><h2 style="text-transform:uppercase; color:red">Trailer not found</h2>',
+    svgSize: '500px',
+    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+  });
+  Notiflix.Loading.remove(1000);
+}
   
 // Додати 4 функціїї додано і видалено дочерги та переглянутих
 
