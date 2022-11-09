@@ -7,7 +7,7 @@ import { renderCards } from "./js/renderCards";
 import { stickyHeader } from "./js/sticky-header";
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
-import { spiner, spinerRemove, noPoster } from "./js/notifications";
+import { spiner, spinerRemove, noInfo } from "./js/notifications";
 
 
 export const refs = {
@@ -58,6 +58,9 @@ function onCardClick(e) {
       spiner();
       showModal(data.data);
       spinerRemove();
+    }
+    else {
+      noInfo()
     }
   });
 

@@ -108,11 +108,19 @@ function getPagesArray(currentPage, lastPage) {
 }
 
 function clickPaginetion(e) {
- 
-  //додав спінер
+  //додав спінер і плавний скролл
   apiServise.fetchPagination(e.path[0].id).then(data => {
     spiner();
     renderCards(data);
+    ScrollToStart();
     spinerRemove();
   })
 };
+
+function ScrollToStart() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+}

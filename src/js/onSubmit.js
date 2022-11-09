@@ -30,7 +30,7 @@ failure()
 spiner();
       success(data.data.total_results, e.target.elements[0].value.trim());
       renderCards(data);
-      onSubmitScroll();
+      ScrollToStart();
       spinerRemove();
     }
   })
@@ -39,7 +39,7 @@ spiner();
 
 
 
-function onSubmitScroll() {
+function ScrollToStart() {
   window.scroll({
     top: 0,
     left: 0,

@@ -1,3 +1,4 @@
+import { noTrailer } from './notifications';
 const axios = require('axios').default;
 const BASE_TRAILER_URL = 'https://www.youtube.com/embed/';
 const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
@@ -29,7 +30,7 @@ async function showTrailer(id) {
 }
 
 function renderPlayer(link = '') {
-  if (link)
+  if (link) {
     trailerBackdrop.innerHTML = `<div class="container trailer__container">
       <iframe
         class="trailer__player"
@@ -40,14 +41,13 @@ function renderPlayer(link = '') {
         ></iframe
       >
     </div>`;
-  else
-    trailerBackdrop.innerHTML = `<div class="container trailer__container">
-      <div class="trailer__info">Trailer not found</div>
-    </div>`;
-
-  trailerBackdrop.classList.remove('is-hidden');
-  trailerBody.style = `height: 100%; overflow-y: hidden`;
-  trailerBackdrop.addEventListener('click', closeTrailer);
+    trailerBackdrop.classList.remove('is-hidden');
+    trailerBody.style = `height: 100%; overflow-y: hidden`;
+    trailerBackdrop.addEventListener('click', closeTrailer);
+  }
+  else {
+    noTrailer();
+  }
 }
 
 function closeTrailer(e) {
