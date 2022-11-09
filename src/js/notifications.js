@@ -55,7 +55,7 @@ export function noTrailer() {
   Notiflix.Loading.remove(1000);
 }
   
-
+// Додати 4 функціїї додано і видалено дочерги та переглянутих
 
 // Варіант 2
 

@@ -41,6 +41,7 @@ function renderPlayer(link = '') {
         ></iframe
       >
     </div>`;
+
     trailerBackdrop.classList.remove('is-hidden');
     trailerBody.style = `height: 100%; overflow-y: hidden`;
     trailerBackdrop.addEventListener('click', closeTrailer);
@@ -48,6 +49,21 @@ function renderPlayer(link = '') {
   else {
     noTrailer();
   }
+
+  // else
+   // trailerBackdrop.innerHTML = `<div class="container trailer__container">
+    //  <div class="trailer__info">Trailer not found</div>
+    // </div>`;
+
+  // trailerBackdrop.classList.remove('is-hidden');
+
+  //Scroll off
+  // trailerBody.onscroll = () => {
+    // window.scroll(0, 0);
+  // };
+
+  // trailerBackdrop.addEventListener('click', closeTrailer);
+
 }
 
 function closeTrailer(e) {
@@ -57,7 +73,10 @@ function closeTrailer(e) {
   ) {
     trailerBackdrop.classList.add('is-hidden');
     trailerBackdrop.innerHTML = '';
-    trailerBody.style = ``;
+
+    //Scroll on
+    trailerBody.onscroll = () => {};
+
     trailerBackdrop.removeEventListener('click', closeTrailer);
   }
 }
