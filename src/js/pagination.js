@@ -1,6 +1,6 @@
 import { apiServise } from '../index.js';
 import { renderCards } from './renderCards';
-import { spiner,spinerRemove } from './notifications.js';
+import { spiner, spinerRemove } from './notifications.js';
 
 // const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
@@ -114,37 +114,52 @@ function getPagesArray(currentPage, lastPage) {
 }
 
 function clickPaginetion(e) {
+  //відстежування натискань
+  if (e.target === e.currentTarget) return;
 
-  //додав спінер і плавний скролл
-  apiServise.fetchPagination(e.path[0].id).then(data => {
+  let id = null;
+  if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
+    if (
+      e.target.closest('button').classList.contains('pagination__left-btn') &&
+      firstPage > 1
+    )
+      id = firstPage - 1;
+    else if (
+      e.target.closest('button').classList.contains('pagination__right-btn') &&
+      firstPage < endPage
+    )
+      id = firstPage + 1;
+    else return;
+  } else {
+    id = e.target.closest('li').id;
+  }
+  apiServise.fetchPagination(id).then(data => {
+    //додав спінер і плавний скролл
     spiner();
     renderCards(data);
     spinerRemove();
-  })
-};
+  });
+}
 
+// if (e.target === e.currentTarget) return;
 
-
-  // if (e.target === e.currentTarget) return;
-
-  // let id = null;
-  // if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
-    // if (
-      // e.target.closest('button').classList.contains('pagination__left-btn') &&
-      // firstPage > 1
-    // )
-      // id = firstPage - 1;
-    // else if (
-      // e.target.closest('button').classList.contains('pagination__right-btn') &&
-      // firstPage < endPage
-    // )
-      // id = firstPage + 1;
-    // else return;
-  // } else {
-    // id = e.target.closest('li').id;
-  // }
-  // apiServise.fetchPagination(id).then(data => {
-    // renderCards(data);
-  // });
+// let id = null;
+// if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
+// if (
+// e.target.closest('button').classList.contains('pagination__left-btn') &&
+// firstPage > 1
+// )
+// id = firstPage - 1;
+// else if (
+// e.target.closest('button').classList.contains('pagination__right-btn') &&
+// firstPage < endPage
+// )
+// id = firstPage + 1;
+// else return;
+// } else {
+// id = e.target.closest('li').id;
 // }
-
+// apiServise.fetchPagination(id).then(data => {
+// renderCards(data);
+// });
+// }
