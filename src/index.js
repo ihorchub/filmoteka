@@ -7,6 +7,7 @@ import { renderCards } from "./js/renderCards";
 import { stickyHeader } from "./js/sticky-header";
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
+import { spiner, spinerRemove, noPoster } from "./js/notifications";
 
 
 export const refs = {
@@ -38,7 +39,11 @@ refs.searchForm.addEventListener("change", () => {
 // refs.conteiner.addEventListener('click', clickOnMovie);
 
 
-apiServise.fetchDefault().then(data => {renderCards(data);});
+apiServise.fetchDefault().then(data => {
+  spiner();
+  renderCards(data);
+  spinerRemove();
+});
 
 function onCardClick(e) {
   if (e.target === e.currentTarget) return;
@@ -48,7 +53,13 @@ function onCardClick(e) {
 
   // apiServise.movieId = e.path[2].id без постера не відкривається модалка
   apiServise.movieId = e.target.closest('li').id;
-  apiServise.fetchById().then(data => {showModal(data.data);});
+  apiServise.fetchById().then(data => {
+    if (data) {
+      spiner();
+      showModal(data.data);
+      spinerRemove();
+    }
+  });
 
   // apiServise.movieId = e.path[2].id
     

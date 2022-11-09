@@ -1,6 +1,8 @@
 import ApiServise from "./API";
 import { renderCards } from "./renderCards";
-import { refs } from "..";
+import { spiner, spinerRemove } from './notifications';
+
+// import { refs } from "..";
 
 const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
@@ -109,6 +111,13 @@ function getPagesArray(currentPage, lastPage) {
 
 function clickPaginetion(e) {
  
+  //додав спінер
+  apiServise.fetchPagination(e.path[0].id).then(data => {
+    spiner();
+    renderCards(data);
+    spinerRemove();
+  })
+
   apiServise.query = refs.searchForm.elements[0].value.trim();
   apiServise.fetchPagination(e.path[0].id).then(data => {renderCards(data);})
 };

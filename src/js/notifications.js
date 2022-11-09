@@ -27,6 +27,18 @@ export function warning() {
   Notiflix.Notify.warning('Enter your search query in the search bar');
 }
 
+export function spiner() {
+  Notiflix.Loading.circle();
+}
+
+export function spinerRemove() {
+  Notiflix.Loading.remove();
+}
+
+
+  
+
+
 // Варіант 2
 
 // import { Notify } from 'notiflix';
