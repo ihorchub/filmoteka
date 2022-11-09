@@ -1,7 +1,6 @@
 import ApiServise from "./API";
 import { renderCards } from "./renderCards";
-import { refs } from "../index";
-import { warning, success, secondRequest, failure } from "./notifications";
+import { warning, success, secondRequest, failure, spiner, spinerRemove } from "./notifications";
 
 
 const apiServise = new ApiServise();
@@ -28,10 +27,11 @@ failure()
       return;
     }
     else {
+spiner();
       success(data.data.total_results, e.target.elements[0].value.trim());
-      refs.cardHolder.innerHTML = '';
       renderCards(data);
       onSubmitScroll();
+      spinerRemove();
     }
   })
   value = e.target.elements[0].value.trim();

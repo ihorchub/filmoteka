@@ -2,12 +2,10 @@ import { refs } from '../index';
 import { getPagination } from './pagination';
 
 
+
 export function renderCards(data) {
-
 getPagination(data.data.page, data.data.total_pages);
-
-  const markup = data.data.results
-    .slice(0, 18)
+  refs.cardHolder.innerHTML = data.data.results
     .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">
                   ${getMarkupImgPoster(poster_path, name, title)}
@@ -18,8 +16,6 @@ getPagination(data.data.page, data.data.total_pages);
               </li>`;
     })
     .join('');
-  
-  refs.cardHolder.insertAdjacentHTML('beforeend', markup);
 }
 
 const genreIdName = [
