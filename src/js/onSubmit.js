@@ -1,8 +1,14 @@
-import ApiServise from './API';
-import { renderCards } from './renderCards';
-import { refs } from '../index';
-import { warning, success, secondRequest, failure } from './notifications';
+// import ApiServise from './API';
 import { apiServise } from '../index.js';
+import { renderCards } from './renderCards';
+import {
+  warning,
+  success,
+  secondRequest,
+  failure,
+  spiner,
+  spinerRemove,
+} from './notifications';
 
 // const apiServise = new ApiServise();
 
@@ -26,10 +32,11 @@ export function onSubmit(e) {
       failure();
       return;
     } else {
+      spiner();
       success(data.data.total_results, e.target.elements[0].value.trim());
-      refs.cardHolder.innerHTML = '';
       renderCards(data);
       onSubmitScroll();
+      spinerRemove();
     }
   });
   value = e.target.elements[0].value.trim();
