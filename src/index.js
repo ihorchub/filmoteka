@@ -7,8 +7,8 @@ import { renderCards } from './js/renderCards';
 import { stickyHeader } from './js/sticky-header';
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
-import { spiner, spinerRemove, noInfo } from "./js/notifications";
-
+import { spiner, spinerRemove, noInfo } from './js/notifications';
+import { onOpenTeamModal } from './js/team-modal.js';
 
 export const refs = {
   searchForm: document.querySelector('.home-header__form'),
@@ -17,6 +17,7 @@ export const refs = {
   // conteiner: document.querySelector('.card-container.container'),
   stickyHeader: document.querySelector('.js-home-header__sticky'),
   stickyHeaderForm: document.querySelector('.home-header__form__sticky'),
+  footerLink: document.querySelector('.footer__link'),
 };
 
 export const apiServise = new ApiServise();
@@ -55,9 +56,8 @@ function onCardClick(e) {
       spiner();
       showModal(data.data);
       spinerRemove();
-    }
-    else {
-      noInfo()
+    } else {
+      noInfo();
     }
   });
 
@@ -65,3 +65,5 @@ function onCardClick(e) {
 
   // apiServise.fetchById(e.path[2].id).then(console.log);
 }
+//модалка команди
+refs.footerLink.addEventListener('click', onOpenTeamModal);
