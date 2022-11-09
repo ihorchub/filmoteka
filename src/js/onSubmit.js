@@ -35,14 +35,13 @@ export function onSubmit(e) {
       spiner();
       success(data.data.total_results, e.target.elements[0].value.trim());
       renderCards(data);
-      ScrollToStart();
       spinerRemove();
     }
   });
   value = e.target.elements[0].value.trim();
 }
 
-function ScrollToStart() {
+export function onSubmitScroll() {
 
 // export function onSubmitScroll() {
 

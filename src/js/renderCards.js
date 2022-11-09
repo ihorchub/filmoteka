@@ -4,7 +4,6 @@ import { onSubmitScroll } from './onSubmit.js';
 
 export function renderCards(data) {
   const markup = data.data.results
-    .slice(0, 18)
     .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">
                   ${getMarkupImgPoster(poster_path, name, title)}
