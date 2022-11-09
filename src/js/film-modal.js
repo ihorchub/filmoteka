@@ -1,12 +1,11 @@
+// imports the local-storage function for the buttons in Movie Modal
+import { locStorage } from './local-storage';
+
 const filmModal = document.querySelector('.js-movie-modal');
 const filmModalMask = document.querySelector('.js-movie-modal-mask');
 const modalBody = document.querySelector('body');
 
 filmModalMask.addEventListener('click', closeModal);
-
-// variables declaration for further local storage content
-const moviesWatched = [];
-const moviesQueue = [];
 
 export function showModal(data) {
   renderModal(data);
@@ -17,29 +16,8 @@ export function showModal(data) {
   window.addEventListener('keydown', onEscKeyPress);
   modalBody.style = 'overflow-y: hidden';
 
-  // reaching "Add to Watched" and "Add to Queue" buttons
-  const addWatched = document.querySelector('.add-watched');
-  const addQueueRef = document.querySelector('.add-queue');
-
-  // adding listeners to "Add to Watched" and "Add to Queue" buttons by clicking to "Add to Watched"
-  addWatched.addEventListener('click', onWatchedClick);
-  addQueueRef.addEventListener('click', onQueueClick);
-
-  // functioin of adding to "Watched" to the local storage
-  function onWatchedClick() {
-    if (!moviesWatched.find(item => item.id === data.id)) {
-      moviesWatched.push(data);
-      localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
-    }
-  }
-
-  // functioin of adding to "Queue" to the local storage by clicking "Add to Queue"
-  function onQueueClick() {
-    if (!moviesQueue.find(item => item.id === data.id)) {
-      moviesQueue.push(data);
-      localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
-    }
-  }
+  //launch local storage function (in a separage file)
+  locStorage(data);
 }
 
 function closeModal(e) {
