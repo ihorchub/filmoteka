@@ -1,15 +1,21 @@
-import ApiServise from "./API";
-import { renderCards } from "./renderCards";
-import { spiner, spinerRemove } from './notifications';
+import { apiServise } from '../index.js';
+import { renderCards } from './renderCards';
 
-// import { refs } from "..";
-
-const apiServise = new ApiServise();
+// const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
-
+pagination.addEventListener('click', clickPaginetion);
+let firstPage = null;
+let endPage = null;
 
 export function getPagination(currentPage, lastPage) {
-  if (!currentPage || lastPage === 1 || lastPage - currentPage < 0) return;
+  if (!currentPage || lastPage === 1 || lastPage - currentPage < 0) {
+    pagination.style = `margin; 0`;
+    pagination.innerHTML = '';
+    return;
+  }
+  firstPage = currentPage;
+  endPage = lastPage;
+
   let pages = getPagesArray(currentPage, lastPage);
 
   pagination.innerHTML = `<button class="pagination__left-btn" type="button"><span>&#8592;</span></button>
@@ -23,9 +29,6 @@ export function getPagination(currentPage, lastPage) {
   const list = document.querySelector('.pagination__list');
 
   list.insertAdjacentHTML('beforeend', renderLi(pages));
-  
-  list.addEventListener('click', clickPaginetion)
-  
 
   const itemList = list.children;
 
@@ -110,14 +113,25 @@ function getPagesArray(currentPage, lastPage) {
 }
 
 function clickPaginetion(e) {
- 
-  //додав спінер
-  apiServise.fetchPagination(e.path[0].id).then(data => {
-    spiner();
-    renderCards(data);
-    spinerRemove();
-  })
+  if (e.target === e.currentTarget) return;
 
-  apiServise.query = refs.searchForm.elements[0].value.trim();
-  apiServise.fetchPagination(e.path[0].id).then(data => {renderCards(data);})
-};
+  let id = null;
+  if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
+    if (
+      e.target.closest('button').classList.contains('pagination__left-btn') &&
+      firstPage > 1
+    )
+      id = firstPage - 1;
+    else if (
+      e.target.closest('button').classList.contains('pagination__right-btn') &&
+      firstPage < endPage
+    )
+      id = firstPage + 1;
+    else return;
+  } else {
+    id = e.target.closest('li').id;
+  }
+  apiServise.fetchPagination(id).then(data => {
+    renderCards(data);
+  });
+}

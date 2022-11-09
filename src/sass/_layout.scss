@@ -56,7 +56,6 @@ body {
     }
     background-repeat: no-repeat;
     background-size: contain;
-   
   }
 
   & img {
@@ -64,7 +63,6 @@ body {
     height: 402px;
     border-radius: 5px;
     margin-bottom: 10px;
-   
 
     @media screen and (min-width: 768px) {
       margin-bottom: 8px;
@@ -207,5 +205,3 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
-
-
