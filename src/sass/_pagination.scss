@@ -4,8 +4,8 @@
 
   & button {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
 
     transition: background-color 300ms linear, color 300ms linear;
 
@@ -24,8 +24,17 @@
 
     & span {
       position: absolute;
-      top: -2px;
-      left: 6px;
+      top: -5px;
+      left: 4px;
+      @include tablet {
+        left: 6px;
+        top: -2px;
+      }
+    }
+
+    @include tablet {
+      width: 40px;
+      height: 40px;
     }
   }
 }
@@ -35,6 +44,7 @@
   align-items: center;
   justify-content: center;
 
+  margin: 0 5px;
   min-width: 200px;
 
   & li:nth-child(-n + 2) {
@@ -61,13 +71,28 @@
   align-items: center;
   justify-content: center;
 
+  margin-right: 5px;
+
   transition: background-color 300ms linear, color 300ms linear;
 
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
 
   border-radius: 5px;
   cursor: pointer;
+
+  &:nth-child(7) {
+    margin: 0;
+  }
+
+  @include tablet {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 .pagination__item--current {
