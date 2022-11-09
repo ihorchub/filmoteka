@@ -153,9 +153,20 @@
 
   min-width: 130px;
 
-  &.--current {
-    border: 1px solid #ff6b02;
-    background-color: #ff6b02;
+  // заменить
+  // &.--current {
+  //   border: 1px solid #ff6b02;
+  //   background-color: #ff6b02;
+  // }
+
+  // оставить для правильной работы кнопок
+  &:hover,
+  &:focus {
+    color: #fff;
+    box-shadow: none;
+    cursor: auto;
+    background-color: #ff6b08;
+    border: 1px solid #ff6b08;
   }
 
   @include tablet {
