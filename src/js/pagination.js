@@ -1,5 +1,6 @@
 import ApiServise from "./API";
 import { renderCards } from "./renderCards";
+import { refs } from "..";
 
 const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
@@ -108,5 +109,6 @@ function getPagesArray(currentPage, lastPage) {
 
 function clickPaginetion(e) {
  
+  apiServise.query = refs.searchForm.elements[0].value.trim();
   apiServise.fetchPagination(e.path[0].id).then(data => {renderCards(data);})
 };
