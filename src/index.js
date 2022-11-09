@@ -1,14 +1,12 @@
-import ApiServise from "./js/API";
-import throttle from "lodash.throttle";
-import { clickOnMovie } from "./js/clickOnMovie";
-import { onScroll } from "./js/onScroll";
-import { onSubmit } from "./js/onSubmit";
-import { renderCards } from "./js/renderCards";
-import { stickyHeader } from "./js/sticky-header";
+import ApiServise from './js/API';
+import throttle from 'lodash.throttle';
+import { clickOnMovie } from './js/clickOnMovie';
+import { onScroll } from './js/onScroll';
+import { onSubmit } from './js/onSubmit';
+import { renderCards } from './js/renderCards';
+import { stickyHeader } from './js/sticky-header';
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
-import { spiner, spinerRemove, noPoster } from "./js/notifications";
-
 
 export const refs = {
   searchForm: document.querySelector('.home-header__form'),
@@ -19,30 +17,25 @@ export const refs = {
   stickyHeaderForm: document.querySelector('.home-header__form__sticky'),
 };
 
-const apiServise = new ApiServise();
+export const apiServise = new ApiServise();
 
-refs.searchForm.addEventListener("submit", onSubmit);
+refs.searchForm.addEventListener('submit', onSubmit);
 // window.addEventListener('scroll', throttle(onScroll, 1000));
-refs.stickyHeaderForm.addEventListener("submit", onSubmit);
+refs.stickyHeaderForm.addEventListener('submit', onSubmit);
 refs.cardHolder.addEventListener('click', onCardClick);
 
 refs.stickyHeaderForm.addEventListener('change', () => {
   refs.searchForm.elements[0].value = refs.stickyHeaderForm.elements[0].value;
 });
 
-refs.searchForm.addEventListener("change", () => {
+refs.searchForm.addEventListener('change', () => {
   refs.stickyHeaderForm.elements[0].value = refs.searchForm.elements[0].value;
 });
 
-
-
 // refs.conteiner.addEventListener('click', clickOnMovie);
 
-
 apiServise.fetchDefault().then(data => {
-  spiner();
   renderCards(data);
-  spinerRemove();
 });
 
 function onCardClick(e) {
@@ -54,14 +47,10 @@ function onCardClick(e) {
   // apiServise.movieId = e.path[2].id без постера не відкривається модалка
   apiServise.movieId = e.target.closest('li').id;
   apiServise.fetchById().then(data => {
-    if (data) {
-      spiner();
-      showModal(data.data);
-      spinerRemove();
-    }
+    showModal(data.data);
   });
 
   // apiServise.movieId = e.path[2].id
-    
+
   // apiServise.fetchById(e.path[2].id).then(console.log);
 }

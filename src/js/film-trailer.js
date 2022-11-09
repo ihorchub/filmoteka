@@ -46,7 +46,12 @@ function renderPlayer(link = '') {
     </div>`;
 
   trailerBackdrop.classList.remove('is-hidden');
-  trailerBody.style = `height: 100%; overflow-y: hidden`;
+
+  //Scroll off
+  trailerBody.onscroll = () => {
+    window.scroll(0, 0);
+  };
+
   trailerBackdrop.addEventListener('click', closeTrailer);
 }
 
@@ -57,7 +62,10 @@ function closeTrailer(e) {
   ) {
     trailerBackdrop.classList.add('is-hidden');
     trailerBackdrop.innerHTML = '';
-    trailerBody.style = ``;
+
+    //Scroll on
+    trailerBody.onscroll = () => {};
+
     trailerBackdrop.removeEventListener('click', closeTrailer);
   }
 }
