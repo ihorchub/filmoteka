@@ -38,7 +38,7 @@ export function spinerRemove() {
 export function noInfo() {
   Notiflix.Loading.custom({
     customSvgCode:
-      '<div style="margin-bottom:150px;"></div><h2 style="text-transform:uppercase; color:red">Info about this film not found</h2>',
+      '<div style="margin-bottom:150px;"></div><h2 style="text-transform:uppercase; color:red">Info about this movie not found</h2>',
     svgSize: '500px',
     backgroundColor: 'rgba(0, 0, 0, 0.95)',
   });
