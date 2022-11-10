@@ -23,19 +23,18 @@ async function showTrailer(id) {
   }
 
   // Фільтрація по ключовому слову
-  const officialTrailer = trailer.data.results.filter(
-    item =>
-      item.name.includes('TRAILER') ||
-      item.name.includes('Trailer') ||
-      item.name.includes('trailer')
-  );
+  let officialTrailer = [];
+  if (trailer?.data?.results?.length)
+    officialTrailer = trailer.data.results.filter(item =>
+      item.name.toLowerCase().includes('trailer')
+    );
 
   // Рендер трейлера в залежності чи знайдено саме відео трейлера
   if (officialTrailer.length && officialTrailer[0].key)
     return renderPlayer(officialTrailer[0].key);
 
   // Рендер будь якого знайденого відео
-  if (trailer.data.results.length && trailer.data.results[0].key)
+  if (trailer?.data?.results?.[0]?.key)
     return renderPlayer(trailer.data.results[0].key);
 
   // Перевірки не дали результату, рендериться помилка
@@ -56,7 +55,7 @@ function renderPlayer(link = '') {
     </div>`;
 
     trailerBackdrop.classList.remove('is-hidden');
-    trailerBody.style = `height: 100%; overflow-y: hidden`;
+    trailerBody.style = `overflow-y: hidden`;
     trailerBackdrop.addEventListener('click', closeTrailer);
   } else {
     noTrailer();
@@ -86,7 +85,7 @@ function closeTrailer(e) {
     trailerBackdrop.innerHTML = '';
 
     //Scroll on
-    trailerBody.onscroll = () => {};
+    // trailerBody.onscroll = () => {};
 
     trailerBackdrop.removeEventListener('click', closeTrailer);
   }

@@ -115,7 +115,7 @@ function getPagesArray(currentPage, lastPage) {
 
 function clickPaginetion(e) {
   //відстежування натискань
-  if (e.target === e.currentTarget) return;
+  if (e.target === e.currentTarget || e.target.nodeName === 'UL') return;
 
   let id = null;
   if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
