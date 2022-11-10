@@ -55,23 +55,20 @@ export function noTrailer() {
   Notiflix.Loading.remove(1000);
 }
   
-// Додати 4 функціїї додано і видалено дочерги та переглянутих
+// Додати 4 функціїї додано і видалено до черги та переглянутих
 
-// Варіант 2
+export function addToWatchQueue() {
+  Notiflix.Notify.info('The movie has been added to the watch queue.');
+}
 
-// import { Notify } from 'notiflix';
-// import { Loading } from 'notiflix';
-// function onSearch(e) {
-//   e.preventDefault();
-//   Notify.success(`За вашим запитом ми знайшли ${total_results} зображень`);
-//   Notify.info('Фільм додано до черги перегляду');
-//   Notify.info('Фільм додано до переглянутих');
-// }
-// function onError(err) {
-//   Notify.failure('За вашим запитом фільмів не знайдено');
-// }
-// // function () {
-// //     Loading.dots(
-// //         'Зачекайте, будь ласка'
-// //     );
-// // }
+export function removeFromQueue() {
+  Notiflix.Notify.info('The movie has been removed from the viewing queue.');
+}
+  
+export function addToWatched() {
+  Notiflix.Notify.info('Movie added to watched.');
+}
+
+export function removeFromWatched() {
+  Notiflix.Notify.info('The movie has been removed from viewed.');
+}
