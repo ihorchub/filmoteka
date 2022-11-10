@@ -27,12 +27,13 @@ export function onSubmit(e) {
   }
   apiServise.query = e.target.elements[0].value.trim();
   apiServise.resetPage();
+  spiner();
   apiServise.fetch().then(data => {
     if (data.data.results.length === 0) {
       failure();
+      spinerRemove();
       return;
     } else {
-      spiner();
       success(data.data.total_results, e.target.elements[0].value.trim());
       renderCards(data);
       spinerRemove();

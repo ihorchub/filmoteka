@@ -134,11 +134,11 @@ function clickPaginetion(e) {
     if (!isNaN(e.target.closest('li').id)) id = e.target.closest('li').id;
     else return;
   }
+  spiner();
   apiServise.fetchPagination(id).then(data => {
     //додав спінер і плавний скролл
-    spiner();
     renderCards(data);
-    spinerRemove();
+     spinerRemove();
   });
 }
 
