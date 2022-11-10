@@ -1,9 +1,10 @@
-// variables declaration for further local storage content
-const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
-const moviesQueue = JSON.parse(localStorage.getItem('movies-queue')) || [];
-
 // function launches when the movie modal opens functioin "showModal()" from film-modal.js
 export function locStorage(data) {
+  // variables declaration for further local storage content
+  const moviesWatched =
+    JSON.parse(localStorage.getItem('movies-watched')) || [];
+  const moviesQueue = JSON.parse(localStorage.getItem('movies-queue')) || [];
+
   // reaching "Add to Watched" and "Add to Queue" buttons
   const addWatchedRef = document.querySelector('.add-watched');
   const addQueueRef = document.querySelector('.add-queue');
@@ -15,18 +16,16 @@ export function locStorage(data) {
   // checker if the movie from the modal is already exists in local storage
   // and make the buttons "Add to Watched" and "Add to Queue" appear accordingly
   if (localStorage.length > 0) {
-    let savedWatchedArr = JSON.parse(localStorage.getItem('movies-watched'));
+    // let savedWatchedArr = JSON.parse(localStorage.getItem('movies-watched'));
 
-    if (savedWatchedArr.find(item => item.id === data.id)) {
+    if (moviesWatched.find(item => item.id === data.id)) {
       addWatchedRef.classList.add('js-remove-from');
       addWatchedRef.textContent = 'remove from watched';
     }
   }
 
   if (localStorage.length > 0) {
-    let savedQueueArr = JSON.parse(localStorage.getItem('movies-queue'));
-
-    if (savedQueueArr.find(item => item.id === data.id)) {
+    if (moviesQueue.find(item => item.id === data.id)) {
       addQueueRef.classList.add('js-remove-from');
       addQueueRef.textContent = 'remove from queue';
     }
