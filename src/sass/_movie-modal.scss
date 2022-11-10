@@ -1,5 +1,5 @@
 .js-movie-modal-mask.is-hidden,
-.js-movie-modal.is-hidden  {
+.js-movie-modal.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -14,37 +14,37 @@
   left: 50%;
   background-color: rgba($color: #000000, $alpha: 0.3);
   transform: translate(-50%, -50%) scale(1);
-  opacity: 1;    
+  opacity: 1;
   transition: all 0.5s ease 0s;
 }
 
 .js-movie-modal {
-    overflow-y: scroll;
-    height: 100%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background-color: #ffffff;
-    color: #000;
-    width: 280px;
-    font-weight: 500;
-    margin-top: 20px;
-    margin-bottom: 38px;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;    
-    transition: all 0.5s ease 0s;
-    
-    @include tablet {
-      width: 704px;
-      height: 552px;
-      // overflow-y: hidden;
-    }
-  
-    @include desktop {
-      width: 806px;
-      height: 558px;
-      overflow: hidden;
-    }
+  overflow-y: scroll;
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #ffffff;
+  color: #000;
+  width: 280px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 38px;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: all 0.5s ease 0s;
+
+  @include tablet {
+    width: 704px;
+    height: 552px;
+    // overflow-y: hidden;
+  }
+
+  @include desktop {
+    width: 806px;
+    height: 558px;
+    overflow: hidden;
+  }
 }
 
 .js-movie-modal__content {
@@ -256,11 +256,16 @@
     width: 136px;
   }
 
-  &:hover{
+  &:hover {
     color: #fff;
     box-shadow: none;
-    cursor: auto;
+    // cursor: auto;
     background-color: #ff6b08;
     border: 1px solid #ff6b08;
   }
+}
+.js-remove-from {
+  color: #ffffff;
+  background-color: #ff6b08;
+  border: 1px solid #ff6b08;
 }
