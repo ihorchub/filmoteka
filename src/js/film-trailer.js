@@ -55,7 +55,10 @@ function renderPlayer(link = '') {
     </div>`;
 
     trailerBackdrop.classList.remove('is-hidden');
-    trailerBody.style = `overflow-y: hidden`;
+    trailerBody.style = `overflow-y: hidden; padding-right: 15px`;
+    document.querySelector(
+      '.js-home-header__sticky'
+    ).style = `transition: transform 150ms linear; transform: translateY(-100%)`;
     trailerBackdrop.addEventListener('click', closeTrailer);
   } else {
     noTrailer();
@@ -86,6 +89,9 @@ function closeTrailer(e) {
 
     //Scroll on
     // trailerBody.onscroll = () => {};
+    document.querySelector(
+      '.js-home-header__sticky'
+    ).style = `transform: translateY(0)`;
 
     trailerBackdrop.removeEventListener('click', closeTrailer);
   }
