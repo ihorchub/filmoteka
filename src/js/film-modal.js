@@ -25,7 +25,7 @@ function closeModal(e) {
   filmModal.classList.add('is-hidden');
   filmModalMask.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
-  modalBody.style = 'overflow-y: scroll';
+  modalBody.style = 'overflow-y: overlay'; //overlay щоб не розширювалась сторінка
 }
 
 function onEscKeyPress(e) {

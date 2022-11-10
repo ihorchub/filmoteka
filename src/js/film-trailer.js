@@ -85,7 +85,7 @@ function closeTrailer(e) {
     trailerBackdrop.innerHTML = '';
 
     //Scroll on
-    // trailerBody.onscroll = () => {};
+    trailerBody.style = `overflow-y: overlay`;
 
     trailerBackdrop.removeEventListener('click', closeTrailer);
   }
