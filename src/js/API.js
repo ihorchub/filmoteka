@@ -47,7 +47,7 @@ export default class ApiServise {
         api_key: '411d08d89a4569fb1b50aec07ee6fb72',
       });
 
-      const request = `https://api.themoviedb.org/3/trending/all/week?${searchParams}`;
+      const request = `https://api.themoviedb.org/3/trending/movie/week?${searchParams}`; //замінив all на movie
 
       const data = await axios.get(request);
       return data;
@@ -91,7 +91,7 @@ export default class ApiServise {
         const searchParams = new URLSearchParams({
           api_key: '411d08d89a4569fb1b50aec07ee6fb72',
         });
-        const request = `https://api.themoviedb.org/3/trending/all/week?${searchParams}&page=${page}`;
+        const request = `https://api.themoviedb.org/3/trending/movie/week?${searchParams}&page=${page}`; //замінив all на movie
         const data = await axios.get(request);
         console.log(request);
         return data;

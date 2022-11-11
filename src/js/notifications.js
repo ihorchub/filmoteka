@@ -8,6 +8,15 @@ export function success(totalMovies, query) {
   );
 }
 
+// Функція для крапок пагінації
+export function successPages(total, query = '') {
+  Notiflix.Notify.success(
+    query
+      ? `Hooray we found ${total} pages for ${query}`
+      : `Hooray we found ${total} popular pages`
+  );
+}
+
 export function failure() {
   Notiflix.Notify.failure('Sorry, no matches found for your search query!');
 }
@@ -20,7 +29,9 @@ export function missingTrailer() {
 }
 
 export function secondRequest(query) {
-  Notiflix.Notify.warning(`You are trying to search "${query}" again, please enter a different search query`);
+  Notiflix.Notify.warning(
+    `You are trying to search "${query}" again, please enter a different search query`
+  );
 }
 
 export function warning() {
@@ -39,13 +50,12 @@ export function spinerRemove() {
 
 export function noInfo() {
   Notiflix.Notify.warning('Info about this movie not found');
-  
 }
 
 export function noTrailer() {
   Notiflix.Notify.warning('Trailer not found');
 }
-  
+
 // Додати 4 функціїї додано і видалено до черги та переглянутих
 
 export function addToWatchQueue() {
@@ -55,7 +65,7 @@ export function addToWatchQueue() {
 export function removeFromQueue() {
   Notiflix.Notify.info('The movie has been removed from the viewing queue.');
 }
-  
+
 export function addToWatched() {
   Notiflix.Notify.info('Movie added to watched.');
 }
