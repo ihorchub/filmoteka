@@ -1,4 +1,4 @@
-import { noTrailer } from './notifications';
+import { noTrailer, spiner, spinerRemove } from './notifications.js';
 import ApiServise from '../js/API.js';
 
 const api = new ApiServise();
@@ -16,10 +16,13 @@ async function showTrailer(id) {
     // trailer = await axios.get(
     //   `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TRAILER_API_KEY}`
     // );
+    spiner();
     api.movieId = id;
     trailer = await api.fetchOnMovie();
   } catch (error) {
     return renderPlayer();
+  } finally {
+    spinerRemove();
   }
 
   // Фільтрація по ключовому слову
