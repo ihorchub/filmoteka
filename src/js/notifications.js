@@ -8,6 +8,15 @@ export function success(totalMovies, query) {
   );
 }
 
+// Функція для крапок пагінації
+export function successPages(total, query = '') {
+  Notiflix.Notify.success(
+    query
+      ? `Hooray we found ${total} pages for ${query}`
+      : `Hooray we found ${total} popular pages`
+  );
+}
+
 export function failure() {
   Notiflix.Notify.failure('Sorry, no matches found for your search query!');
 }

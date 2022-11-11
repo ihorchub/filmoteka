@@ -7,17 +7,23 @@
     width: 36px;
     height: 36px;
 
-    transition: background-color 300ms linear, color 300ms linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    transition: background-color 300ms linear, fill 300ms linear;
+
+    padding: 0;
     background-color: #f7f7f7;
     border: none;
     border-radius: 5px;
 
     font-size: 30px;
+    cursor: alias;
 
-    &:hover,
-    &:focus {
-      color: white;
+    &.on:hover,
+    &.on:focus {
+      fill: white;
       background-color: #c70014;
       cursor: pointer;
     }
@@ -37,6 +43,10 @@
       height: 40px;
     }
   }
+}
+
+.pagination__left-btn svg {
+  transform: rotateZ(180deg);
 }
 
 .pagination__list {
@@ -81,7 +91,7 @@
   border-radius: 5px;
   cursor: pointer;
 
-  &:nth-child(7) {
+  &:last-child {
     margin: 0;
   }
 

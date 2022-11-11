@@ -1,6 +1,6 @@
 import { apiServise } from '../index.js';
 import { renderCards } from './renderCards';
-import { spiner, spinerRemove } from './notifications.js';
+import { spiner, spinerRemove, successPages } from './notifications.js';
 
 // const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
@@ -19,13 +19,28 @@ export function getPagination(currentPage, lastPage) {
 
   let pages = getPagesArray(currentPage, lastPage);
 
-  pagination.innerHTML = `<button class="pagination__left-btn" type="button"><span>&#8592;</span></button>
-    <ul class="pagination__list">
-    </ul>
-    <button class="pagination__right-btn" type="button"><span>&#8594;</span></button>`;
+  pagination.innerHTML = `<button class="pagination__left-btn on" type="button">
+    <svg width="16" height="16">
+      <use href="./images/pagination/icons.svg#icon-arrow-right"></use>
+    </svg>
+  </button>
+  <ul class="pagination__list"></ul>
+  <button class="pagination__right-btn on" type="button">
+    <svg width="16" height="16">
+      <use href="./images/pagination/icons.svg#icon-arrow-right"></use>
+    </svg>
+  </button>`;
 
   if (window.screen.width <= 768) pagination.style = `margin-bottom: 40px`;
   else pagination.style = `margin-bottom: 60px`;
+
+  if (currentPage === 1) {
+    document.querySelector('.pagination__left-btn').classList.remove('on');
+    document.querySelector('.pagination__left-btn').disabled = true;
+  } else if (lastPage === currentPage) {
+    document.querySelector('.pagination__right-btn').disabled = true;
+    document.querySelector('.pagination__right-btn').classList.remove('on');
+  }
 
   const list = document.querySelector('.pagination__list');
 
@@ -34,8 +49,8 @@ export function getPagination(currentPage, lastPage) {
   const itemList = list.children;
 
   for (let i = 0; i < itemList.length; i++) {
-    if (!isNaN(Number(itemList[i].id)))
-      itemList[i].classList.add('pagination__on');
+    // if (!isNaN(Number(itemList[i].id)))
+    //   itemList[i].classList.add('pagination__on');
     if (Number(itemList[i].id) === currentPage)
       itemList[i].classList.add('pagination__item--current');
   }
@@ -44,7 +59,8 @@ export function getPagination(currentPage, lastPage) {
 function renderLi(arr) {
   return arr.reduce(
     (acc, item) =>
-      acc + `<li class="pagination__item" id='${item}'>${item}</li>`,
+      acc +
+      `<li class="pagination__item pagination__on" id='${item}'>${item}</li>`,
     ''
   );
 }
@@ -114,11 +130,16 @@ function getPagesArray(currentPage, lastPage) {
 }
 
 function clickPaginetion(e) {
+  console.log(e.target.nodeName);
   //відстежування натискань
   if (e.target === e.currentTarget || e.target.nodeName === 'UL') return;
 
   let id = null;
-  if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
+  if (
+    e.target.nodeName === 'svg' ||
+    e.target.nodeName === 'BUTTON' ||
+    e.target.nodeName === 'use'
+  ) {
     if (
       e.target.closest('button').classList.contains('pagination__left-btn') &&
       firstPage > 1
@@ -132,13 +153,17 @@ function clickPaginetion(e) {
     else return;
   } else {
     if (!isNaN(e.target.closest('li').id)) id = e.target.closest('li').id;
+    else if (e.target.closest('li').id === '...')
+      return apiServise.query
+        ? successPages(endPage, apiServise.query)
+        : successPages(endPage);
     else return;
   }
   spiner();
   apiServise.fetchPagination(id).then(data => {
     //додав спінер і плавний скролл
     renderCards(data);
-     spinerRemove();
+    spinerRemove();
   });
 }
 
