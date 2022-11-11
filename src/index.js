@@ -1,4 +1,5 @@
 import ApiServise from './js/API';
+
 import throttle from 'lodash.throttle';
 import { clickOnMovie } from './js/clickOnMovie';
 import { onScroll } from './js/onScroll';
@@ -6,10 +7,11 @@ import { onSubmit } from './js/onSubmit';
 import { renderCards } from './js/renderCards';
 import { stickyHeader } from './js/sticky-header';
 import trailer from './js/film-trailer.js';
+
 import { showModal } from './js/film-modal';
 import { spiner, spinerRemove, noInfo } from './js/notifications';
 import { onOpenTeamModal } from './js/team-modal.js';
-import { ruAllert,ruDelete } from './js/notifications';
+import { ruAllert, ruDelete } from './js/notifications';
 
 export const refs = {
   searchForm: document.querySelector('.home-header__form'),
@@ -37,7 +39,7 @@ refs.searchForm.addEventListener('change', () => {
 });
 
 // refs.conteiner.addEventListener('click', clickOnMovie);
- spiner();
+spiner();
 apiServise.fetchDefault().then(data => {
   renderCards(data);
 });
@@ -57,23 +59,21 @@ function onCardClick(e) {
     if (!data) {
       noInfo();
       spinerRemove();
-      return
-    } 
-    if (data.data.original_language === "ru") {
+      return;
+    }
+    if (data.data.original_language === 'ru') {
       ruAllert();
-      e.target.classList.add('ruContent')
+      e.target.classList.add('ruContent');
+      spinerRemove();
+    } else {
+      showModal(data.data);
       spinerRemove();
     }
-     
-      else {
-        showModal(data.data);
-        spinerRemove();
-      }
   });
-  
+
   if (e.target.classList.contains('ruContent')) {
-      ruDelete()
-     }
+    ruDelete();
+  }
 
   // apiServise.movieId = e.path[2].id
 
