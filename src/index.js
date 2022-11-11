@@ -36,12 +36,11 @@ refs.searchForm.addEventListener('change', () => {
 });
 
 // refs.conteiner.addEventListener('click', clickOnMovie);
-
+ spiner();
 apiServise.fetchDefault().then(data => {
-  spiner();
   renderCards(data);
-  spinerRemove();
 });
+spinerRemove();
 
 function onCardClick(e) {
   if (e.target === e.currentTarget) return;
@@ -51,15 +50,17 @@ function onCardClick(e) {
 
   // apiServise.movieId = e.path[2].id без постера не відкривається модалка
   apiServise.movieId = e.target.closest('li').id;
+  spiner();
   apiServise.fetchById().then(data => {
-    if (data) {
-      spiner();
-      showModal(data.data);
-      spinerRemove();
-    } else {
+    if (!data) {
       noInfo();
-    }
+      spinerRemove();
+      return
+    } 
+    showModal(data.data);
+    spinerRemove();
   });
+  
 
   // apiServise.movieId = e.path[2].id
 
