@@ -20,7 +20,9 @@ export function missingTrailer() {
 }
 
 export function secondRequest(query) {
-  Notiflix.Notify.warning(`You are trying to search "${query}" again, please enter a different search query`);
+  Notiflix.Notify.warning(
+    `You are trying to search "${query}" again, please enter a different search query`
+  );
 }
 
 export function warning() {
@@ -39,27 +41,26 @@ export function spinerRemove() {
 
 export function noInfo() {
   Notiflix.Notify.warning('Info about this movie not found');
-  
 }
 
 export function noTrailer() {
   Notiflix.Notify.warning('Trailer not found');
 }
-  
+
 // Додати 4 функціїї додано і видалено до черги та переглянутих
 
 export function addToWatchQueue() {
-  Notiflix.Notify.info('The movie has been added to the watch queue.');
+  Notiflix.Notify.info('The movie has been added to the queue');
 }
 
 export function removeFromQueue() {
-  Notiflix.Notify.info('The movie has been removed from the viewing queue.');
+  Notiflix.Notify.info('The movie has been removed from the queue');
 }
-  
+
 export function addToWatched() {
-  Notiflix.Notify.info('Movie added to watched.');
+  Notiflix.Notify.info('The movie has been added to watched');
 }
 
 export function removeFromWatched() {
-  Notiflix.Notify.info('The movie has been removed from viewed.');
+  Notiflix.Notify.info('The movie has been removed from watched');
 }

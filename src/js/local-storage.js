@@ -1,3 +1,10 @@
+import {
+  addToWatched,
+  removeFromWatched,
+  addToWatchQueue,
+  removeFromQueue,
+} from './notifications';
+
 // function launches when the movie modal opens functioin "showModal()" from film-modal.js
 export function locStorage(data) {
   // variables declaration for further local storage content
@@ -40,6 +47,8 @@ export function locStorage(data) {
       const res = addWatchedRef.classList.toggle('js-remove-from');
       addWatchedRef.textContent = `${res ? 'remove from' : 'add to'} watched `;
 
+      addToWatched();
+
       return;
     }
 
@@ -50,6 +59,8 @@ export function locStorage(data) {
 
     const res = addWatchedRef.classList.toggle('js-remove-from');
     addWatchedRef.textContent = `${res ? 'remove from' : 'add to'} watched `;
+
+    removeFromWatched();
   }
 
   // functioin of adding to "Queue" to the local storage by clicking "Add to Queue"
@@ -61,6 +72,8 @@ export function locStorage(data) {
       const res = addQueueRef.classList.toggle('js-remove-from');
       addQueueRef.textContent = `${res ? 'remove from' : 'add to'} queue `;
 
+      addToWatchQueue();
+
       return;
     }
 
@@ -71,5 +84,7 @@ export function locStorage(data) {
 
     const res = addQueueRef.classList.toggle('js-remove-from');
     addQueueRef.textContent = `${res ? 'remove from' : 'add to'} queue `;
+
+    removeFromQueue();
   }
 }
