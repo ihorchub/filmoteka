@@ -130,7 +130,6 @@ function getPagesArray(currentPage, lastPage) {
 }
 
 function clickPaginetion(e) {
-  console.log(e.target.nodeName);
   //відстежування натискань
   if (e.target === e.currentTarget || e.target.nodeName === 'UL') return;
 
