@@ -1,6 +1,5 @@
-import { noTrailer } from './notifications';
+import { noTrailer, spiner, spinerRemove } from './notifications.js';
 import ApiServise from '../js/API.js';
-import { spiner, spinerRemove } from './notifications.js';
 
 const api = new ApiServise();
 const axios = require('axios').default;
