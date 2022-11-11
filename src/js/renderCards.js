@@ -1,12 +1,17 @@
 import { refs } from '../index';
 import { getPagination } from './pagination';
 import { onSubmitScroll } from './onSubmit.js';
+import { ruDelete,ruRepeatMessage } from './notifications';
+
 
 export function renderCards(data) {
+  if (data.data.results.every(result => result.original_language === 'ru')) {
+     ruDelete()
+     }
   const markup = data.data.results
-    .map(({ id, poster_path, name, title, release_date, genre_ids }) => {
+    .map(({ id, poster_path, name, title, release_date, genre_ids, original_language }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">
-                  ${getMarkupImgPoster(poster_path, name, title)}
+                  ${getMarkupImgPoster(original_language, poster_path, name, title)}
                   <h2>${getShortName(title || name)}</h2>
                   <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
                   <button class="film__trailer-btn" type="button">Trailer <span class="film__trailer-btn">&#9654;</span></button>
@@ -80,7 +85,13 @@ function getPosterPath(path) {
   //   : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
 }
 
-function getMarkupImgPoster(poster_path, name, title) {
+function getMarkupImgPoster(original_language, poster_path, name, title) {
+   if (original_language === 'ru') {
+     return `<img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${
+       name || title
+     }" loading="lazy" />`;
+  }
+else{}
   return poster_path
     ? `<img src=" ${getPosterPath(poster_path)}" alt="${
         name || title

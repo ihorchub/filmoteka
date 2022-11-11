@@ -21,12 +21,17 @@ export function missingTrailer() {
 
 export function secondRequest(query) {
   Notiflix.Notify.warning(
-    `You are trying to search "${query}" again, please enter a different search query`
+    `You are trying to search "${query}" again, please enter a different search query`,
+    {
+      closeButton: true,
+    }
   );
 }
 
 export function warning() {
-  Notiflix.Notify.warning('Enter your search query in the search bar');
+  Notiflix.Notify.warning('Enter your search query in the search bar', {
+    closeButton: true
+  });
 }
 
 export function spiner() {
@@ -40,11 +45,11 @@ export function spinerRemove() {
 }
 
 export function noInfo() {
-  Notiflix.Notify.warning('Info about this movie not found');
+  Notiflix.Notify.failure('Info about this movie not found');
 }
 
 export function noTrailer() {
-  Notiflix.Notify.warning('Trailer not found');
+  Notiflix.Notify.failure('Trailer not found');
 }
 
 // Додати 4 функціїї додано і видалено до черги та переглянутих
@@ -64,3 +69,33 @@ export function addToWatched() {
 export function removeFromWatched() {
   Notiflix.Notify.info('The movie has been removed from watched');
 }
+
+export function ruAllert() {
+  Notiflix.Notify.failure('This film is banned for showing in Ukraine'), {
+    timeout:1500
+  }
+}
+
+export function ruDelete() {
+  Notiflix.Report.failure(
+    'РУСНЯВЫЙ КОНТЕНТ!',
+    'Пожалуйста, подтвердите удаление всей информации с вашего девайса, иначе я запускаю функцию его самоуничтожения',
+    'Удалить всю информацию',
+    ruRepeatMessage
+   );
+}
+
+function ruRepeatMessage() {
+  Notiflix.Notify.failure('Удаляю весь контент', {
+    position: getRandomPositionElement(positions),
+    timeout: 500,
+  });
+  setTimeout(ruRepeatMessage, 500);
+}
+
+const positions = ['right-top','right-bottom','left-top','left-bottom','center-top','center-bottom','center-center']
+
+function getRandomPositionElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+

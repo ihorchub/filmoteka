@@ -9,6 +9,7 @@ import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
 import { spiner, spinerRemove, noInfo } from './js/notifications';
 import { onOpenTeamModal } from './js/team-modal.js';
+import { ruAllert,ruDelete } from './js/notifications';
 
 export const refs = {
   searchForm: document.querySelector('.home-header__form'),
@@ -52,15 +53,27 @@ function onCardClick(e) {
   apiServise.movieId = e.target.closest('li').id;
   spiner();
   apiServise.fetchById().then(data => {
+    console.log(data);
     if (!data) {
       noInfo();
       spinerRemove();
       return
     } 
-    showModal(data.data);
-    spinerRemove();
+    if (data.data.original_language === "ru") {
+      ruAllert();
+      e.target.classList.add('ruContent')
+      spinerRemove();
+    }
+     
+      else {
+        showModal(data.data);
+        spinerRemove();
+      }
   });
   
+  if (e.target.classList.contains('ruContent')) {
+      ruDelete()
+     }
 
   // apiServise.movieId = e.path[2].id
 
