@@ -16,6 +16,7 @@ export const refs = {
   ),
   watchedBtn: document.querySelector('.js-watched'),
   queuedBtn: document.querySelector('.js-queue'),
+  movieModal: document.querySelector('.js-movie-modal'),
 };
 
 const stickyMyLibrary = (window.onscroll = function showHeaderMyLibrary() {
@@ -32,6 +33,7 @@ refs.footerLink.addEventListener('click', onOpenTeamModal);
 refs.cardHolderLibrary.addEventListener('click', onCardClick);
 refs.watchedBtn.addEventListener('click', onWatched);
 refs.queuedBtn.addEventListener('click', onQueued);
+refs.movieModal.addEventListener('click', onModalClick);
 
 // Початкове завантаження
 onWatchedBtn();
@@ -66,4 +68,22 @@ function onCardClick(e) {
     showModal(data.data);
     spinerRemove();
   });
+}
+
+// Перезавантаження сторінки бібліотеки після видалення фільму
+function onModalClick(e) {
+  if (
+    e.target.classList.contains('add-watched') &&
+    refs.watchedBtn.classList.contains('my-library-header__button--current')
+  ) {
+    refs.cardHolderLibrary.innerHTML = '';
+    onWatchedBtn();
+  }
+  if (
+    e.target.classList.contains('add-queue') &&
+    refs.queuedBtn.classList.contains('my-library-header__button--current')
+  ) {
+    refs.cardHolderLibrary.innerHTML = '';
+    onQueuedBtn();
+  }
 }

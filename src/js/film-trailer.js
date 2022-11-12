@@ -58,6 +58,7 @@ function renderPlayer(link = '') {
 
     showBackdrop();
     trailerBackdrop.addEventListener('click', closeTrailer);
+    window.addEventListener('keydown', closeTrailer);
   } else {
     noTrailer();
   }
@@ -66,7 +67,8 @@ function renderPlayer(link = '') {
 function closeTrailer(e) {
   if (
     e.target.classList.contains('js-movie-modal-mask') ||
-    e.target.classList.contains('container')
+    e.target.classList.contains('container') ||
+    e.code === 'Escape'
   ) {
     closeBackdrop();
     trailerBackdrop.removeEventListener('click', closeTrailer);
