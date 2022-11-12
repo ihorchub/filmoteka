@@ -142,7 +142,7 @@ function getMarkupImgPoster(original_language, poster_path, name, title) {
 
 // function that stores data to session storage (all except first one)
 function sessionStorageAction(data) {
-  sessionList = data.data.results;
+  let sessionList = data.data.results;
   sessionListShift = sessionList.shift();
   console.log(sessionList);
 
