@@ -142,9 +142,10 @@ function getMarkupImgPoster(original_language, poster_path, name, title) {
 
 // function that stores data to session storage (all except first one)
 function sessionStorageAction(data) {
+  let sessionListShift = [];
+
   let sessionList = data.data.results;
-  sessionList = sessionList.shift();
-  console.log(sessionList);
+  sessionListShift = sessionList.shift();
 
   sessionStorage.setItem('all-except-first', JSON.stringify(sessionList));
 }
