@@ -1,3 +1,6 @@
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+
 localStorage.setItem('ui-theme', 'light');
 
 document.querySelector('.themetoggle').addEventListener('click', e => {
