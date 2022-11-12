@@ -1,11 +1,13 @@
 import { noTrailer, spiner, spinerRemove } from './notifications.js';
 import ApiServise from '../js/API.js';
+import { showBackdrop, closeBackdrop } from './backdrop.js';
+// import { showModal } from './film-modal.js';
 
 const api = new ApiServise();
-const axios = require('axios').default;
+// const axios = require('axios').default;
 const BASE_TRAILER_URL = 'https://www.youtube.com/embed/';
-const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
-const trailerBody = document.querySelector('body');
+// const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
+// const trailerBody = document.querySelector('body');
 const trailerBackdrop = document.querySelector('.js-movie-modal-mask');
 
 async function showTrailer(id) {
@@ -13,9 +15,6 @@ async function showTrailer(id) {
 
   // Отримання даних
   try {
-    // trailer = await axios.get(
-    //   `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TRAILER_API_KEY}`
-    // );
     spiner();
     api.movieId = id;
     trailer = await api.fetchOnMovie();
@@ -57,39 +56,19 @@ function renderPlayer(link = '') {
       >
     </div>`;
 
-    trailerBackdrop.classList.remove('is-hidden');
-    trailerBody.style = `overflow-y: hidden`;
+    showBackdrop();
     trailerBackdrop.addEventListener('click', closeTrailer);
   } else {
     noTrailer();
   }
-
-  // else
-  // trailerBackdrop.innerHTML = `<div class="container trailer__container">
-  //  <div class="trailer__info">Trailer not found</div>
-  // </div>`;
-
-  // trailerBackdrop.classList.remove('is-hidden');
-
-  //Scroll off
-  // trailerBody.onscroll = () => {
-  // window.scroll(0, 0);
-  // };
-
-  // trailerBackdrop.addEventListener('click', closeTrailer);
 }
 
 function closeTrailer(e) {
   if (
-    e.target.classList.contains('trailer__wrap') ||
+    e.target.classList.contains('js-movie-modal-mask') ||
     e.target.classList.contains('container')
   ) {
-    trailerBackdrop.classList.add('is-hidden');
-    trailerBackdrop.innerHTML = '';
-
-    //Scroll on
-    trailerBody.style = `overflow-y: overlay`;
-
+    closeBackdrop();
     trailerBackdrop.removeEventListener('click', closeTrailer);
   }
 }

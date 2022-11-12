@@ -1,13 +1,9 @@
 import { refs } from '../index';
 import { getPagination } from './pagination';
 import { onSubmitScroll } from './onSubmit.js';
-import { ruDelete,ruRepeatMessage } from './notifications';
 
 
 export function renderCards(data) {
-  if (data.data.results.every(result => result.original_language === 'ru')) {
-     ruDelete()
-     }
   const markup = data.data.results
     .map(({ id, poster_path, name, title, release_date, genre_ids, original_language }) => {
       return `<li class="film__item" id="${id}"><a class="film__item__link">
@@ -24,6 +20,8 @@ export function renderCards(data) {
   refs.cardHolder.innerHTML = markup;
   getPagination(data.data.page, data.data.total_pages);
 }
+
+
 
 const genreIdName = [
   { id: 28, name: 'Action' },

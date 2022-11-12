@@ -1,4 +1,5 @@
 // Варіант 1
+import { refs } from '../index';
 
 import Notiflix from 'notiflix';
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);
@@ -30,17 +31,14 @@ export function missingTrailer() {
 
 export function secondRequest(query) {
   Notiflix.Notify.warning(
-    `You are trying to search "${query}" again, please enter a different search query`,
-    {
-      closeButton: true,
-    }
+    `You are trying to search "${query}" again, please enter a different search query`
+  
   );
 }
 
 export function warning() {
-  Notiflix.Notify.warning('Enter your search query in the search bar', {
-    closeButton: true
-  });
+  Notiflix.Notify.warning('Enter your search query in the search bar'
+  );
 }
 
 export function spiner() {
@@ -90,21 +88,47 @@ export function ruDelete() {
     'РУСНЯВЫЙ КОНТЕНТ!',
     'Пожалуйста, подтвердите удаление всей информации с вашего девайса, иначе я запускаю функцию его самоуничтожения',
     'Удалить всю информацию',
-    ruRepeatMessage
-   );
+  ruRepeatMessage
+  );
+  refs.ruBackdrop.classList.toggle('is-hidden');
+  refs.body.style.overflow = "hidden"
 }
 
 function ruRepeatMessage() {
   Notiflix.Notify.failure('Удаляю весь контент', {
     position: getRandomPositionElement(positions),
-    timeout: 500,
+    cssAnimationStyle: getRandomAnimationElement(animations),
+    timeout: 500
   });
-  setTimeout(ruRepeatMessage, 500);
+  setTimeout(ruRepeatMessage, 400);
+  
 }
 
-const positions = ['right-top','right-bottom','left-top','left-bottom','center-top','center-bottom','center-center']
+const positions = [
+  'right-top',
+  'right-bottom',
+  'left-top',
+  'left-bottom',
+  'center-top',
+  'center-bottom',
+  'center-center',
+];
+
+
+const animations = [
+  'fade',
+  'zoom',
+  'from-right',
+  'from-top',
+  'from-bottom',
+  'from-left',
+];
 
 function getRandomPositionElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+
+function getRandomAnimationElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}

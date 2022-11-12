@@ -1,5 +1,6 @@
 // imports the local-storage function for the buttons in Movie Modal
 import { locStorage } from './local-storage';
+import { showBackdrop, closeBackdrop } from './backdrop.js'; // загальне керування бекдропом і скролом
 
 const filmModal = document.querySelector('.js-movie-modal');
 const filmModalMask = document.querySelector('.js-movie-modal-mask');
@@ -12,9 +13,10 @@ export function showModal(data) {
   const closeBtn = document.querySelector('.js-movie-modal__close-btn');
   closeBtn.addEventListener('click', closeModal);
   filmModal.classList.remove('is-hidden');
-  filmModalMask.classList.remove('is-hidden');
+  // filmModalMask.classList.remove('is-hidden');
+  showBackdrop();
   window.addEventListener('keydown', onEscKeyPress);
-  modalBody.style = 'overflow-y: hidden';
+  // modalBody.style = 'overflow-y: hidden';
 
   //launch local storage function (in a separage file)
   locStorage(data);
@@ -23,9 +25,10 @@ export function showModal(data) {
 function closeModal(e) {
   e.preventDefault();
   filmModal.classList.add('is-hidden');
-  filmModalMask.classList.add('is-hidden');
+  // filmModalMask.classList.add('is-hidden');
+  closeBackdrop();
   window.removeEventListener('keydown', onEscKeyPress);
-  modalBody.style = 'overflow-y: overlay'; //overlay щоб не розширювалась сторінка
+  // modalBody.style = 'overflow-y: overlay'; //overlay щоб не розширювалась сторінка
 }
 
 function onEscKeyPress(e) {
