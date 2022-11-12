@@ -137,7 +137,7 @@ function clickPaginetion(e) {
   if (
     e.target.nodeName === 'svg' ||
     e.target.nodeName === 'BUTTON' ||
-    e.target.nodeName === 'use'
+    e.target.nodeName === 'path'
   ) {
     if (
       e.target.closest('button').classList.contains('pagination__left-btn') &&

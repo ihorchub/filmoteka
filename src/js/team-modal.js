@@ -1,4 +1,5 @@
 import { refs } from './refs';
+import { showBackdrop, closeBackdrop } from './backdrop.js';
 
 refs.openTeamModal.addEventListener('click', onOpenTeamModal);
 refs.closeTeamModal.addEventListener('click', onCloseTeamModal);
@@ -16,7 +17,8 @@ function onEscKeyPress(e) {
 function onCloseTeamModal() {
   refs.teamModal.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
-  refs.body.classList.remove('show-modal-team');
+  // refs.body.classList.remove('show-modal-team');
+  closeBackdrop();
   refs.closeTeamModal.removeEventListener('click', onCloseTeamModal);
 }
 
@@ -29,7 +31,8 @@ function onBackdropClick(e) {
 export function onOpenTeamModal(e) {
   // e.preventDefault();
   window.addEventListener('keydown', onEscKeyPress);
-  refs.body.classList.add('show-modal-team');
+  // refs.body.classList.add('show-modal-team');
+  showBackdrop();
   refs.teamModal.classList.remove('is-hidden');
   refs.closeTeamModal.addEventListener('click', onCloseTeamModal);
 }
