@@ -1,0 +1,45 @@
+.dark {
+  background-color: #3b4145;
+  .film__item {
+    box-shadow: 10px 0px 8px 3px rgba(163, 162, 162, 0.75);
+    filter: brightness(0.8) contrast(1.2);
+  }
+  .footer {
+    background-color: #75777a;
+  }
+  .footer__container {
+    color: #fff;
+  }
+
+  .footer__link {
+    color: #fff;
+  }
+}
+
+.container {
+  position: relative;
+}
+
+.material-icons {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  display: flex;
+  width: 30px;
+  background: #2a2c2d;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  color: #ccc;
+
+  @include tablet {
+    top: 97px;
+    right: 25px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #ff6b01;
+  }
+}

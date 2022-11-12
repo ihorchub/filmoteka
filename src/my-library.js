@@ -2,6 +2,7 @@
 //import { renderCardsLibrary } from './js/renderCards';
 //import { showModalLibrary } from './js/film-modal';
 import { onOpenTeamModal } from './js/team-modal.js';
+import { switcher } from './js/switcher';
 
 export const refs = {
   cardHolderLibrary: document.querySelector('.card-holder'),
