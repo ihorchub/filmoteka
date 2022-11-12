@@ -1,11 +1,38 @@
 .dark {
   background-color: #3b4145;
-  .film__item {
-    box-shadow: 10px 0px 8px 3px rgba(163, 162, 162, 0.75);
-    filter: brightness(0.8) contrast(1.2);
-  }
+  // .film__item {
+  //   box-shadow: 10px 0px 8px 3px rgba(163, 162, 162, 0.75);
+  //   filter: brightness(0.8) contrast(1.2);
+  // }
   .footer {
-    background-color: #75777a;
+    background-color: #000000;
+  }
+  .js-movie-modal {
+    background-color: #000000;
+    color: #fff;
+  }
+  .pagination__item--current {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .pagination__container button {
+    background-color: #000000;
+    fill: #fff;
+  }
+  .js-info-value {
+    color: #fff;
+  }
+  .js-movie-modal__about-text {
+    color: #fff;
+  }
+  .js-movie-modal__btn {
+    border: #fff;
+  }
+  .js-movie-modal__title {
+    color: #fff;
+  }
+  .film__item h2 {
+    color: #fff;
   }
   .footer__container {
     color: #fff;
@@ -22,7 +49,7 @@
 
 .material-icons {
   position: absolute;
-  top: 40px;
+  top: 30px;
   right: 20px;
   display: flex;
   width: 30px;
@@ -34,8 +61,8 @@
   color: #ccc;
 
   @include tablet {
-    top: 97px;
-    right: 25px;
+    top: 110px;
+    right: 255px;
   }
 
   &:hover,
