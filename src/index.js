@@ -12,6 +12,7 @@ import { onOpenTeamModal } from './js/team-modal.js';
 import { ruAllert,ruDelete } from './js/notifications';
 
 export const refs = {
+  body: document.querySelector('body'),
   searchForm: document.querySelector('.home-header__form'),
   stickyHeaderForm: document.querySelector('.home-header__form__sticky'),
   cardHolder: document.querySelector('.card-holder'),
@@ -19,6 +20,7 @@ export const refs = {
   stickyHeader: document.querySelector('.js-home-header__sticky'),
   stickyHeaderForm: document.querySelector('.home-header__form__sticky'),
   footerLink: document.querySelector('.footer__link'),
+  ruBackdrop: document.querySelector("[data-backdrop]")
 };
 
 export const apiServise = new ApiServise();
@@ -53,7 +55,6 @@ function onCardClick(e) {
   apiServise.movieId = e.target.closest('li').id;
   spiner();
   apiServise.fetchById().then(data => {
-    console.log(data);
     if (!data) {
       noInfo();
       spinerRemove();
