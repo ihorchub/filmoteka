@@ -5,7 +5,9 @@ import Notiflix from 'notiflix';
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);
 export function success(totalMovies, query) {
   Notiflix.Notify.success(
-    `Hooray we found ${totalMovies} movies for "${query}"`
+    `Hooray we found ${totalMovies} movies for "${query}"`, {
+      timeout: 4000,
+    }
   );
 }
 
@@ -14,12 +16,16 @@ export function successPages(total, query = '') {
   Notiflix.Notify.success(
     query
       ? `Hooray we found ${total} pages for ${query}`
-      : `Hooray we found ${total} popular pages`
+      : `Hooray we found ${total} popular pages`, {
+        timeout: 4000,
+      }
   );
 }
 
 export function failure() {
-  Notiflix.Notify.failure('Sorry, no matches found for your search query!');
+  Notiflix.Notify.failure('Sorry, no matches found for your search query!', {
+    timeout: 4000,
+  });
 }
 export function missingTrailer() {
   Notiflix.Report.info(
@@ -31,13 +37,16 @@ export function missingTrailer() {
 
 export function secondRequest(query) {
   Notiflix.Notify.warning(
-    `You are trying to search "${query}" again, please enter a different search query`
-  
+    `You are trying to search "${query}" again, please enter a different search query`, {
+      timeout: 4000,
+    }  
   );
 }
 
 export function warning() {
-  Notiflix.Notify.warning('Enter your search query in the search bar'
+  Notiflix.Notify.warning('Enter your search query in the search bar', {
+    timeout: 4000,
+  }
   );
 }
 
@@ -66,7 +75,7 @@ export function addToWatchQueue() {
 }
 
 export function removeFromQueue() {
-  Notiflix.Notify.info('The movie has been removed from the queue');
+  Notiflix.Notify.warning('The movie has been removed from the queue');
 }
 
 export function addToWatched() {
@@ -74,7 +83,7 @@ export function addToWatched() {
 }
 
 export function removeFromWatched() {
-  Notiflix.Notify.info('The movie has been removed from watched');
+  Notiflix.Notify.warning('The movie has been removed from watched');
 }
 
 export function ruAllert() {
