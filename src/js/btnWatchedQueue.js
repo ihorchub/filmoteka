@@ -1,21 +1,30 @@
 import { renderCards } from './renderCardsMyLibrary';
+import { spiner, spinerRemove, noInfo } from '../js/notifications';
 
-const watchedBtn = document.querySelector('.js-watched');
-const queuedBtn = document.querySelector('.js-queue');
-watchedBtn.addEventListener('click', onWatchedBtn);
-queuedBtn.addEventListener('click', onQueuedBtn);
+// const watchedBtn = document.querySelector('.js-watched');
+// const queuedBtn = document.querySelector('.js-queue');
+// watchedBtn.addEventListener('click', onWatchedBtn);
+// queuedBtn.addEventListener('click', onQueuedBtn);
 
 const WATCHED = 'movies-watched';
 const QUEUE = 'movies-queue';
 
-function onWatchedBtn() {
+export function onWatchedBtn() {
   const obj = JSON.parse(localStorage.getItem(WATCHED));
-  renderCards(obj);
-  watchedBtn.removeEventListener('click', onWatchedBtn);
+  if (obj?.length) {
+    spiner();
+    renderCards(obj);
+    spinerRemove();
+  }
+  // watchedBtn.removeEventListener('click', onWatchedBtn);
 }
 
-function onQueuedBtn() {
+export function onQueuedBtn() {
   const obj = JSON.parse(localStorage.getItem(QUEUE));
-  renderCards(obj);
-  queuedBtn.removeEventListener('click', onQueuedBtn);
+  if (obj?.length) {
+    spiner();
+    renderCards(obj);
+    spinerRemove();
+  }
+  // queuedBtn.removeEventListener('click', onQueuedBtn);
 }

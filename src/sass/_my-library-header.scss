@@ -158,13 +158,18 @@
   //   border: 1px solid #ff6b02;
   //   background-color: #ff6b02;
   // }
+  &--current {
+    background-color: #ff6b01;
+    border: none;
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
 
   // оставить для правильной работы кнопок
   &:hover,
   &:focus {
     color: #fff;
     box-shadow: none;
-    cursor: auto;
+    cursor: pointer;
     background-color: #ff6b08;
     border: 1px solid #ff6b08;
   }

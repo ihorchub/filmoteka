@@ -12,7 +12,8 @@ export function renderCards(obj) {
             </li>`;
     })
     .join('');
-  refs.cardHolderLibrary.insertAdjacentHTML('beforeend', markup);
+  // refs.cardHolderLibrary.insertAdjacentHTML('beforeend', markup);
+  refs.cardHolderLibrary.innerHTML = markup;
 }
 
 export const genreIdName = [
