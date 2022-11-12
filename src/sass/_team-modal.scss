@@ -1,20 +1,20 @@
-.team-modal-mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 1;
-  transition: 500ms;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  overflow-y: scroll;
-}
+// .team-modal-mask {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   opacity: 1;
+//   transition: 500ms;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.2);
+//   overflow-y: scroll;
+// }
 
-.team-modal-mask.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
+// .team-modal-mask.is-hidden {
+//   visibility: hidden;
+//   opacity: 0;
+//   pointer-events: none;
+// }
 
 .team-modal {
   position: fixed;
@@ -25,6 +25,11 @@
   background-color: #ffffff;
   transform: translate(-50%, -50%) scale(0.7);
   overflow-y: scroll;
+
+  //Приховування
+  &.is-hidden {
+    display: none;
+  }
 
   padding: 50px 30px 30px 30px;
   @media screen and(max-width: 480px) {
