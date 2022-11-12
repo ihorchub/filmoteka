@@ -2,26 +2,41 @@ import { refs } from '../index';
 import { getPagination } from './pagination';
 import { onSubmitScroll } from './onSubmit.js';
 
-
 export function renderCards(data) {
   const markup = data.data.results
-    .map(({ id, poster_path, name, title, release_date, genre_ids, original_language }) => {
-      return `<li class="film__item" id="${id}"><a class="film__item__link">
-                  ${getMarkupImgPoster(original_language, poster_path, name, title)}
+    .map(
+      ({
+        id,
+        poster_path,
+        name,
+        title,
+        release_date,
+        genre_ids,
+        original_language,
+      }) => {
+        return `<li class="film__item" id="${id}"><a class="film__item__link">
+                  ${getMarkupImgPoster(
+                    original_language,
+                    poster_path,
+                    name,
+                    title
+                  )}
                   <h2>${getShortName(title || name)}</h2>
                   <p> ${getGenresByID(genre_ids)} | ${getYear(release_date)}</p>
                   <button class="film__trailer-btn" type="button">Trailer <span class="film__trailer-btn">&#9654;</span></button>
                 </a>
               </li>`;
-    })
+      }
+    )
     .join('');
 
   onSubmitScroll();
   refs.cardHolder.innerHTML = markup;
   getPagination(data.data.page, data.data.total_pages);
+
+  // running the function that stores data to session storage (all except first one)
+  sessionStorageAction(data);
 }
-
-
 
 const genreIdName = [
   { id: 28, name: 'Action' },
@@ -84,12 +99,12 @@ function getPosterPath(path) {
 }
 
 function getMarkupImgPoster(original_language, poster_path, name, title) {
-   if (original_language === 'ru') {
-     return `<img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${
-       name || title
-     }" loading="lazy" />`;
+  if (original_language === 'ru') {
+    return `<img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${
+      name || title
+    }" loading="lazy" />`;
+  } else {
   }
-else{}
   return poster_path
     ? `<img src=" ${getPosterPath(poster_path)}" alt="${
         name || title
@@ -123,4 +138,13 @@ else{}
   //         loading="lazy"
   //       />
   //     </picture>`;
+}
+
+// function that stores data to session storage (all except first one)
+function sessionStorageAction(data) {
+  sessionList = data.data.results;
+  sessionListShift = sessionList.shift();
+  console.log(sessionList);
+
+  sessionStorage.setItem('all-except-first', JSON.stringify(sessionList));
 }
