@@ -1,5 +1,5 @@
 import ApiServise from './js/API';
-
+import { switcher } from './js/switcher';
 import throttle from 'lodash.throttle';
 import { clickOnMovie } from './js/clickOnMovie';
 import { onScroll } from './js/onScroll';
