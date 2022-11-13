@@ -1,14 +1,14 @@
 import ApiServiselibrary from './js/API';
-//import { renderCardsLibrary } from './js/renderCards';
-//import { showModalLibrary } from './js/film-modal';
 import { onOpenTeamModal } from './js/team-modal.js';
-import { switcher } from './js/switcher';
+//import { switcher } from './js/switcher';
+import throttle from 'lodash.throttle';
 import { onQueuedBtn, onWatchedBtn } from './js/btnWatchedQueue.js';
 import { spiner, spinerRemove, noInfo } from './js/notifications';
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
 
 export const refs = {
+  body: document.querySelector('body'),
   cardHolderLibrary: document.querySelector('.card-holder'),
   footerLink: document.querySelector('.footer__link'),
   stickyHeaderMyLibrary: document.querySelector(
@@ -16,6 +16,10 @@ export const refs = {
   ),
   watchedBtn: document.querySelector('.js-watched'),
   queuedBtn: document.querySelector('.js-queue'),
+  //кнопки для свернутого хедера
+  watchedBtnSticky: document.querySelector('.js-watched__sticky'),
+  queuedBtnSticky: document.querySelector('.js-queue__sticky'),
+
   movieModal: document.querySelector('.js-movie-modal'),
 };
 
@@ -34,15 +38,24 @@ refs.cardHolderLibrary.addEventListener('click', onCardClick);
 refs.watchedBtn.addEventListener('click', onWatched);
 refs.queuedBtn.addEventListener('click', onQueued);
 refs.movieModal.addEventListener('click', onModalClick);
+//для свернутого хедера
+refs.watchedBtnSticky.addEventListener('click', onWatched);
+refs.queuedBtnSticky.addEventListener('click', onQueued);
 
 // Початкове завантаження
 onWatchedBtn();
 
 function onWatched(e) {
   if (e.target.classList.contains('my-library-header__button--current')) return;
-
-  e.target.classList.add('my-library-header__button--current');
+  //у нас две кнопки поэтому реализуем для обоих
+  //e.target.classList.add('my-library-header__button--current');
+  //для обычного хедера
+  refs.watchedBtn.classList.add('my-library-header__button--current');
   refs.queuedBtn.classList.remove('my-library-header__button--current');
+  //для свернутого хедера
+  refs.watchedBtnSticky.classList.add('my-library-header__button--current');
+  refs.queuedBtnSticky.classList.remove('my-library-header__button--current');
+
   refs.cardHolderLibrary.innerHTML = '';
   onWatchedBtn();
 }
@@ -50,8 +63,15 @@ function onWatched(e) {
 function onQueued(e) {
   if (e.target.classList.contains('my-library-header__button--current')) return;
 
-  e.target.classList.add('my-library-header__button--current');
+  //у нас две кнопки поэтому реализуем для обоих
+  //e.target.classList.add('my-library-header__button--current');
+  //для обычного хедера
+  refs.queuedBtn.classList.add('my-library-header__button--current');
   refs.watchedBtn.classList.remove('my-library-header__button--current');
+  //для свернутого хедера
+  refs.queuedBtnSticky.classList.add('my-library-header__button--current');
+  refs.watchedBtnSticky.classList.remove('my-library-header__button--current');
+
   refs.cardHolderLibrary.innerHTML = '';
   onQueuedBtn();
 }

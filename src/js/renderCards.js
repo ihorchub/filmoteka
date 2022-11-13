@@ -100,18 +100,18 @@ function getPosterPath(path) {
 
 function getMarkupImgPoster(original_language, poster_path, name, title) {
   if (original_language === 'ru') {
-    return `<img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${
+    return `<div class="film__item__poster"><img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${
       name || title
-    }" loading="lazy" />`;
+    }" loading="lazy" /></div>`;
   } else {
   }
   return poster_path
-    ? `<img src=" ${getPosterPath(poster_path)}" alt="${
-        name || title
-      }" loading="lazy" />`
-    : ``;
+    ? `<div class="film__item__poster"><img src=" ${getPosterPath(
+        poster_path
+      )}" alt="${name || title}" loading="lazy" /></div>`
+    : `<div class="film__item__poster"></div>`;
   // : `<picture  loading="lazy">
-  //       <source
+  //       <sourcejs-watched
   //         media="(min-width: 1280px)"
   //         srcset="
   //           ../images/card/default-poster-desktop.jpg    1x,
