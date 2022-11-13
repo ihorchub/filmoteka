@@ -79,15 +79,29 @@ function onModalClick(e) {
     e.target.classList.contains('add-watched') &&
     refs.watchedBtn.classList.contains('my-library-header__button--current')
   ) {
+    const cards = refs.cardHolderLibrary.children.length;
     refs.cardHolderLibrary.innerHTML = '';
-    onWatchedBtn();
+    onWatchedBtn(
+      Number(
+        document.querySelector('.pagination__item--current') && cards === 1
+          ? document.querySelector('.pagination__item--current').id - 1
+          : 0
+      )
+    );
   }
   if (
     e.target.classList.contains('add-queue') &&
     refs.queuedBtn.classList.contains('my-library-header__button--current')
   ) {
+    const cards = refs.cardHolderLibrary.children.length;
     refs.cardHolderLibrary.innerHTML = '';
-    onQueuedBtn();
+    onQueuedBtn(
+      Number(
+        document.querySelector('.pagination__item--current') && cards === 1
+          ? document.querySelector('.pagination__item--current').id - 1
+          : 0
+      )
+    );
   }
 }
 

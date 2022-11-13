@@ -16,7 +16,6 @@ let curPage = 1;
 const libPageSize = 18;
 
 export function onWatchedBtn(page = 0) {
-  console.log('w');
   if (page) curPage = page;
 
   img.classList.add('is-hidden');
@@ -35,7 +34,6 @@ export function onWatchedBtn(page = 0) {
 }
 
 export function onQueuedBtn(page = 0) {
-  console.log('q');
   if (page) curPage = page;
 
   img.classList.add('is-hidden');
