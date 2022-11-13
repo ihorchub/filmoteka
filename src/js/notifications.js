@@ -1,5 +1,5 @@
 // Варіант 1
-import { refs } from '../index';
+import { refs } from './refs';
 
 import Notiflix from 'notiflix';
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);

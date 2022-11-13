@@ -1,19 +1,16 @@
 // imports the local-storage function for the buttons in Movie Modal
 import { locStorage } from './local-storage';
 import { showBackdrop, closeBackdrop } from './backdrop.js'; // загальне керування бекдропом і скролом
+import {refs} from './refs'
 
-const filmModal = document.querySelector('.js-movie-modal');
-const filmModalMask = document.querySelector('.js-movie-modal-mask');
-const modalBody = document.querySelector('body');
-
-filmModalMask.addEventListener('click', closeModal);
+refs.filmModalMask.addEventListener('click', closeModal);
 
 export function showModal(data) {
   renderModal(data);
   const closeBtn = document.querySelector('.js-movie-modal__close-btn');
   closeBtn.addEventListener('click', closeModal);
-  filmModal.classList.remove('is-hidden');
-  // filmModalMask.classList.remove('is-hidden');
+  refs.filmModal.classList.remove('is-hidden');
+  // refs.refs.filmModalMask.classList.remove('is-hidden');
   showBackdrop();
   window.addEventListener('keydown', onEscKeyPress);
   // modalBody.style = 'overflow-y: hidden';
@@ -24,8 +21,8 @@ export function showModal(data) {
 
 function closeModal(e) {
   e.preventDefault();
-  filmModal.classList.add('is-hidden');
-  // filmModalMask.classList.add('is-hidden');
+  refs.filmModal.classList.add('is-hidden');
+  // refs.refs.filmModalMask.classList.add('is-hidden');
   closeBackdrop();
   window.removeEventListener('keydown', onEscKeyPress);
   // modalBody.style = 'overflow-y: overlay'; //overlay щоб не розширювалась сторінка
@@ -47,7 +44,7 @@ function getPosterImg(path, title) {
 }
 
 function renderModal(data) {
-  filmModal.innerHTML = `
+  refs.filmModal.innerHTML = `
     <div class="js-movie-modal__content">
         <button class = "js-movie-modal__close-btn">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

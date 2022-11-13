@@ -1,17 +1,18 @@
 import { apiServise } from '../index.js';
 import { renderCards } from './renderCards';
 import { spiner, spinerRemove, successPages } from './notifications.js';
+import {refs} from './refs'
 
 // const apiServise = new ApiServise();
-const pagination = document.querySelector('.pagination__container');
+
 // pagination.addEventListener('click', clickPaginetion);
 let firstPage = null;
 let endPage = null;
 
 export function getPagination(currentPage, lastPage, isLib = false) {
   if (!currentPage || lastPage === 1 || lastPage - currentPage < 0) {
-    pagination.style = `margin; 0`;
-    pagination.innerHTML = '';
+    refs.pagination.style = `margin; 0`;
+    refs.pagination.innerHTML = '';
     return;
   }
   firstPage = currentPage;
@@ -19,7 +20,7 @@ export function getPagination(currentPage, lastPage, isLib = false) {
 
   let pages = getPagesArray(currentPage, lastPage);
 
-  pagination.innerHTML = `<button class="pagination__left-btn on" type="button">
+  refs.pagination.innerHTML = `<button class="pagination__left-btn on" type="button">
     <svg>
     <path d="M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z"></path>
       </svg>
@@ -31,8 +32,8 @@ export function getPagination(currentPage, lastPage, isLib = false) {
   </svg>
   </button>`;
 
-  if (window.screen.width <= 768) pagination.style = `margin-bottom: 40px`;
-  else pagination.style = `margin-bottom: 60px`;
+  if (window.screen.width <= 768) refs.pagination.style = `margin-bottom: 40px`;
+  else refs.pagination.style = `margin-bottom: 60px`;
 
   if (currentPage === 1) {
     document.querySelector('.pagination__left-btn').classList.remove('on');
@@ -55,7 +56,7 @@ export function getPagination(currentPage, lastPage, isLib = false) {
       itemList[i].classList.add('pagination__item--current');
   }
 
-  if (!isLib) pagination.addEventListener('click', clickPaginetion);
+  if (!isLib) refs.pagination.addEventListener('click', clickPaginetion);
 }
 
 function renderLi(arr) {

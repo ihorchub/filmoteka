@@ -1,13 +1,12 @@
-const backdrop = document.querySelector('.js-movie-modal-mask');
-const body = document.querySelector('body');
+import { refs } from "./refs";
 
 export function showBackdrop() {
-  backdrop.classList.remove('is-hidden');
-  body.style = `overflow-y: hidden`;
+  refs.backdrop.classList.remove('is-hidden');
+  refs.body.style = `overflow-y: hidden`;
 }
 
 export function closeBackdrop() {
-  backdrop.classList.add('is-hidden');
-  backdrop.innerHTML = '';
-  body.style = `overflow-y: overlay`;
+  refs.backdrop.classList.add('is-hidden');
+  refs.backdrop.innerHTML = '';
+  refs.body.style = `overflow-y: overlay`;
 }

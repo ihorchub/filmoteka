@@ -1,6 +1,7 @@
 import { noTrailer, spiner, spinerRemove } from './notifications.js';
 import ApiServise from '../js/API.js';
 import { showBackdrop, closeBackdrop } from './backdrop.js';
+import { refs } from './refs.js';
 // import { showModal } from './film-modal.js';
 
 const api = new ApiServise();
@@ -8,7 +9,7 @@ const api = new ApiServise();
 const BASE_TRAILER_URL = 'https://www.youtube.com/embed/';
 // const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
 // const trailerBody = document.querySelector('body');
-const trailerBackdrop = document.querySelector('.js-movie-modal-mask');
+
 
 async function showTrailer(id) {
   let trailer = null;
@@ -45,7 +46,7 @@ async function showTrailer(id) {
 
 function renderPlayer(link = '') {
   if (link) {
-    trailerBackdrop.innerHTML = `<div class="container trailer__container">
+    refs.trailerBackdrop.innerHTML = `<div class="container trailer__container">
       <iframe
         class="trailer__player"
         src="${BASE_TRAILER_URL}${link}"
@@ -57,7 +58,7 @@ function renderPlayer(link = '') {
     </div>`;
 
     showBackdrop();
-    trailerBackdrop.addEventListener('click', closeTrailer);
+    refs.trailerBackdrop.addEventListener('click', closeTrailer);
     window.addEventListener('keydown', closeTrailer);
   } else {
     noTrailer();
@@ -71,7 +72,7 @@ function closeTrailer(e) {
     e.code === 'Escape'
   ) {
     closeBackdrop();
-    trailerBackdrop.removeEventListener('click', closeTrailer);
+    refs.trailerBackdrop.removeEventListener('click', closeTrailer);
     window.removeEventListener('keydown', closeTrailer);
   }
 }

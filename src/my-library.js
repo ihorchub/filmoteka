@@ -12,23 +12,7 @@ import {
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
 import { onSubmitScroll } from './js/onSubmit.js';
-
-export const refs = {
-  body: document.querySelector('body'),
-  cardHolderLibrary: document.querySelector('.card-holder'),
-  footerLink: document.querySelector('.footer__link'),
-  stickyHeaderMyLibrary: document.querySelector(
-    '.js-my-library-header__sticky'
-  ),
-  watchedBtn: document.querySelector('.js-watched'),
-  queuedBtn: document.querySelector('.js-queue'),
-  //кнопки для свернутого хедера
-  watchedBtnSticky: document.querySelector('.js-watched__sticky'),
-  queuedBtnSticky: document.querySelector('.js-queue__sticky'),
-
-  movieModal: document.querySelector('.js-movie-modal'),
-  pagination: document.querySelector('.pagination__container'),
-};
+import {refs} from './js/refs'
 
 const stickyMyLibrary = (window.onscroll = function showHeaderMyLibrary() {
   if (window.pageYOffset > 200) {

@@ -1,4 +1,4 @@
-import { refs } from '../index';
+import { refs } from './refs';
 import { getPagination } from './pagination';
 import { onSubmitScroll } from './onSubmit.js';
 

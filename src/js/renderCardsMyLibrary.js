@@ -1,4 +1,4 @@
-import { refs } from '../my-library';
+import { refs } from './refs';
 import {getMarkupImgPoster,getShortName,getGenresByID,getYear} from './renderCards'
 
 export function renderCards(obj) {

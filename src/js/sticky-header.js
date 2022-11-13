@@ -1,4 +1,4 @@
-import { refs } from '../index';
+import { refs } from './refs';
 
 export const stickyHeader = (window.onscroll = function showHeader() {
   if (window.pageYOffset > 200) {
