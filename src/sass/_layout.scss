@@ -162,6 +162,82 @@ body {
   }
 }
 
+.film__item__prytula{
+  position: relative;
+  max-width: 280px;
+   transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.02);
+  }
+  @media screen and (min-width: 768px) {
+display: none;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 395px;
+    display: block;
+  }
+
+  &__link {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    width: 280px;
+    height: 442px;
+  border-radius: 5px;
+    margin-bottom: 10px;
+
+    background-image: url('../images/card/prytula-mob.png');
+    @include retina {
+      background-image: url('../images/card/prytula-mob-x2.png');
+    }
+
+   
+    @include desktop {
+      width: 395px;
+      height: 634px;
+      background-image: url('../images/card/prytula-desktop.png');
+      @include retina {
+        background-image: url('../images/card/prytula-desktop-x2.png');
+      }
+    }
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+
+
+  & h2 {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 768px) {
+      line-height: 1.33;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+
+  & p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: #ff6b08;
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+}
+
 //=========footer=========
 .footer {
   background-color: #f7f7f7;

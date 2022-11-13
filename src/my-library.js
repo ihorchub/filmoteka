@@ -6,6 +6,7 @@ import { onQueuedBtn, onWatchedBtn } from './js/btnWatchedQueue.js';
 import { spiner, spinerRemove, noInfo } from './js/notifications';
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
+import { onSubmitScroll } from './js/onSubmit.js';
 
 export const refs = {
   body: document.querySelector('body'),
@@ -21,6 +22,7 @@ export const refs = {
   queuedBtnSticky: document.querySelector('.js-queue__sticky'),
 
   movieModal: document.querySelector('.js-movie-modal'),
+  pagination: document.querySelector('.pagination__container'),
 };
 
 const stickyMyLibrary = (window.onscroll = function showHeaderMyLibrary() {
@@ -42,6 +44,8 @@ refs.movieModal.addEventListener('click', onModalClick);
 refs.watchedBtnSticky.addEventListener('click', onWatched);
 refs.queuedBtnSticky.addEventListener('click', onQueued);
 
+refs.pagination.addEventListener('click', onPagination);
+
 // Початкове завантаження
 onWatchedBtn();
 
@@ -57,7 +61,7 @@ function onWatched(e) {
   refs.queuedBtnSticky.classList.remove('my-library-header__button--current');
 
   refs.cardHolderLibrary.innerHTML = '';
-  onWatchedBtn();
+  onWatchedBtn(1);
 }
 
 function onQueued(e) {
@@ -73,7 +77,7 @@ function onQueued(e) {
   refs.watchedBtnSticky.classList.remove('my-library-header__button--current');
 
   refs.cardHolderLibrary.innerHTML = '';
-  onQueuedBtn();
+  onQueuedBtn(1);
 }
 
 function onCardClick(e) {
@@ -96,14 +100,68 @@ function onModalClick(e) {
     e.target.classList.contains('add-watched') &&
     refs.watchedBtn.classList.contains('my-library-header__button--current')
   ) {
+    const cards = refs.cardHolderLibrary.children.length;
     refs.cardHolderLibrary.innerHTML = '';
-    onWatchedBtn();
+    onWatchedBtn(
+      Number(
+        document.querySelector('.pagination__item--current') && cards === 1
+          ? document.querySelector('.pagination__item--current').id - 1
+          : 0
+      )
+    );
   }
   if (
     e.target.classList.contains('add-queue') &&
     refs.queuedBtn.classList.contains('my-library-header__button--current')
   ) {
+    const cards = refs.cardHolderLibrary.children.length;
     refs.cardHolderLibrary.innerHTML = '';
-    onQueuedBtn();
+    onQueuedBtn(
+      Number(
+        document.querySelector('.pagination__item--current') && cards === 1
+          ? document.querySelector('.pagination__item--current').id - 1
+          : 0
+      )
+    );
+  }
+}
+
+// Відстежування пагінації
+function onPagination(e) {
+  if (e.target === e.currentTarget || e.target.nodeName === 'UL') return;
+
+  let id = null;
+  if (
+    e.target.nodeName === 'svg' ||
+    e.target.nodeName === 'BUTTON' ||
+    e.target.nodeName === 'path'
+  ) {
+    if (
+      e.target.closest('button').classList.contains('pagination__left-btn') &&
+      e.target.closest('button').classList.contains('on')
+    )
+      id = Number(document.querySelector('.pagination__item--current').id) - 1;
+    else if (
+      e.target.closest('button').classList.contains('pagination__right-btn') &&
+      e.target.closest('button').classList.contains('on')
+    )
+      id = Number(document.querySelector('.pagination__item--current').id) + 1;
+    else return;
+  } else {
+    if (!isNaN(e.target.closest('li').id))
+      id = Number(e.target.closest('li').id);
+    else if (e.target.closest('li').id === '...')
+      return apiServise.query ? successPages(1, 1) : successPages(1);
+    else return;
+  }
+
+  if (
+    refs.watchedBtn.classList.contains('my-library-header__button--current')
+  ) {
+    onSubmitScroll();
+    onWatchedBtn(id);
+  } else {
+    onSubmitScroll();
+    onQueuedBtn(id);
   }
 }
