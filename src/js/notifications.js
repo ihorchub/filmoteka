@@ -13,22 +13,15 @@ export function success(totalMovies, query) {
 }
 
 // Функція для крапок пагінації
-export function successPages(total, query = '') {
-  Notiflix.Notify.success(
-    query
-      ? `Hooray we found ${total} pages for ${query}`
-      : `Hooray we found ${total} popular pages`,
-    {
-      timeout: 4000,
-    }
-  );
+export function successPages() {
+  Notiflix.Notify.success(`Hooray, you clicked on the there dots!`);
 }
 
-export function successPagesLib(total) {
-  Notiflix.Notify.success(`You have ${total} pages`, {
-    timeout: 4000,
-  });
-}
+// export function successPagesLib(total) {
+//   Notiflix.Notify.success(`You have ${total} pages`, {
+//     timeout: 4000,
+//   });
+// }
 
 export function failure() {
   Notiflix.Notify.failure('Sorry, no matches found for your search query!', {

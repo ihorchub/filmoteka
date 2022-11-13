@@ -3,12 +3,7 @@ import { onOpenTeamModal } from './js/team-modal.js';
 //import { switcher } from './js/switcher';
 import throttle from 'lodash.throttle';
 import { onQueuedBtn, onWatchedBtn } from './js/btnWatchedQueue.js';
-import {
-  spiner,
-  spinerRemove,
-  noInfo,
-  successPagesLib,
-} from './js/notifications';
+import { spiner, spinerRemove, noInfo, successPages } from './js/notifications';
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
 import { onSubmitScroll } from './js/onSubmit.js';
@@ -159,10 +154,7 @@ function onPagination(e) {
   } else {
     if (!isNaN(e.target.closest('li').id))
       id = Number(e.target.closest('li').id);
-    else if (e.target.closest('li').id === '...')
-      return successPagesLib(
-        document.querySelector('.pagination__list').lastChild.id
-      );
+    else if (e.target.closest('li').id === '...') return successPages();
     else return;
   }
 
