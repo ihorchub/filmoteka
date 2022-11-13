@@ -30,7 +30,7 @@ export function renderCards(data) {
         }
       )
       .join('') +
-    `<li class="film__item__prytula"><a href="https://prytulafoundation.org/" target="blank" class="film__item__prytula__link">
+    `<li class="film__item__prytula"><a onclick="event.stopPropagation()" href="https://prytulafoundation.org/" target="blank" class="film__item__prytula__link">
                   <h2>SUPPORT UKRAINE</h2>
                   <p>Support the Defense Forces of Ukraine</p>
                 </a>
