@@ -9,7 +9,12 @@ import {
   spiner,
   spinerRemove,
 } from './notifications';
+<<<<<<< Updated upstream
+import {refs} from '../index.js'
+=======
+import { refs } from '../index';
 
+>>>>>>> Stashed changes
 // const apiServise = new ApiServise();
 
 let value = null;

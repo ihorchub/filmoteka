@@ -1,6 +1,7 @@
 import { refs } from '../index';
-
+import { onSubmitScroll } from './onSubmit';
 import Notiflix from 'notiflix';
+import {pagination} from "./pagination"
 
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);
 export function success(totalMovies, query) {
@@ -114,6 +115,9 @@ export function ruAllert() {
       timeout: 4000,
     };
 }
+
+let timerId = null
+
 // Оповіщення про видалення і блокування контенту
 export function ruDelete() {
   Notiflix.Report.failure(
@@ -129,6 +133,12 @@ ruRepeatMessage
     });
   refs.ruBackdrop.classList.toggle('is-hidden');
   refs.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    pagination.style.display = "none"
+    refs.cardHolder.innerHTML = "";
+    refs.ruCorablBanner.style.display = "block"
+    clearInterval(timerId)
+  }, 15000);
 }
 
 function ruRepeatMessage() {
@@ -137,7 +147,8 @@ function ruRepeatMessage() {
     cssAnimationStyle: getRandomAnimationElement(animations),
     timeout: 700,
   });
-  setTimeout(ruRepeatMessage, 700);
+   onSubmitScroll();
+ timerId = setTimeout(ruRepeatMessage, 700);
 }
 
 const positions = [

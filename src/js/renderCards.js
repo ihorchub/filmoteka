@@ -35,12 +35,17 @@ export function renderCards({ data }) {
                 </a>
               </li>`;
 
+  refs.prytulaBannerTab.innerHTML = `<div class="film__item__prytula__tab">
+  <a onclick="event.stopPropagation()" href="https://prytulafoundation.org/" target="blank" class="film__item__prytula__tab__link">
+  <a onclick="event.stopPropagation()" href="https://prytulafoundation.org/" target="blank">
+                 <h2>SUPPORT UKRAINE</h2>
+                  <p>Support the Defense Forces of Ukraine</p>
+                  </a>
+                  </a>
+                </div>
+                `;
   onSubmitScroll();
-  
   getPagination(data.page, data.total_pages);
-
-  // running the function that stores data to session storage (all except first one)
-  sessionStorageAction(data);
 }
 
 const genreIdName = [
@@ -156,11 +161,11 @@ function getPosterPath(path) {
 // }
 
 // function that stores data to session storage (all except first one)
-function sessionStorageAction({ results }) {
-  let sessionListShift = [];
+// function sessionStorageAction({ results }) {
+//   let sessionListShift = [];
 
-  let sessionList = results;
-  sessionListShift = sessionList.shift();
+//   let sessionList = results;
+//   sessionListShift = sessionList.shift();
 
-  sessionStorage.setItem('all-except-first', JSON.stringify(sessionList));
-}
+//   sessionStorage.setItem('all-except-first', JSON.stringify(sessionList));
+// }
