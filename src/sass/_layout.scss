@@ -150,6 +150,97 @@ body {
   }
 }
 
+.film__item__prytula{
+  text-align: center;
+  pointer-events: none;
+  position: relative;
+  max-width: 280px;
+
+  @media screen and (min-width: 768px) {
+display: none;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 395px;
+    display: block;
+  }
+
+  &__link {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    width: 280px;
+    height: 442px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    background-image: url('../images/card/prytula-mob.jpg');
+    @include retina {
+      background-image: url('../images/card/prytula-mob-x2.jpg');
+    }
+
+   
+    @include desktop {
+      width: 395px;
+      height: 634px;
+      background-image: url('../images/card/prytula-desktop.jpg');
+      @include retina {
+        background-image: url('../images/card/prytula-desktop-x2.jpg');
+      }
+    }
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  & img {
+    width: 280px;
+    height: 402px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    @media screen and (min-width: 768px) {
+     
+      width: 336px;
+      height: 455px;
+    }
+
+    @media screen and (min-width: 1280px) {
+     
+      width: 395px;
+      height: 574px;
+    }
+  }
+
+  & h2 {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: uppercase;
+    color: #000000;
+
+    @media screen and (min-width: 768px) {
+      line-height: 1.33;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+
+  & p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: #ff6b08;
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+}
+
 //=========footer=========
 .footer {
   background-color: #f7f7f7;
