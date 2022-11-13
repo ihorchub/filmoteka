@@ -154,7 +154,10 @@ function onPagination(e) {
   } else {
     if (!isNaN(e.target.closest('li').id))
       id = Number(e.target.closest('li').id);
-    else if (e.target.closest('li').id === '...') return successPages();
+    else if (e.target.closest('li').id == '+')
+      id = Number(document.querySelector('.pagination__item--current').id) + 3;
+    else if (e.target.closest('li').id == '-')
+      id = Number(document.querySelector('.pagination__item--current').id) - 3;
     else return;
   }
 
