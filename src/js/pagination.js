@@ -59,12 +59,23 @@ export function getPagination(currentPage, lastPage, isLib = false) {
 }
 
 function renderLi(arr) {
-  return arr.reduce(
-    (acc, item) =>
-      acc +
-      `<li class="pagination__item pagination__on" id='${item}'>${item}</li>`,
-    ''
-  );
+  return arr.reduce((acc, item) => {
+    if (item === '+')
+      return (
+        acc +
+        `<li class="pagination__item pagination__on" id='${item}'>...</li>`
+      );
+    else if (item === '-')
+      return (
+        acc +
+        `<li class="pagination__item pagination__on" id='${item}'>...</li>`
+      );
+    else
+      return (
+        acc +
+        `<li class="pagination__item pagination__on" id='${item}'>${item}</li>`
+      );
+  }, '');
 }
 
 function getPagesArray(currentPage, lastPage) {
@@ -108,23 +119,23 @@ function getPagesArray(currentPage, lastPage) {
   else if (lastPage - currentPage >= 5 && currentPage >= 6)
     result = [
       1,
-      '...',
+      '-',
       currentPage - 2,
       currentPage - 1,
       currentPage,
       currentPage + 1,
       currentPage + 2,
-      '...',
+      '+',
       lastPage,
     ];
   else if (lastPage - currentPage >= 5 && currentPage <= 5) {
     for (let j = 0; j < 7; j++) result.push(j + 1);
 
-    result.push('...');
+    result.push('+');
     result.push(lastPage);
   } else {
     result.push(1);
-    result.push('...');
+    result.push('-');
     for (let i = 6; i > 0; i--) result.push(lastPage - i);
     result.push(lastPage);
   }
@@ -154,10 +165,8 @@ function clickPaginetion(e) {
     else return;
   } else {
     if (!isNaN(e.target.closest('li').id)) id = e.target.closest('li').id;
-    else if (e.target.closest('li').id === '...')
-      return apiServise.query
-        ? successPages(endPage, apiServise.query)
-        : successPages(endPage);
+    else if (e.target.closest('li').id == '+') id = firstPage + 3;
+    else if (e.target.closest('li').id == '-') id = firstPage - 3;
     else return;
   }
   spiner();
