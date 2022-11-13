@@ -52,6 +52,7 @@ export function onSubmit(e) {
     refs.cardHolder.innerHTML = '';
     renderCards(data)
   })
+}
 
 export function onSubmitScroll() {
   window.scroll({
