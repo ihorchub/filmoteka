@@ -13,7 +13,7 @@ const QUEUE = 'movies-queue';
 const img = document.querySelector('.empty__page');
 const text = document.querySelector('.empty__page-text');
 let curPage = 1;
-const libPageSize = 1;
+const libPageSize = 18;
 
 export function onWatchedBtn(page = 0) {
   if (page) curPage = page;
