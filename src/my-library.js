@@ -66,6 +66,8 @@ function onWatched(e) {
   refs.queuedBtnSticky.classList.remove('my-library-header__button--current');
 
   refs.cardHolderLibrary.innerHTML = '';
+  refs.pagination.innerHTML = '';
+  onSubmitScroll();
   onWatchedBtn(1);
 }
 
@@ -82,6 +84,8 @@ function onQueued(e) {
   refs.watchedBtnSticky.classList.remove('my-library-header__button--current');
 
   refs.cardHolderLibrary.innerHTML = '';
+  refs.pagination.innerHTML = '';
+  onSubmitScroll();
   onQueuedBtn(1);
 }
 
