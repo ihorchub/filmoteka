@@ -42,7 +42,7 @@ export function onSubmit(e) {
   value = e.target.elements[0].value.trim();
 
   if (e.target.elements[0].value === '') {
-    return
+    return;
   }
 
   onSubmitScroll();
