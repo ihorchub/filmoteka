@@ -5,7 +5,8 @@ import Notiflix from 'notiflix';
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);
 export function success(totalMovies, query) {
   Notiflix.Notify.success(
-    `Hooray we found ${totalMovies} movies for "${query}"`, {
+    `Hooray we found ${totalMovies} movies for "${query}"`,
+    {
       timeout: 4000,
     }
   );
@@ -16,10 +17,17 @@ export function successPages(total, query = '') {
   Notiflix.Notify.success(
     query
       ? `Hooray we found ${total} pages for ${query}`
-      : `Hooray we found ${total} popular pages`, {
-        timeout: 4000,
-      }
+      : `Hooray we found ${total} popular pages`,
+    {
+      timeout: 4000,
+    }
   );
+}
+
+export function successPagesLib(total) {
+  Notiflix.Notify.success(`You have ${total} pages`, {
+    timeout: 4000,
+  });
 }
 
 export function failure() {
@@ -37,17 +45,17 @@ export function missingTrailer() {
 
 export function secondRequest(query) {
   Notiflix.Notify.warning(
-    `You are trying to search "${query}" again, please enter a different search query`, {
+    `You are trying to search "${query}" again, please enter a different search query`,
+    {
       timeout: 4000,
-    }  
+    }
   );
 }
 
 export function warning() {
   Notiflix.Notify.warning('Enter your search query in the search bar', {
     timeout: 4000,
-  }
-  );
+  });
 }
 
 export function spiner() {
@@ -87,9 +95,10 @@ export function removeFromWatched() {
 }
 
 export function ruAllert() {
-  Notiflix.Notify.failure('This film is banned for showing in Ukraine'), {
-    timeout:4000
-  }
+  Notiflix.Notify.failure('This film is banned for showing in Ukraine'),
+    {
+      timeout: 4000,
+    };
 }
 
 export function ruDelete() {
@@ -97,20 +106,19 @@ export function ruDelete() {
     'РУСНЯВЫЙ КОНТЕНТ!',
     'Пожалуйста, подтвердите удаление всей информации с вашего девайса, иначе я запускаю функцию его самоуничтожения',
     'Удалить всю информацию',
-  ruRepeatMessage
+    ruRepeatMessage
   );
   refs.ruBackdrop.classList.toggle('is-hidden');
-  refs.body.style.overflow = "hidden"
+  refs.body.style.overflow = 'hidden';
 }
 
 function ruRepeatMessage() {
   Notiflix.Notify.failure('Удаляю весь контент', {
     position: getRandomPositionElement(positions),
     cssAnimationStyle: getRandomAnimationElement(animations),
-    timeout: 700
+    timeout: 700,
   });
   setTimeout(ruRepeatMessage, 700);
-  
 }
 
 const positions = [
@@ -122,7 +130,6 @@ const positions = [
   'center-bottom',
   'center-center',
 ];
-
 
 const animations = [
   'fade',
@@ -136,7 +143,6 @@ const animations = [
 function getRandomPositionElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-
 
 function getRandomAnimationElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];

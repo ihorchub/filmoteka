@@ -1,5 +1,5 @@
 import { renderCards } from './renderCardsMyLibrary';
-import { spiner, spinerRemove, noInfo } from '../js/notifications';
+import { spiner, spinerRemove, successPagesLib } from '../js/notifications';
 import { getPagination } from './pagination';
 
 // const watchedBtn = document.querySelector('.js-watched');
@@ -13,10 +13,9 @@ const QUEUE = 'movies-queue';
 const img = document.querySelector('.empty__page');
 const text = document.querySelector('.empty__page-text');
 let curPage = 1;
-const libPageSize = 18;
+const libPageSize = 1;
 
 export function onWatchedBtn(page = 0) {
-  console.log('w');
   if (page) curPage = page;
 
   img.classList.add('is-hidden');
@@ -35,7 +34,6 @@ export function onWatchedBtn(page = 0) {
 }
 
 export function onQueuedBtn(page = 0) {
-  console.log('q');
   if (page) curPage = page;
 
   img.classList.add('is-hidden');

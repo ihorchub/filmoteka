@@ -126,7 +126,7 @@ function getPosterPath(path) {
 };
 
   // : `<picture  loading="lazy">
-  //       <source
+  //       <sourcejs-watched
   //         media="(min-width: 1280px)"
   //         srcset="
   //           ../images/card/default-poster-desktop.jpg    1x,
