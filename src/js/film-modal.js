@@ -1,44 +1,34 @@
+// imports the local-storage function for the buttons in Movie Modal
+import { locStorage } from './local-storage';
+import { showBackdrop, closeBackdrop } from './backdrop.js'; // загальне керування бекдропом і скролом
+
 const filmModal = document.querySelector('.js-movie-modal');
 const filmModalMask = document.querySelector('.js-movie-modal-mask');
+const modalBody = document.querySelector('body');
 
 filmModalMask.addEventListener('click', closeModal);
-
-const moviesQueue = [];
-const moviesWatched = [];
 
 export function showModal(data) {
   renderModal(data);
   const closeBtn = document.querySelector('.js-movie-modal__close-btn');
   closeBtn.addEventListener('click', closeModal);
   filmModal.classList.remove('is-hidden');
-  filmModalMask.classList.remove('is-hidden');
+  // filmModalMask.classList.remove('is-hidden');
+  showBackdrop();
   window.addEventListener('keydown', onEscKeyPress);
+  // modalBody.style = 'overflow-y: hidden';
 
-  const addQueueRef = document.querySelector('.add-queue');
-  const addWatched = document.querySelector('.add-watched');
-
-  addQueueRef.addEventListener('click', onQueueClick);
-  function onQueueClick() {
-    if (!moviesQueue.find(item => item.id === data.id)) {
-      moviesQueue.push(data);
-      localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
-    }
-  }
-
-  addWatched.addEventListener('click', onWatchedClick);
-  function onWatchedClick() {
-    if (!moviesWatched.find(item => item.id === data.id)) {
-      moviesWatched.push(data);
-      localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
-    }
-  }
+  //launch local storage function (in a separage file)
+  locStorage(data);
 }
 
 function closeModal(e) {
   e.preventDefault();
   filmModal.classList.add('is-hidden');
-  filmModalMask.classList.add('is-hidden');
+  // filmModalMask.classList.add('is-hidden');
+  closeBackdrop();
   window.removeEventListener('keydown', onEscKeyPress);
+  // modalBody.style = 'overflow-y: overlay'; //overlay щоб не розширювалась сторінка
 }
 
 function onEscKeyPress(e) {
@@ -50,10 +40,10 @@ function onEscKeyPress(e) {
   }
 }
 
-function getPosterPath(path) {
-  return path
-    ? `https://www.themoviedb.org/t/p/w500${path}`
-    : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
+function getPosterImg(path, title) {
+  if (!path) return '';
+  const posterPath = `https://www.themoviedb.org/t/p/w500${path}`;
+  return `<img class = "js-movie-modal__img" src="${posterPath}" alt="${title}">`;
 }
 
 function renderModal(data) {
@@ -66,9 +56,7 @@ function renderModal(data) {
         </svg>              
         </button>
         <div class="js-movie-modal__poster">
-            <img class = "js-movie-modal__img" src="${getPosterPath(
-              data.poster_path
-            )}" alt="movie-poster">
+            ${getPosterImg(data.poster_path, data.title)}
         </div>
         <div class="movie-modal__info-about">
             <h1 class="js-movie-modal__title">${data.title}</h1>

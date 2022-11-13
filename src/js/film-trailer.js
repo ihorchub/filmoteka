@@ -1,35 +1,50 @@
-const axios = require('axios').default;
+import { noTrailer, spiner, spinerRemove } from './notifications.js';
+import ApiServise from '../js/API.js';
+import { showBackdrop, closeBackdrop } from './backdrop.js';
+// import { showModal } from './film-modal.js';
+
+const api = new ApiServise();
+// const axios = require('axios').default;
 const BASE_TRAILER_URL = 'https://www.youtube.com/embed/';
-const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
-const trailerBody = document.querySelector('body');
+// const TRAILER_API_KEY = '411d08d89a4569fb1b50aec07ee6fb72';
+// const trailerBody = document.querySelector('body');
 const trailerBackdrop = document.querySelector('.js-movie-modal-mask');
 
 async function showTrailer(id) {
   let trailer = null;
 
+  // Отримання даних
   try {
-    trailer = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TRAILER_API_KEY}`
-    );
+    spiner();
+    api.movieId = id;
+    trailer = await api.fetchOnMovie();
   } catch (error) {
     return renderPlayer();
+  } finally {
+    spinerRemove();
   }
 
-  const officialTrailer = trailer.data.results.filter(
-    item => item.name.includes('Trailer') || item.name.includes('trailer')
-  );
+  // Фільтрація по ключовому слову
+  let officialTrailer = [];
+  if (trailer?.data?.results?.length)
+    officialTrailer = trailer.data.results.filter(item =>
+      item.name.toLowerCase().includes('trailer')
+    );
 
+  // Рендер трейлера в залежності чи знайдено саме відео трейлера
   if (officialTrailer.length && officialTrailer[0].key)
     return renderPlayer(officialTrailer[0].key);
 
-  if (trailer.data.results.length && trailer.data.results[0].key)
+  // Рендер будь якого знайденого відео
+  if (trailer?.data?.results?.[0]?.key)
     return renderPlayer(trailer.data.results[0].key);
 
+  // Перевірки не дали результату, рендериться помилка
   renderPlayer();
 }
 
 function renderPlayer(link = '') {
-  if (link)
+  if (link) {
     trailerBackdrop.innerHTML = `<div class="container trailer__container">
       <iframe
         class="trailer__player"
@@ -40,25 +55,24 @@ function renderPlayer(link = '') {
         ></iframe
       >
     </div>`;
-  else
-    trailerBackdrop.innerHTML = `<div class="container trailer__container">
-      <div class="trailer__info">Trailer not found</div>
-    </div>`;
 
-  trailerBackdrop.classList.remove('is-hidden');
-  trailerBody.style = `height: 100%; overflow-y: hidden`;
-  trailerBackdrop.addEventListener('click', closeTrailer);
+    showBackdrop();
+    trailerBackdrop.addEventListener('click', closeTrailer);
+    window.addEventListener('keydown', closeTrailer);
+  } else {
+    noTrailer();
+  }
 }
 
 function closeTrailer(e) {
   if (
-    e.target.classList.contains('trailer__wrap') ||
-    e.target.classList.contains('container')
+    e.target.classList.contains('js-movie-modal-mask') ||
+    e.target.classList.contains('container') ||
+    e.code === 'Escape'
   ) {
-    trailerBackdrop.classList.add('is-hidden');
-    trailerBackdrop.innerHTML = '';
-    trailerBody.style = ``;
+    closeBackdrop();
     trailerBackdrop.removeEventListener('click', closeTrailer);
+    window.removeEventListener('keydown', closeTrailer);
   }
 }
 

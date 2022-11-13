@@ -1,3 +1,8 @@
+//перенес выше чтобы был ниже приоритет и при срабатываниии переопределились свойства
+.js-my-library-header__sticky {
+  display: none;
+}
+
 .my-library-header {
   //display: none;
   padding-top: 40px;
@@ -40,151 +45,235 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
-}
 
-.my-library-header__container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  // padding-top: 40px;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.my-library-header__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  fill: currentColor;
-}
-
-.my-library-header__logo {
-  display: flex;
-  align-items: center;
-  transition-property: filter, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  color: #ffffff;
-  &:hover,
-  &:focus {
-    color: #ff6b02;
-  }
-}
-
-.my-library-header__name {
-  display: none;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 35px;
-  align-items: center;
-  text-align: center;
-  margin-left: 10px;
-  color: currentColor;
-  @include mobile {
+  &__container {
     display: flex;
-  }
-}
-
-.my-library-header__links__list {
-  display: flex;
-  margin-left: auto;
-}
-
-.my-library-header__links__item {
-  margin-right: 40px;
-  &:last-child {
-    margin-right: 0;
-  }
-  &.--current {
-    border-bottom: 3px solid #ff001b;
-  }
-}
-
-.my-library-header__links__link {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-  color: #ffffff;
-  &:hover,
-  &:focus {
-    color: #ff6b02;
-  }
-}
-
-.my-library-header__buttons-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  @include tablet {
-    gap: 32px;
-  }
-  @include desktop {
-    gap: 16px;
-  }
-}
-
-.my-library-header__button {
-  background-color: transparent;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  width: 130px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-  color: #ffffff;
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-
-  min-width: 130px;
-
-  &.--current {
-    border: 1px solid #ff6b02;
-    background-color: #ff6b02;
+    align-items: center;
+    margin-bottom: 40px;
+    // padding-top: 40px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    &__sticky {
+      justify-content: space-between;
+      gap: 4px;
+    }
   }
 
-  @include tablet {
-    min-width: 152px;
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: currentColor;
   }
 
-  @include desktop {
-    min-width: 147px;
+  &__logo {
+    display: flex;
+    align-items: center;
+    transition-property: filter, color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    color: #ffffff;
+    flex-grow: 1;
+    &:hover,
+    &:focus {
+      color: #ff6b02;
+    }
   }
-}
 
-.js-my-library-header__sticky {
-  display: none;
-}
+  &__name {
+    display: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+    color: currentColor;
+    @include mobile {
+      display: flex;
+    }
+  }
 
-.my-library-header__sticky {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  width: 100%;
-  display: block;
-  position: fixed;
-  z-index: 100;
-  background-image: linear-gradient(rgba(255, 0, 27, 0.7), rgba(0, 0, 0, 0.7));
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  animation-name: show_header;
-  animation-duration: 500ms;
-  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  &__links {
+    &__list {
+      display: flex;
+      margin-left: auto;
+      &__sticky {
+        margin-left: 0;
+        display: flex;
+        flex-grow: 1;
+      }
+    }
+    &__link {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      text-transform: uppercase;
+      color: #ffffff;
+      &:hover,
+      &:focus {
+        color: #ff6b02;
+      }
+    }
+    &__item {
+      margin-right: 40px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &.--current {
+        border-bottom: 3px solid #ff001b;
+      }
+      &__sticky {
+        margin-right: 8px;
+        @include mobile {
+          margin-right: 20px;
+        }
+        @include tablet {
+          margin-right: 40px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        &.--current {
+          border-bottom: 3px solid #ff001b;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    &__sticky {
+      flex-grow: 5;
+    }
+  }
+
+  &__buttons-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    @include tablet {
+      gap: 32px;
+    }
+    @include desktop {
+      gap: 16px;
+    }
+    &__sticky {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
+  &__buttons-item {
+    &__sticky {
+      flex-basis: 157px;
+      justify-content: center;
+    }
+  }
+
+  &__button {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    width: 130px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+
+    min-width: 60px;
+
+    // заменить
+    // &.--current {
+    //   border: 1px solid #ff6b02;
+    //   background-color: #ff6b02;
+    // }
+    &--current {
+      background-color: #ff6b01;
+      border: none;
+      filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+    }
+
+    // оставить для правильной работы кнопок
+    &:hover,
+    &:focus {
+      color: #fff;
+      box-shadow: none;
+      cursor: pointer;
+      background-color: #ff6b08;
+      border: 1px solid #ff6b08;
+    }
+
+    @include tablet {
+      min-width: 152px;
+    }
+
+    @include desktop {
+      min-width: 147px;
+    }
+    &__sticky {
+      height: 22px;
+      min-width: 60px;
+      flex-basis: 60px;
+      width: 100%;
+      flex-grow: 1;
+
+      @include tablet {
+        max-width: 152px;
+      }
+
+      @include desktop {
+        max-width: 147px;
+      }
+    }
+  }
+  &__sticky {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    display: block;
+    position: fixed;
+    z-index: 100;
+    background-image: linear-gradient(
+      rgba(255, 0, 27, 0.7),
+      rgba(0, 0, 0, 0.7)
+    );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    animation-name: show_header;
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &__container__sticky {
+    display: flex;
+    align-items: center;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @keyframes show_header {
@@ -195,28 +284,5 @@
   100% {
     opacity: 1;
     top: 0;
-  }
-}
-
-.my-library-header__container__sticky {
-  display: flex;
-  align-items: center;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.my-library-header__links__item__sticky {
-  margin-right: 15px;
-  @media screen and(min-width:480px) {
-    margin-right: 40px;
-  }
-  &:last-child {
-    margin-right: 0;
-  }
-  &.--current {
-    border-bottom: 3px solid #ff001b;
   }
 }
