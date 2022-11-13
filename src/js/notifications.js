@@ -1,13 +1,13 @@
-// Варіант 1
 import { refs } from '../index';
 
 import Notiflix from 'notiflix';
+
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);
 export function success(totalMovies, query) {
   Notiflix.Notify.success(
     `Hooray we found ${totalMovies} movies for "${query}"`,
     {
-      timeout: 4000,
+    timeout: 4000,
     }
   );
 }
@@ -23,18 +23,21 @@ export function successPages() {
 //   });
 // }
 
+// Функції пошуку фільму
 export function failure() {
-  Notiflix.Notify.failure('Sorry, no matches found for your search query!', {
+  Notiflix.Notify.failure('Sorry, no matches found for your search query!',
+    {
     timeout: 4000,
-  });
-}
-export function missingTrailer() {
-  Notiflix.Report.info(
-    'Missing Trailer!',
-    'Unfortunately the trailer was lost in the vastness of the space',
-    'Thanks'
+  }
   );
 }
+// export function missingTrailer() {
+//   Notiflix.Report.info(
+//     'Missing Trailer!',
+//     'Unfortunately the trailer was lost in the vastness of the space',
+//     'Thanks'
+//   );
+// }
 
 export function secondRequest(query) {
   Notiflix.Notify.warning(
@@ -46,61 +49,84 @@ export function secondRequest(query) {
 }
 
 export function warning() {
-  Notiflix.Notify.warning('Enter your search query in the search bar', {
+  Notiflix.Notify.warning('Enter your search query in the search bar',
+    {
     timeout: 4000,
-  });
+    }
+  );
 }
-
+// Функція запуску спінера
 export function spiner() {
-  Notiflix.Loading.circle({
+  Notiflix.Loading.circle(
+    {
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
-  });
+  }
+  );
 }
-
+// Функція припинення спінера
 export function spinerRemove() {
   Notiflix.Loading.remove();
 }
-
+// Функція "інфи про фільм не знайдено"
 export function noInfo() {
   Notiflix.Notify.failure('Info about this movie not found');
 }
-
+// Функція "трейлер не знайдено"
 export function noTrailer() {
   Notiflix.Notify.failure('Trailer not found');
 }
 
-// Додати 4 функціїї додано і видалено до черги та переглянутих
-
+// Функція "додано фільм вчергу"
 export function addToWatchQueue() {
   Notiflix.Notify.info('The movie has been added to the queue');
 }
-
+// Функція "видалено фільм з черги"
 export function removeFromQueue() {
-  Notiflix.Notify.warning('The movie has been removed from the queue');
+  Notiflix.Notify.info('The movie has been removed from the queue');
 }
 
+export function infoRemoveFromQueue() {
+Notiflix.Report.info('Removing the movie',
+'You delete a movie from the queue',
+'Okay',
+  );
+}
+
+// Функція "додано фільм до перглянутих"
 export function addToWatched() {
   Notiflix.Notify.info('The movie has been added to watched');
 }
-
+// Функція "видалено фільм з переглянутих"
 export function removeFromWatched() {
-  Notiflix.Notify.warning('The movie has been removed from watched');
+  Notiflix.Notify.info('The movie has been removed from watched');
+}
+export function infoRemoveFromWatched() {
+Notiflix.Report.info('Removing the movie',
+'You delete a movie from the watched',
+'Okay',
+  );
 }
 
+// Оповіщення про заборону перегляду в Україні
 export function ruAllert() {
   Notiflix.Notify.failure('This film is banned for showing in Ukraine'),
     {
       timeout: 4000,
     };
 }
-
+// Оповіщення про видалення і блокування контенту
 export function ruDelete() {
   Notiflix.Report.failure(
-    'РУСНЯВЫЙ КОНТЕНТ!',
-    'Пожалуйста, подтвердите удаление всей информации с вашего девайса, иначе я запускаю функцию его самоуничтожения',
-    'Удалить всю информацию',
-    ruRepeatMessage
-  );
+    'ТА ТИ, СІ КУРВА, ВСПОКОЇШ ЧИ НЄ?!!',
+    'Вы не поняли спервого раза что данный контент заблокирован, значит вы - тупая РУСНЯ! Согласно закону Украины о русне вы получаете санкцию в виде страдания.Пожалуйста, для получения санкции подтвердите удаление всей информации с вашего девайса, иначе по истичению 15 минут запустится функция его самоуничтожения.Время пошло. (Ваш IP адрес, геолокация и персональные данные уже переданы СБУ.Даное действие вы можете оспорить в суде согласно Закону Украины) СЛАВА УКРАЇНІ!',
+    'Удалить всю информацию', {
+    titleFontSize: '20px',
+    messageFontSize: '16px',
+    messageMaxLength: 600,
+    messageFontSize: '16px',
+    buttonFontSize:'18px',    
+ruRepeatMessage
+    });
   refs.ruBackdrop.classList.toggle('is-hidden');
   refs.body.style.overflow = 'hidden';
 }
