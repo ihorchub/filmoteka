@@ -56,6 +56,11 @@
     margin-right: auto;
     padding-left: 20px;
     padding-right: 20px;
+    display: flex;
+    &__sticky {
+      justify-content: space-between;
+      gap: 4px;
+    }
   }
 
   &__icon {
@@ -72,6 +77,7 @@
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     color: #ffffff;
+    flex-grow: 1;
     &:hover,
     &:focus {
       color: #ff6b02;
@@ -97,6 +103,11 @@
     &__list {
       display: flex;
       margin-left: auto;
+      &__sticky {
+        margin-left: 0;
+        display: flex;
+        flex-grow: 1;
+      }
     }
     &__link {
       font-style: normal;
@@ -122,8 +133,11 @@
         border-bottom: 3px solid #ff001b;
       }
       &__sticky {
-        margin-right: 15px;
-        @media screen and(min-width:480px) {
+        margin-right: 8px;
+        @include mobile {
+          margin-right: 20px;
+        }
+        @include tablet {
           margin-right: 40px;
         }
         &:last-child {
@@ -133,6 +147,12 @@
           border-bottom: 3px solid #ff001b;
         }
       }
+    }
+  }
+
+  &__buttons {
+    &__sticky {
+      flex-grow: 5;
     }
   }
 
@@ -155,6 +175,13 @@
     }
   }
 
+  &__buttons-item {
+    &__sticky {
+      flex-basis: 157px;
+      justify-content: center;
+    }
+  }
+
   &__button {
     background-color: transparent;
     border: 1px solid #ffffff;
@@ -173,7 +200,7 @@
     font-size: 12px;
     line-height: 1.33;
 
-    min-width: 130px;
+    min-width: 60px;
 
     // заменить
     // &.--current {
@@ -205,6 +232,18 @@
     }
     &__sticky {
       height: 22px;
+      min-width: 60px;
+      flex-basis: 60px;
+      width: 100%;
+      flex-grow: 1;
+
+      @include tablet {
+        max-width: 152px;
+      }
+
+      @include desktop {
+        max-width: 147px;
+      }
     }
   }
   &__sticky {
