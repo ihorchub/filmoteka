@@ -7,25 +7,9 @@
   .footer {
     background-color: #000000;
   }
-  span[data-descr] {
-    cursor: help;
-  }
-  span[data-descr]:hover::after {
-    content: attr(data-descr);
-    position: absolute;
-    left: 0;
-    top: 24px;
-    min-width: 100px;
-    border: 1px #aaaaaa solid;
-    border-radius: 10px;
-    background-color: #f9e400;
-    padding: 10px;
-    color: #000000;
-    font-size: 15px;
-    z-index: 1;
-  }
+
   .js-movie-modal {
-    background-color: #000000;
+    background-color: #3b4145;
     color: #fff;
   }
   .pagination__item--current {
@@ -68,15 +52,15 @@
 
 .material-icons {
   position: absolute;
-  top: 85px;
+  top: 75px;
   // right: 20px;
   // display: flex;
   // width: 30px;
-  max-width: 1280px;
+  max-width: 1100px;
+
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  right: 80px;
   background: #2a2c2d;
   flex-direction: column;
   justify-content: center;
@@ -93,4 +77,17 @@
   &:focus {
     color: #ff6b01;
   }
+}
+span[title] {
+  cursor: help;
+}
+span[title]:hover::after {
+  position: absolute;
+
+  top: 24px;
+
+  border: 1px #c50303 solid;
+  border-radius: 10px;
+
+  font-size: 20px;
 }
