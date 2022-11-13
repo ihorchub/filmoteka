@@ -3,6 +3,8 @@ import {
   removeFromWatched,
   addToWatchQueue,
   removeFromQueue,
+  infoRemoveFromQueue,
+  infoRemoveFromWatched,
 } from './notifications';
 
 // function launches when the movie modal opens functioin "showModal()" from film-modal.js
@@ -60,6 +62,7 @@ export function locStorage(data) {
     const res = addWatchedRef.classList.toggle('js-remove-from');
     addWatchedRef.textContent = `${res ? 'remove from' : 'add to'} watched `;
 
+    infoRemoveFromWatched();
     removeFromWatched();
   }
 
@@ -85,6 +88,7 @@ export function locStorage(data) {
     const res = addQueueRef.classList.toggle('js-remove-from');
     addQueueRef.textContent = `${res ? 'remove from' : 'add to'} queue `;
 
+    infoRemoveFromQueue();
     removeFromQueue();
   }
 }
