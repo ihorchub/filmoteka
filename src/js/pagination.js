@@ -4,11 +4,11 @@ import { spiner, spinerRemove, successPages } from './notifications.js';
 
 // const apiServise = new ApiServise();
 const pagination = document.querySelector('.pagination__container');
-pagination.addEventListener('click', clickPaginetion);
+// pagination.addEventListener('click', clickPaginetion);
 let firstPage = null;
 let endPage = null;
 
-export function getPagination(currentPage, lastPage) {
+export function getPagination(currentPage, lastPage, isLib = false) {
   if (!currentPage || lastPage === 1 || lastPage - currentPage < 0) {
     pagination.style = `margin; 0`;
     pagination.innerHTML = '';
@@ -54,6 +54,8 @@ export function getPagination(currentPage, lastPage) {
     if (Number(itemList[i].id) === currentPage)
       itemList[i].classList.add('pagination__item--current');
   }
+
+  if (!isLib) pagination.addEventListener('click', clickPaginetion);
 }
 
 function renderLi(arr) {
@@ -165,26 +167,3 @@ function clickPaginetion(e) {
     spinerRemove();
   });
 }
-
-// if (e.target === e.currentTarget) return;
-
-// let id = null;
-// if (e.target.nodeName === 'SPAN' || e.target.nodeName === 'BUTTON') {
-// if (
-// e.target.closest('button').classList.contains('pagination__left-btn') &&
-// firstPage > 1
-// )
-// id = firstPage - 1;
-// else if (
-// e.target.closest('button').classList.contains('pagination__right-btn') &&
-// firstPage < endPage
-// )
-// id = firstPage + 1;
-// else return;
-// } else {
-// id = e.target.closest('li').id;
-// }
-// apiServise.fetchPagination(id).then(data => {
-// renderCards(data);
-// });
-// }

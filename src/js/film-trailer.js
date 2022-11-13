@@ -72,6 +72,7 @@ function closeTrailer(e) {
   ) {
     closeBackdrop();
     trailerBackdrop.removeEventListener('click', closeTrailer);
+    window.removeEventListener('keydown', closeTrailer);
   }
 }
 
