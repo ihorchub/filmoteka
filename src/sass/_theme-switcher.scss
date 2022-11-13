@@ -75,20 +75,16 @@
     color: #ff6b01;
   }
 }
-span[data-descr] {
+span[title] {
   cursor: help;
 }
-span[data-descr]:hover::after {
-  content: attr(data-descr);
+span[title]:hover::after {
   position: absolute;
-  left: 0;
+
   top: 24px;
-  min-width: 100px;
-  border: 1px #aaaaaa solid;
+
+  border: 1px #c50303 solid;
   border-radius: 10px;
-  background-color: #f9e400;
-  padding: 10px;
-  color: #000000;
-  font-size: 15px;
-  z-index: 1;
+
+  font-size: 20px;
 }
