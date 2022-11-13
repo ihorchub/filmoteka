@@ -2,10 +2,9 @@ import { refs } from '../index';
 import { getPagination } from './pagination';
 import { onSubmitScroll } from './onSubmit.js';
 
-export function renderCards(data) {
-  const markup =
-    data.data.results
-      .map(
+export function renderCards({ data }) {
+  refs.cardHolder.innerHTML =
+    data.results.map(
         ({
           id,
           poster_path,
@@ -37,8 +36,8 @@ export function renderCards(data) {
               </li>`;
 
   onSubmitScroll();
-  refs.cardHolder.innerHTML = markup;
-  getPagination(data.data.page, data.data.total_pages);
+  
+  getPagination(data.page, data.total_pages);
 
   // running the function that stores data to session storage (all except first one)
   sessionStorageAction(data);
@@ -66,7 +65,7 @@ const genreIdName = [
   { id: 37, name: 'Western' },
 ];
 
-function getGenresByID(genreIds) {
+export function getGenresByID(genreIds) {
   const newArr = [];
   genreIdName.map(genre => {
     for (const id of genreIds) {
@@ -84,7 +83,7 @@ function getGenresByID(genreIds) {
   }
 }
 
-function getShortName(string) {
+export function getShortName(string) {
   if (string) {
     if (string.length >= 32) {
       return string.substr(0, 32) + '...';
@@ -93,7 +92,7 @@ function getShortName(string) {
   }
 }
 
-function getYear(date) {
+export function getYear(date) {
   return date ? date.split('-')[0] : '2022';
 }
 
@@ -104,18 +103,28 @@ function getPosterPath(path) {
   //   : 'https://www.mysafetysign.com/img/lg/S/post-no-bills-sign-st-0124.png';
 }
 
-function getMarkupImgPoster(original_language, poster_path, name, title) {
-  if (original_language === 'ru') {
-    return `<img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${
-      name || title
-    }" loading="lazy" />`;
-  } else {
+// export function getMarkupImgPoster(original_language, poster_path, name, title) {
+//   if (original_language === 'ru') {
+//     return `<img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${
+//       name || title
+//     }" loading="lazy" />`;
+//   } else {
+//   }
+//   return poster_path
+//     ? `<img src=" ${getPosterPath(poster_path)}" alt="${
+//         name || title
+//       }" loading="lazy" />`
+//     : ``;
+  
+ export function getMarkupImgPoster(original_language, poster_path, name, title,) {
+  if (poster_path && original_language !== 'ru') {
+    return `<img src=" ${getPosterPath(poster_path)}" alt="${name || title}" loading="lazy" />`
+  } else if (original_language === 'ru') {
+    return `<img src="https://i.ibb.co/gDNWHNY/Group-91.png" alt="${name || title}" loading="lazy" />`
   }
-  return poster_path
-    ? `<img src=" ${getPosterPath(poster_path)}" alt="${
-        name || title
-      }" loading="lazy" />`
-    : ``;
+  return ``
+};
+
   // : `<picture  loading="lazy">
   //       <source
   //         media="(min-width: 1280px)"
@@ -144,13 +153,13 @@ function getMarkupImgPoster(original_language, poster_path, name, title) {
   //         loading="lazy"
   //       />
   //     </picture>`;
-}
+// }
 
 // function that stores data to session storage (all except first one)
-function sessionStorageAction(data) {
+function sessionStorageAction({ results }) {
   let sessionListShift = [];
 
-  let sessionList = data.data.results;
+  let sessionList = results;
   sessionListShift = sessionList.shift();
 
   sessionStorage.setItem('all-except-first', JSON.stringify(sessionList));
