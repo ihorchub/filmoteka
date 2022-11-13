@@ -2,13 +2,14 @@ import ApiServise from "./js/API";
 import throttle from "lodash.throttle";
 import { clickOnMovie } from "./js/clickOnMovie";
 import { onScroll } from "./js/onScroll";
-import { onSubmit } from "./js/onSubmit";
+import { onSubmit, onSubmitScroll } from "./js/onSubmit";
 import { renderCards } from "./js/renderCards";
 import { stickyHeader } from "./js/sticky-header";
 import trailer from './js/film-trailer.js';
 import { showModal } from './js/film-modal';
 
 export const refs = {
+  topButton: document.querySelector('.btn_top'),
   searchForm: document.querySelector('.home-header__form'),
   cardHolder: document.querySelector('.card-holder'),
   // conteiner: document.querySelector('.card-container.container'),
@@ -22,18 +23,18 @@ refs.searchForm.addEventListener("submit", onSubmit);
 window.addEventListener('scroll', throttle(onScroll, 1000));
 refs.stickyHeaderForm.addEventListener("submit", onSubmit);
 refs.cardHolder.addEventListener('click', onCardClick);
-
+refs.topButton.addEventListener('click', onSubmitScroll)
 // refs.conteiner.addEventListener('click', clickOnMovie);
 
 
-apiServise.fetchDefault().then(data => {renderCards(data);});
+apiServise.fetchDefault().then(data => { renderCards(data); });
 
 function onCardClick(e) {
   if (e.target === e.currentTarget) return;
 
   if (e.target.classList.contains('film__trailer-btn'))
     return trailer.showTrailer(e.target.closest('li').id);
-  
+
   apiServise.movieId = e.path[2].id
-  apiServise.fetchById().then(data => {showModal(data.data);});
+  apiServise.fetchById().then(data => { showModal(data.data); });
 }
