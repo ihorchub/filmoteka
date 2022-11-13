@@ -1,3 +1,4 @@
+import { onSubmit, onSubmitScroll } from "./js/onSubmit";
 import ApiServise from './js/API';
 import { switcher } from './js/switcher';
 import throttle from 'lodash.throttle';
@@ -7,13 +8,13 @@ import { onSubmit } from './js/onSubmit';
 import { renderCards } from './js/renderCards';
 import { stickyHeader } from './js/sticky-header';
 import trailer from './js/film-trailer.js';
-
 import { showModal } from './js/film-modal';
 import { spiner, spinerRemove, noInfo } from './js/notifications';
 import { onOpenTeamModal } from './js/team-modal.js';
 import { ruAllert, ruDelete } from './js/notifications';
 
 export const refs = {
+  topButton: document.querySelector('.btn_top'),
   body: document.querySelector('body'),
   searchForm: document.querySelector('.home-header__form'),
   stickyHeaderForm: document.querySelector('.home-header__form__sticky'),
@@ -31,6 +32,8 @@ refs.searchForm.addEventListener('submit', onSubmit);
 // window.addEventListener('scroll', throttle(onScroll, 1000));
 refs.stickyHeaderForm.addEventListener('submit', onSubmit);
 refs.cardHolder.addEventListener('click', onCardClick);
+refs.topButton.addEventListener('click', onSubmitScroll)
+// refs.conteiner.addEventListener('click', clickOnMovie);
 
 refs.stickyHeaderForm.addEventListener('change', () => {
   refs.searchForm.elements[0].value = refs.stickyHeaderForm.elements[0].value;

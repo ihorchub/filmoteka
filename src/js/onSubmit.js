@@ -42,10 +42,20 @@ export function onSubmit(e) {
   value = e.target.elements[0].value.trim();
 }
 
+  if (e.target.elements[0].value === '') {
+    return
+  }
+
+  onSubmitScroll();
+  apiServise.query = e.target.elements[0].value.trim();
+
+  apiServise.fetch().then((data) => {
+    refs.cardHolder.innerHTML = '';
+    renderCards(data)
+  })
+}
+
 export function onSubmitScroll() {
-
-// export function onSubmitScroll() {
-
   window.scroll({
     top: 0,
     left: 0,
