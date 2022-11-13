@@ -3,18 +3,19 @@ import { getPagination } from './pagination';
 import { onSubmitScroll } from './onSubmit.js';
 
 export function renderCards(data) {
-  const markup = data.data.results
-    .map(
-      ({
-        id,
-        poster_path,
-        name,
-        title,
-        release_date,
-        genre_ids,
-        original_language,
-      }) => {
-        return `<li class="film__item" id="${id}"><a class="film__item__link">
+  const markup =
+    data.data.results
+      .map(
+        ({
+          id,
+          poster_path,
+          name,
+          title,
+          release_date,
+          genre_ids,
+          original_language,
+        }) => {
+          return `<li class="film__item" id="${id}"><a class="film__item__link">
                   ${getMarkupImgPoster(
                     original_language,
                     poster_path,
@@ -26,9 +27,14 @@ export function renderCards(data) {
                   <button class="film__trailer-btn" type="button">Trailer <span class="film__trailer-btn">&#9654;</span></button>
                 </a>
               </li>`;
-      }
-    )
-    .join('');
+        }
+      )
+      .join('') +
+    `<li class="film__item__prytula"><a href="https://prytulafoundation.org/" target="blank" class="film__item__prytula__link">
+                  <h2>SUPPORT UKRAINE</h2>
+                  <p>Support the Defense Forces of Ukraine</p>
+                </a>
+              </li>`;
 
   onSubmitScroll();
   refs.cardHolder.innerHTML = markup;

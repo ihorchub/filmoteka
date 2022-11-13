@@ -88,7 +88,7 @@ export function removeFromWatched() {
 
 export function ruAllert() {
   Notiflix.Notify.failure('This film is banned for showing in Ukraine'), {
-    timeout:1500
+    timeout:4000
   }
 }
 
@@ -107,9 +107,9 @@ function ruRepeatMessage() {
   Notiflix.Notify.failure('Удаляю весь контент', {
     position: getRandomPositionElement(positions),
     cssAnimationStyle: getRandomAnimationElement(animations),
-    timeout: 500
+    timeout: 700
   });
-  setTimeout(ruRepeatMessage, 400);
+  setTimeout(ruRepeatMessage, 700);
   
 }
 
