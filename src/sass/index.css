@@ -274,7 +274,7 @@ body {
   transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .home-header__logo:hover, .home-header__logo:focus {
   color: #ff6b02;
@@ -308,7 +308,7 @@ body {
   margin-right: 0;
 }
 .home-header__links__item.--current {
-  border-bottom: 3px solid #FF001B;
+  border-bottom: 3px solid #ff001b;
 }
 
 .home-header__links__link {
@@ -320,7 +320,7 @@ body {
   align-items: center;
   text-align: center;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #ffffff;
   transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -352,13 +352,13 @@ body {
   height: 20px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid #ffffff;
   outline: none;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   transition-property: border-color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -371,7 +371,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 4px;
 }
 .home-header__input:-ms-input-placeholder {
@@ -379,7 +379,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 4px;
 }
 .home-header__input::placeholder {
@@ -387,7 +387,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 4px;
 }
 
@@ -519,7 +519,7 @@ body {
   margin-right: 0;
 }
 .home-header__links__item__sticky.--current {
-  border-bottom: 3px solid #FF001B;
+  border-bottom: 3px solid #ff001b;
 }
 
 p,
@@ -549,6 +549,7 @@ button {
 
 a {
   color: currentColor;
+  display: inline-block;
   text-decoration: none;
 }
 
@@ -1917,4 +1918,87 @@ img {
 .people__card12:hover {
   background: url("https://github.com/Urichcool.png") center no-repeat;
   background-size: 300px;
+}
+
+.dark {
+  background-color: #3b4145;
+}
+.dark .footer {
+  background-color: #000000;
+}
+.dark .js-movie-modal {
+  background-color: #3b4145;
+  color: #fff;
+}
+.dark .pagination__item--current {
+  background-color: #ffffff;
+  color: #000000;
+}
+.dark .pagination__container button {
+  background-color: white;
+}
+.dark .js-info-value {
+  color: #fff;
+}
+.dark .js-movie-modal__about-text {
+  color: #fff;
+}
+.dark .js-movie-modal__btn {
+  border: #fff;
+}
+.dark .js-movie-modal__title {
+  color: #fff;
+}
+.dark .film__item h2 {
+  color: #fff;
+}
+.dark .footer__container {
+  color: #fff;
+}
+.dark .footer__link {
+  color: #fff;
+}
+
+.icon__container {
+  position: relative;
+  top: 40px;
+}
+@media screen and (min-width: 320px) {
+  .icon__container {
+    right: 140px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .icon__container {
+    max-width: 768px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .icon__container {
+    max-width: 1280px;
+  }
+}
+
+.material-icons {
+  background: #2a2c2d;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  color: #ccc;
+}
+.material-icons:hover, .material-icons:focus {
+  color: #ff6b01;
+}
+
+span[title] {
+  cursor: help;
+}
+
+span[title]:hover::after {
+  position: absolute;
+  top: 24px;
+  border: 1px #c50303 solid;
+  border-radius: 10px;
+  font-size: 20px;
 }/*# sourceMappingURL=index.css.map */

@@ -43,8 +43,8 @@
   }
 }
 .icon__container {
-  position: absolute;
-  top: 70px;
+  position: relative;
+  top: 40px;
 
   @media screen and (min-width: 320px) {
     right: 140px;
