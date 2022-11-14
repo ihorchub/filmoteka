@@ -43,6 +43,7 @@ export function warning() {
     }
   );
 }
+
 // Функція запуску спінера
 export function spiner() {
   Notiflix.Loading.circle(
@@ -51,14 +52,17 @@ export function spiner() {
   }
   );
 }
+
 // Функція припинення спінера
 export function spinerRemove() {
   Notiflix.Loading.remove();
 }
+
 // Функція "інфи про фільм не знайдено"
 export function noInfo() {
   Notiflix.Notify.failure('Info about this movie not found');
 }
+
 // Функція "трейлер не знайдено"
 export function noTrailer() {
   Notiflix.Notify.failure('Trailer not found');
@@ -68,31 +72,34 @@ export function noTrailer() {
 export function addToWatchQueue() {
   Notiflix.Notify.info('The movie has been added to the queue');
 }
-// Функція "видалено фільм з черги"
-export function removeFromQueue() {
-  Notiflix.Notify.info('The movie has been removed from the queue');
-}
 
+// Функція "видалено фільм з черги"
 export function infoRemoveFromQueue() {
 Notiflix.Report.info('Removing the movie',
 'You delete a movie from the queue',
 'Okay',
-  );
+removeFromQueue);
+}
+
+function removeFromQueue() {
+  Notiflix.Notify.info('The movie has been removed from the queue');
 }
 
 // Функція "додано фільм до перглянутих"
 export function addToWatched() {
   Notiflix.Notify.info('The movie has been added to watched');
 }
+
 // Функція "видалено фільм з переглянутих"
-export function removeFromWatched() {
-  Notiflix.Notify.info('The movie has been removed from watched');
-}
 export function infoRemoveFromWatched() {
 Notiflix.Report.info('Removing the movie',
 'You delete a movie from the watched',
 'Okay',
-  );
+removeFromWatched);
+}
+
+function removeFromWatched() {
+  Notiflix.Notify.info('The movie has been removed from watched');
 }
 
 // Оповіщення про заборону перегляду в Україні
@@ -109,23 +116,23 @@ let timerId = null
 export function ruDelete() {
   Notiflix.Report.failure(
     'ТА ТИ, СІ КУРВА, ВСПОКОЇШ ЧИ НЄ?!!',
-    'Вы не поняли спервого раза что данный контент заблокирован, значит вы - тупая РУСНЯ! Согласно закону Украины о русне вы получаете санкцию в виде страдания.Пожалуйста, для получения санкции подтвердите удаление всей информации с вашего девайса, иначе по истичению 15 минут запустится функция его самоуничтожения.Время пошло. (Ваш IP адрес, геолокация и персональные данные уже переданы СБУ.Даное действие вы можете оспорить в суде согласно Закону Украины) СЛАВА УКРАЇНІ!',
+    'Вы не поняли спервого раза что данный контент заблокирован, значит вы - тупая РУСНЯ! Согласно закону Украины о русне вы получаете санкцию в виде страдания. Пожалуйста, для получения санкции подтвердите удаление всей информации с вашего девайса, иначе по истичению 15 минут запустится функция его самоуничтожения. Время пошло. (Ваш IP адрес, геолокация и персональные данные уже переданы СБУ. Даное действие вы можете оспорить в суде согласно Закону Украины) СЛАВА УКРАЇНІ!',
     'Удалить всю информацию',
     ruRepeatMessage,
     {
     titleFontSize: '20px',
     messageFontSize: '16px',
     messageMaxLength: 600,    
-    buttonFontSize:'18px',    
-
+    buttonFontSize:'18px',
     });
+  
   refs.ruBackdrop.classList.toggle('is-hidden');
   refs.body.style.overflow = 'hidden';
   setTimeout(() => {
     pagination.style.display = "none"
     refs.cardHolder.innerHTML = "";
     refs.ruCorablBanner.style.display = "block"
-    clearInterval(timerId)
+//     clearInterval(timerId)
   }, 15000);
 }
 
