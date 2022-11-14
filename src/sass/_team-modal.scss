@@ -20,8 +20,8 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  width: 100%;
-  height: 900px;
+  max-width: 1280px;
+  height: 100%;
   background-color: #ffffff;
   transform: translate(-50%, -50%) scale(0.7);
   overflow-y: scroll;
@@ -116,8 +116,8 @@
   height: 250px;
   width: 250px;
   background: grey;
-  border-radius: 50px;
-  box-shadow: 3px 30px 60px -20px #000000;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -265,10 +265,10 @@
   }
 }
 .people__card10 {
-  background: url('https://github.com/Ser9999.png') center center no-repeat;
+  background: url('https://github.com/botaniq.png') center center no-repeat;
   background-size: 250px;
   &:hover {
-    background: url('https://github.com/Ser9999.png') center no-repeat;
+    background: url('https://github.com/botaniq.png') center no-repeat;
     background-size: 300px;
   }
 }
