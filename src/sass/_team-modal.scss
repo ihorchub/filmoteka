@@ -20,7 +20,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  width: 100%;
+  max-width: 1280px;
   height: 900px;
   background-color: #ffffff;
   transform: translate(-50%, -50%) scale(0.7);
