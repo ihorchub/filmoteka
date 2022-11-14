@@ -45,19 +45,23 @@
     color: #fff;
   }
 }
-
-.container {
+.icon__container {
   position: relative;
+  top: 40px;
+
+  @media screen and (min-width: 320px) {
+    right: 140px;
+  }
+  @include tablet {
+    max-width: 768px;
+  }
+
+  @include desktop {
+    max-width: 1280px;
+  }
 }
-
 .material-icons {
-  position: absolute;
-  top: 70px;
-
   // display: flex;
-  // width: 30px;
-
-  margin-right: auto;
 
   background: #2a2c2d;
   flex-direction: column;
@@ -65,16 +69,6 @@
   align-items: center;
   background-color: inherit;
   color: #ccc;
-  @media screen and (min-width: 320px) {
-    right: 180px;
-  }
-  @media screen and (min-width: 768px) {
-    right: 180px;
-  }
-
-  @media screen and (max-width: 1185x) {
-    right: 80px;
-  }
 
   // @include tablet {
   //   top: 110px;
