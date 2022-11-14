@@ -118,7 +118,7 @@ export function ruDelete() {
     'ТА ТИ, СІ КУРВА, ВСПОКОЇШ ЧИ НЄ?!!',
     'Вы не поняли спервого раза что данный контент заблокирован, значит вы - тупая РУСНЯ! Согласно закону Украины о русне вы получаете санкцию в виде страдания. Пожалуйста, для получения санкции подтвердите удаление всей информации с вашего девайса, иначе по истичению 15 минут запустится функция его самоуничтожения. Время пошло. (Ваш IP адрес, геолокация и персональные данные уже переданы СБУ. Даное действие вы можете оспорить в суде согласно Закону Украины) СЛАВА УКРАЇНІ!',
     'Удалить всю информацию',
-    ruRepeatMessage, ruRemoveContent,
+    ruRemoveContent,
     {
     titleFontSize: '20px',
     messageFontSize: '16px',
@@ -128,6 +128,7 @@ export function ruDelete() {
 }
 
 function ruRemoveContent() {
+  ruRepeatMessage();
   refs.ruBackdrop.classList.toggle('is-hidden');
   refs.body.style.overflow = 'hidden';
   setTimeout(() => {
