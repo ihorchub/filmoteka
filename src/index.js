@@ -1,8 +1,7 @@
 import { onSubmit, onSubmitScroll } from "./js/onSubmit";
 import ApiServise from './js/API';
 import { switcher } from './js/switcher';
-import throttle from 'lodash.throttle';
-import { clickOnMovie } from './js/clickOnMovie';
+// import throttle from 'lodash.throttle';
 import { onScroll } from './js/onScroll';
 import { onSubmit } from './js/onSubmit';
 import { renderCards } from './js/renderCards';
@@ -12,7 +11,7 @@ import { showModal } from './js/film-modal';
 import { spiner, spinerRemove, noInfo } from './js/notifications';
 import { onOpenTeamModal } from './js/team-modal.js';
 import { ruAllert, ruDelete } from './js/notifications';
-import { stickyScrollButton } from './js/scroll-to-top';
+// import { stickyScrollButton } from './js/scroll-to-top';
 
 export const refs = {
   topButton: document.querySelector('.btn_top'),
