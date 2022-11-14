@@ -3,7 +3,7 @@ import { renderCards } from './renderCards';
 import { spiner, spinerRemove, successPages } from './notifications.js';
 
 // const apiServise = new ApiServise();
-const pagination = document.querySelector('.pagination__container');
+export const pagination = document.querySelector('.pagination__container');
 // pagination.addEventListener('click', clickPaginetion);
 let firstPage = null;
 let endPage = null;

@@ -23,7 +23,9 @@ export const refs = {
   stickyHeader: document.querySelector('.js-home-header__sticky'),
   stickyHeaderForm: document.querySelector('.home-header__form__sticky'),
   footerLink: document.querySelector('.footer__link'),
-  ruBackdrop: document.querySelector("[data-backdrop]")
+  ruBackdrop: document.querySelector('[data-backdrop]'),
+  ruCorablBanner: document.querySelector('.card-holder__banner__ru__is-hidden'),
+  prytulaBannerTab: document.querySelector('.prytula-baner-tab'),
 };
 
 export const apiServise = new ApiServise();

@@ -24,7 +24,7 @@ body {
     max-width: 395px;
   }
 
-  &__poster {
+  &__link {
     width: 280px;
     height: 402px;
     background-image: url('../images/card/default-poster-mobile.jpg');
@@ -236,6 +236,126 @@ display: none;
       line-height: 1.2;
     }
   }
+}
+
+.film__item__prytula__tab{
+  margin-top: 15px;
+   position: relative;
+  text-align: center;
+   transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  display: none;
+  &:hover {
+    transform: scale(1.02);
+  }
+  @media screen and (min-width: 768px) {
+display: block;
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
+
+  &__link {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+  border-radius: 5px;
+    margin-bottom: 10px;
+width: 704px;
+height: 215px;
+    background-image: url('../images/card/prytula-tab.png');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+
+  & h2 {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 768px) {
+      line-height: 1.33;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+
+  & p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: #ff6b08;
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+}
+
+
+.card-holder__banner__ru{
+   width: 290px;
+  height: 193px;
+  margin-bottom: 10px;
+
+  background-image: url('../images/card/korabl-mob.jpg');
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../images/card/korabl-mob-x2.jpg');
+  }
+  @media screen and (min-width: 768px) {
+    width: 480px;
+    height: 320px;
+    margin-bottom: 20px;
+    background-image: url('../images/card/korabl-tab.jpg');
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../images/card/korabl-tab-x2.jpg');
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    width: 768px;
+    height: 512px;
+    background-image: url('../images/card/korabl-desktop.jpg');
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../images/card/korabl-desktop-x2.jpg');
+    }
+  }
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-holder__banner__ru__title{
+  text-align: center;
+   font-weight: 500;
+    font-size: 20px;
+    line-height: 1.33;
+    color: #ff6b08;
+
+    @media screen and (min-width: 1280px) {
+      font-size: 40px;
+      line-height: 1.2;
+    }
 }
 
 //=========footer=========

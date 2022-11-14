@@ -9,6 +9,8 @@ import {
   spiner,
   spinerRemove,
 } from './notifications';
+import {refs} from '../index.js'
+
 
 // const apiServise = new ApiServise();
 

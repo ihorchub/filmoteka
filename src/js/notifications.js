@@ -1,6 +1,7 @@
 import { refs } from '../index';
-
+import { onSubmitScroll } from './onSubmit';
 import Notiflix from 'notiflix';
+import {pagination} from "./pagination"
 
 // Функції повідомлень (просто імпортуемо туди, де хочемо використати та викликаем);
 export function success(totalMovies, query) {
@@ -114,21 +115,32 @@ export function ruAllert() {
       timeout: 4000,
     };
 }
+
+let timerId = null
+
 // Оповіщення про видалення і блокування контенту
 export function ruDelete() {
   Notiflix.Report.failure(
     'ТА ТИ, СІ КУРВА, ВСПОКОЇШ ЧИ НЄ?!!',
     'Вы не поняли спервого раза что данный контент заблокирован, значит вы - тупая РУСНЯ! Согласно закону Украины о русне вы получаете санкцию в виде страдания.Пожалуйста, для получения санкции подтвердите удаление всей информации с вашего девайса, иначе по истичению 15 минут запустится функция его самоуничтожения.Время пошло. (Ваш IP адрес, геолокация и персональные данные уже переданы СБУ.Даное действие вы можете оспорить в суде согласно Закону Украины) СЛАВА УКРАЇНІ!',
-    'Удалить всю информацию', {
+    'Удалить всю информацию',
+    ruRepeatMessage,
+    {
     titleFontSize: '20px',
     messageFontSize: '16px',
     messageMaxLength: 600,
     messageFontSize: '16px',
     buttonFontSize:'18px',    
-ruRepeatMessage
+
     });
   refs.ruBackdrop.classList.toggle('is-hidden');
   refs.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    pagination.style.display = "none"
+    refs.cardHolder.innerHTML = "";
+    refs.ruCorablBanner.style.display = "block"
+    clearInterval(timerId)
+  }, 15000);
 }
 
 function ruRepeatMessage() {
@@ -137,7 +149,8 @@ function ruRepeatMessage() {
     cssAnimationStyle: getRandomAnimationElement(animations),
     timeout: 700,
   });
-  setTimeout(ruRepeatMessage, 700);
+   onSubmitScroll();
+ timerId = setTimeout(ruRepeatMessage, 700);
 }
 
 const positions = [
