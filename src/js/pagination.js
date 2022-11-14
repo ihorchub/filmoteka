@@ -165,8 +165,8 @@ function clickPaginetion(e) {
     else return;
   } else {
     if (!isNaN(e.target.closest('li').id)) id = e.target.closest('li').id;
-    else if (e.target.closest('li').id == '+') id = firstPage + 3;
-    else if (e.target.closest('li').id == '-') id = firstPage - 3;
+    else if (e.target.closest('li').id === '+') id = firstPage + 3;
+    else if (e.target.closest('li').id === '-') id = firstPage - 3;
     else return;
   }
   spiner();
