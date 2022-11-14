@@ -1,5 +1,5 @@
 import { renderCards } from './renderCardsMyLibrary';
-import { spiner, spinerRemove, successPagesLib } from '../js/notifications';
+import { spiner, spinerRemove } from '../js/notifications';
 import { getPagination } from './pagination';
 
 // const watchedBtn = document.querySelector('.js-watched');
