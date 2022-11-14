@@ -1,8 +1,6 @@
 import {
-  addToWatched,
-  removeFromWatched,
-  addToWatchQueue,
-  removeFromQueue,
+  addToWatched,  
+  addToWatchQueue,  
   infoRemoveFromQueue,
   infoRemoveFromWatched,
 } from './notifications';
@@ -62,8 +60,7 @@ export function locStorage(data) {
     const res = addWatchedRef.classList.toggle('js-remove-from');
     addWatchedRef.textContent = `${res ? 'remove from' : 'add to'} watched `;
 
-    infoRemoveFromWatched();
-    removeFromWatched();
+    infoRemoveFromWatched();    
   }
 
   // functioin of adding to "Queue" to the local storage by clicking "Add to Queue"
@@ -88,7 +85,6 @@ export function locStorage(data) {
     const res = addQueueRef.classList.toggle('js-remove-from');
     addQueueRef.textContent = `${res ? 'remove from' : 'add to'} queue `;
 
-    infoRemoveFromQueue();
-    removeFromQueue();
+    infoRemoveFromQueue();    
   }
 }
