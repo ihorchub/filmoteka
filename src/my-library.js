@@ -1,7 +1,7 @@
 import ApiServiselibrary from './js/API';
 import { onOpenTeamModal } from './js/team-modal.js';
 import { switcher } from './js/switcher';
-import throttle from 'lodash.throttle';
+// import throttle from 'lodash.throttle';
 import { onQueuedBtn, onWatchedBtn } from './js/btnWatchedQueue.js';
 import { spiner, spinerRemove, noInfo, successPages } from './js/notifications';
 import trailer from './js/film-trailer.js';
