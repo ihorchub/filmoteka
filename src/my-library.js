@@ -9,6 +9,7 @@ import { showModal } from './js/film-modal';
 import { onSubmitScroll } from './js/onSubmit.js';
 
 export const refs = {
+  topButton: document.querySelector('.btn_top'),
   body: document.querySelector('body'),
   cardHolderLibrary: document.querySelector('.card-holder'),
   footerLink: document.querySelector('.footer__link'),
@@ -35,6 +36,7 @@ const stickyMyLibrary = (window.onscroll = function showHeaderMyLibrary() {
 
 const apiServise = new ApiServiselibrary();
 
+refs.topButton.addEventListener('click', onSubmitScroll);
 refs.footerLink.addEventListener('click', onOpenTeamModal);
 refs.cardHolderLibrary.addEventListener('click', onCardClick);
 refs.watchedBtn.addEventListener('click', onWatched);

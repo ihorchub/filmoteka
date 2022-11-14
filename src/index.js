@@ -12,6 +12,7 @@ import { showModal } from './js/film-modal';
 import { spiner, spinerRemove, noInfo } from './js/notifications';
 import { onOpenTeamModal } from './js/team-modal.js';
 import { ruAllert, ruDelete } from './js/notifications';
+import { stickyScrollButton } from './js/scroll-to-top';
 
 export const refs = {
   topButton: document.querySelector('.btn_top'),
@@ -32,7 +33,7 @@ refs.searchForm.addEventListener('submit', onSubmit);
 // window.addEventListener('scroll', throttle(onScroll, 1000));
 refs.stickyHeaderForm.addEventListener('submit', onSubmit);
 refs.cardHolder.addEventListener('click', onCardClick);
-refs.topButton.addEventListener('click', onSubmitScroll)
+refs.topButton.addEventListener('click', onSubmitScroll);
 // refs.conteiner.addEventListener('click', clickOnMovie);
 
 refs.stickyHeaderForm.addEventListener('change', () => {
