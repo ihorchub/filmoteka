@@ -1,6 +1,7 @@
 import axios from 'axios';
 export default class ApiServise {
   constructor() {
+    this.url = 'https://api.themoviedb.org/3/';
     this.key= '411d08d89a4569fb1b50aec07ee6fb72',
     this.searchQuery = '';
     this.page = 1;
@@ -8,7 +9,7 @@ export default class ApiServise {
   }
   async fetchOnMovie() {
     try {
-      const request = `https://api.themoviedb.org/3/movie/${this.idMovie}/videos?api_key=${this.key}`;
+      const request = `${this.url}movie/${this.idMovie}/videos?api_key=${this.key}`;
       const data = await axios.get(request);
       return data;
     } catch (error) {
@@ -17,7 +18,7 @@ export default class ApiServise {
   }
   async fetchById() {
     try {
-      const request = `https://api.themoviedb.org/3/movie/${this.idMovie}?api_key=${this.key}`;
+      const request = `${this.url}movie/${this.idMovie}?api_key=${this.key}`;
       const data = await axios.get(request);
       return data;
     } catch (error) {
@@ -26,7 +27,7 @@ export default class ApiServise {
   }
   async fetchDefault() {
     try {
-      const request = `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.key}`;
+      const request = `${this.url}trending/movie/week?api_key=${this.key}`;
       const data = await axios.get(request);
       return data;
     } catch (error) {
@@ -39,7 +40,7 @@ export default class ApiServise {
         api_key: this.key,
         query: this.searchQuery,
       });
-      const request = `https://api.themoviedb.org/3/search/movie?${searchParams}`;
+      const request = `${this.url}search/movie?${searchParams}`;
       const data = await axios.get(request);
       return data;
     } catch (error) {
@@ -53,11 +54,11 @@ export default class ApiServise {
           api_key: this.key,
           query: this.searchQuery,
         });
-        const request = `https://api.themoviedb.org/3/search/movie?${searchParams}&page=${page}`;
+        const request = `${this.url}search/movie?${searchParams}&page=${page}`;
         const data = await axios.get(request);
         return data;
       } else {
-        const request = `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.key}&page=${page}`;
+        const request = `${this.url}trending/movie/week?api_key=${this.key}&page=${page}`;
         const data = await axios.get(request);
         return data;
       }
