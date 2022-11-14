@@ -18,12 +18,6 @@ export function successPages() {
   Notiflix.Notify.success(`Hooray, you clicked on the there dots!`);
 }
 
-// export function successPagesLib(total) {
-//   Notiflix.Notify.success(`You have ${total} pages`, {
-//     timeout: 4000,
-//   });
-// }
-
 // Функції пошуку фільму
 export function failure() {
   Notiflix.Notify.failure('Sorry, no matches found for your search query!',
@@ -32,13 +26,6 @@ export function failure() {
   }
   );
 }
-// export function missingTrailer() {
-//   Notiflix.Report.info(
-//     'Missing Trailer!',
-//     'Unfortunately the trailer was lost in the vastness of the space',
-//     'Thanks'
-//   );
-// }
 
 export function secondRequest(query) {
   Notiflix.Notify.warning(
@@ -128,8 +115,7 @@ export function ruDelete() {
     {
     titleFontSize: '20px',
     messageFontSize: '16px',
-    messageMaxLength: 600,
-    messageFontSize: '16px',
+    messageMaxLength: 600,    
     buttonFontSize:'18px',    
 
     });
